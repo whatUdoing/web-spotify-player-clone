@@ -7,19 +7,19 @@ module.exports = rootPath => {
 		context: rootPath,
 
 		entry: {
-			bundle: './src/web/frontend/main.tsx'
+			bundle: './src/frontend/main.tsx'
 		},
 
 		output: {
 			filename: '[name][hash].js',
 			chunkFilename: '[name].chunk.js',
-			path: path.resolve(rootPath, 'dist/web/frontend'),
+			path: path.resolve(rootPath, 'dist/frontend'),
 			publicPath: '/assets/'
 		},
 
 		resolve: {
 			alias: {
-				components: path.resolve(rootPath, 'src/web/front/components/')
+				components: path.resolve(rootPath, 'src/front/components/')
 			},
 			extensions: ['.ts', '.tsx', '.js']
 		},
@@ -51,7 +51,7 @@ module.exports = rootPath => {
 				root: rootPath
 			}),
 			new HtmlWebpacPlugin({
-				template: './src/web/frontend/index.html',
+				template: './src/frontend/index.html',
 				filename: './index.html'
 			})
 		]

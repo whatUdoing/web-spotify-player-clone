@@ -1,4 +1,4 @@
-import { start } from './web/server'
+import { start } from './server'
 import dotenv from 'dotenv'
 import consola from 'consola'
 import { ServerConfigRecord } from 'server'

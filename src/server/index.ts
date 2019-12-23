@@ -1,20 +1,14 @@
 import express, { Application } from 'express'
 import { ServerConfigRecord } from 'server'
 import consola from 'consola'
-import path from 'path'
+import { initLoaders } from './loaders/'
 
 export const start = (config: ServerConfigRecord): void => {
 	const app: Application = express()
 
-	app.use(
-		'/assets',
-		express.static(path.resolve(config.rootPath, 'dist/web/frontend/'))
-	)
-
-	app.use('*', (req, res) => {
-		res.sendFile(
-			path.resolve(config.rootPath, 'dist/web/frontend/index.html')
-		)
+	initLoaders({
+		app,
+		config
 	})
 
 	app.listen(config.port, () => {

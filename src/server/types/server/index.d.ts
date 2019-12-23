@@ -3,5 +3,8 @@ declare module 'server' {
 		host: string
 		port: number
 		rootPath: string
+		clientId: string
+		clientSecret: string
+		redirectUri: string
 	}
 }
