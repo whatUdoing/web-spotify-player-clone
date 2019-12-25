@@ -2,11 +2,19 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import axios, { AxiosResponse } from 'axios'
 
+import { Container, Row, Col } from './components/Grid/'
+
 const App = () => {
 	const [data, setData] = useState()
 
 	return (
 		<div className="App">
+			<Container>
+				<Row>
+					<Col md="2">col 1</Col>
+					<Col md="2">col 2</Col>
+				</Row>
+			</Container>
 			<h1>Spotify Profile</h1>
 			<a href="/login">Log in</a>
 			<br />

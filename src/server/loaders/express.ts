@@ -16,16 +16,13 @@ export const initExpress = async ({ app }: { app: Application }) => {
 	app.use(cookieParser())
 	app.use(bodyParser.json())
 
-	app.use(
-		'/assets',
-		express.static(path.resolve(rootPath, 'dist/web/frontend/'))
-	)
+	app.use('/assets', express.static(path.resolve(rootPath, 'dist/frontend/')))
 
 	await initAPI({
 		app
 	})
 
 	app.use('*', (req, res) => {
-		res.sendFile(path.resolve(rootPath, 'dist/web/frontend/index.html'))
+		res.sendFile(path.resolve(rootPath, 'dist/frontend/index.html'))
 	})
 }

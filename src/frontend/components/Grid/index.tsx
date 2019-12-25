@@ -1,5 +1,11 @@
-import styled from '@emotion/styled'
+import React, { ReactNode } from 'react'
 
-export const Container = styled.div`
-	display: block;
-`
+type ContainerProps = {
+	children: ReactNode
+}
+export const Container = ({ children }: ContainerProps) => {
+	return <div>{children}</div>
+}
+
+export { Col } from './Column'
+export { Row } from './Row'
