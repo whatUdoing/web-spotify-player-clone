@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { withAuth } from '../middlewares/withAuth'
+import { withAuth } from '../middlewares/with-auth'
 import apiConfig from '../config'
 import { IHttpClient } from 'http-client'
 import { getTokenAuthorizationHeader } from '../methods'

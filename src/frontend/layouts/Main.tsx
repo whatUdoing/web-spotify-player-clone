@@ -7,6 +7,15 @@ type Props = {
 	footer: React.ReactNode | string
 	children?: React.ReactNode
 }
-const MainLayout = ({ header, main, aside, footer }: Props) => {}
+const MainLayout = ({ header, main, aside, footer }: Props) => {
+	return (
+		<div>
+			{header && <header>{header}</header>}
+			{aside && <aside>{aside}</aside>}
+			{main && <main>{main}</main>}
+			{footer && <footer>{footer}</footer>}
+		</div>
+	)
+}
 
 export default MainLayout

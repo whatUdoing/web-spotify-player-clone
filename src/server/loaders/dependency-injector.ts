@@ -1,9 +1,9 @@
 import { Container } from 'typedi'
-import HttpClient from '../services/httpClient'
-import TokenServices from '../services/tokenSetvices'
-import AuthService from '../services/authService'
+import HttpClient from '../services/http-client'
+import TokenServices from '../services/token-services'
+import AuthService from '../services/auth-service'
 import axios from 'axios'
-import ConfigService from '../services/configService'
+import ConfigService from '../services/config-service'
 import { ServerConfigRecord } from 'server'
 
 export const injectDependencies = (config: ServerConfigRecord) => {
