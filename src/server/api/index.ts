@@ -1,6 +1,6 @@
 import { Application, Router } from 'express'
-import { initAuth } from './endpints/auth'
-import { initProfile } from './endpints/profile'
+import { initAuth } from './endpoints/auth'
+import { initProfile } from './endpoints/profile'
 import Container from 'typedi'
 import { IConfigService } from 'config-service'
 

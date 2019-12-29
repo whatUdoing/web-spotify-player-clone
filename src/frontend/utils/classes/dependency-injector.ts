@@ -1,7 +1,11 @@
 import { IDependencyInjector } from 'types/dependency-injector'
 
 class DependencyInjector implements IDependencyInjector {
-	dependencies: { [index: string]: {} } = {}
+	dependencies: { [index: string]: {} }
+
+	constructor() {
+		this.dependencies = {}
+	}
 
 	set(name: string, dependency: object): object {
 		if (!this.has(name)) {

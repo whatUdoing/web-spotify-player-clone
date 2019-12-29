@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express-serve-static-core'
 import { IAuthService } from 'auth-service'
 import { Container } from 'typedi'
 import { IConfigService } from 'config-service'
-import { setTokenCookie } from '../endpints/auth'
+import { setTokenCookie } from '../endpoints/auth'
 
 export const withAuth = async (
 	req: Request,
@@ -23,7 +23,7 @@ export const withAuth = async (
 			clientId,
 			clientSecret
 		})
-		console.log('isAuth', isAuth)
+
 		if (isAuth && tokenObject) {
 			/**
 			 * Set new token refreshed token

@@ -87,23 +87,30 @@ export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
 		}
 
 		return resp.status(502).json({
-			error:
-				'[ callback ] Something went wrong with during authentication on spotify'
+			error: {
+				message:
+					'[ callback ] Something went wrong with during authentication on spotify'
+			}
 		})
 	})
 
 	router.get('/isAuthenticated', async (req, resp) => {
 		const authService: IAuthService = Container.get('auth-service')
 		const accessToken = req.cookies.access_token
+		let tokenExpires
 
 		let respStatus = 200
 
 		if (!accessToken) {
 			return resp.status(200).json({
-				isAuth: false
+				auth: {
+					isAuth: false
+				}
 			})
 		}
-
+		/**
+		 * Remove check from here and make seprate entpoint
+		 */
 		let [isAuth, tokenObject, error] = await authService.checkAndExtendAuth(
 			accessToken,
 			{
@@ -112,17 +119,35 @@ export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
 			}
 		)
 
+		if (!tokenObject) {
+			return resp.status(404).json({
+				auth: {
+					isAuth: false
+				},
+				error: {
+					message: 'Wrong access code'
+				}
+			})
+		}
+
 		if (error) {
 			respStatus = 500
 		}
 
 		if (tokenObject) {
 			setTokenCookie(resp, tokenObject)
+			tokenExpires =
+				tokenObject?.creationDate + tokenObject?.expiresIn * 1000
 		}
 
 		return resp.status(respStatus).json({
-			isAuth,
-			error: error?.message
+			auth: {
+				isAuth,
+				expiresIn: tokenExpires
+			},
+			error: {
+				message: error?.message
+			}
 		})
 	})
 

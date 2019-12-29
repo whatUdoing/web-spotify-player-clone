@@ -5,4 +5,5 @@ export type Route = {
 	path: string
 	name: string
 	component: LazyExoticComponent<() => JSX.Element> | ReactNode
+	withAuth?: boolean
 }

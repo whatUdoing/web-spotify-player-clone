@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import AppShell from '../app-shell/app-shell'
 import { Provider } from 'react-redux'
-import { store } from '../../store/store'
+import { initStore } from '../../redux/store'
 import { BrowserRouter as Router } from 'react-router-dom'
+import Bootstrap from '../bootstrap/redux-bootstrap'
 
 export default () => {
-	const [data, setData] = useState()
+	const store = initStore()
 
 	return (
 		<Provider store={store}>
-			<Router>
-				<AppShell />
-			</Router>
+			<Bootstrap>
+				<a href="/login">Log in</a>
+				<br />
+				<Router>
+					<AppShell />
+				</Router>
+			</Bootstrap>
 		</Provider>
 
 		// <div className="App">

@@ -28,9 +28,7 @@ export const initProfile: () => Router = () => {
 					}
 				})
 				.catch(error => {
-					return resp.status(503).json({
-						error: error?.message
-					})
+					return resp.status(503).json(error)
 				})
 		}
 	})

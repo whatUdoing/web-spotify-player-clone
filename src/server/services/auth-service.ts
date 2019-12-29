@@ -2,7 +2,7 @@ import { IAuthService, RequestData, AuthRespObject } from 'auth-service'
 import { IHttpClient } from 'http-client'
 import formurlencoded from 'form-urlencoded'
 import { TokenObject, ITokenService, TokenOperationResult } from 'tokens'
-import { AuthUrls } from '../api/endpints/auth'
+import { AuthUrls } from '../api/endpoints/auth'
 
 export default class AuthService implements IAuthService {
 	tokenService: ITokenService
@@ -68,8 +68,9 @@ export default class AuthService implements IAuthService {
 	}
 
 	isTokenValid(tokenObject: TokenObject) {
-		return true
-		return tokenObject.creationDate + tokenObject.expiresIn > Date.now()
+		return (
+			tokenObject.creationDate + tokenObject.expiresIn * 1000 > Date.now()
+		)
 	}
 
 	async checkAndExtendAuth(
@@ -105,6 +106,7 @@ export default class AuthService implements IAuthService {
 		const [tokenObject, error] = this.tokenService.getTokenObject(
 			accessToken
 		)
+
 		const isAuth =
 			tokenObject && this.isTokenValid(tokenObject) ? true : false
 

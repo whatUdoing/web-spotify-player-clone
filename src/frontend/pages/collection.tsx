@@ -1,7 +1,7 @@
 import React from 'react'
 
-const UserLibrary = () => {
-	return <span>User library</span>
+const UserCollection = () => {
+	return <span>User Collection</span>
 }
 
-export default UserLibrary
+export default UserCollection
