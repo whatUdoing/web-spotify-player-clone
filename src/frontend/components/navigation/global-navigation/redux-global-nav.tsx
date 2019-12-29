@@ -1,8 +1,8 @@
 import React from 'react'
-import NavigationList from '../../navigation-list/navigation-list'
+import NavigationList from '../navigation-list/navigation-list'
 import { RootStateShape } from '../../../redux/store'
 import { connect } from 'react-redux'
-import { Route } from 'types/router'
+import { RouteObject } from 'types/router'
 
 type Props = {
 	navigationItems: Array<Route>

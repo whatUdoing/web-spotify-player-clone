@@ -1,6 +1,6 @@
 import React from 'react'
 import { RouterRoutesType } from '../../../redux/router/reducers'
-import NavigationList from '../../navigation-list/navigation-list'
+import NavigationList from '../navigation-list/navigation-list'
 import { RootStateShape } from '../../../redux/store'
 import { connect } from 'react-redux'
 

@@ -1,7 +1,8 @@
 import { Response } from 'types/http-client'
+import { CancelTokenSource } from 'axios'
 
 export interface IUserApiClient {
-	isAuthenticated(): Promise<Response>
+	isAuthenticated(cancelToken?: CancelTokenSource): Promise<Response>
 	logout(): Promise<Response>
 	getUserProfile(): Promise<Response>
 }

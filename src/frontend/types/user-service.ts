@@ -1,5 +1,9 @@
+import { CancelTokenSource } from 'axios'
+
 export interface IUserService {
-	isAuthenticated(): Promise<[AuthObject | null, Error | null]>
+	isAuthenticated(
+		cancelToken?: CancelTokenSource
+	): Promise<[AuthObject | null, Error | null]>
 	getUserProfile(): Promise<[User | null, Error | null]>
 	logout(): Promise<[boolean | null, Error | null]>
 }

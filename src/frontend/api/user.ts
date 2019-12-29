@@ -1,5 +1,6 @@
 import { IUserApiClient } from 'types/api-client'
 import { IHttpClient } from 'types/http-client'
+import { CancelTokenSource } from 'axios'
 
 export default class UserApiClient implements IUserApiClient {
 	httpClient: IHttpClient
@@ -8,8 +9,10 @@ export default class UserApiClient implements IUserApiClient {
 		this.httpClient = httpClient
 	}
 
-	isAuthenticated() {
-		return this.httpClient.get('/isAuthenticated')
+	isAuthenticated(cancelToken?: CancelTokenSource) {
+		return this.httpClient.get('/isAuthenticated', {
+			cancelToken: cancelToken ? cancelToken.token : undefined
+		})
 	}
 
 	logout() {

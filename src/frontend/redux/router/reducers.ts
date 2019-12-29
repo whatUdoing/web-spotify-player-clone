@@ -1,52 +1,55 @@
 import { RouterActionTypes, SET_CURRENT_ROUTE } from './action-types'
 import { combineReducers } from 'redux'
 import { lazy } from 'react'
-import { Route } from 'types/router'
+import { RouteObject } from 'types/router'
 
 export type RouterCurrRouteType = number | null
-export type RouterRoutesType = Record<number, Route>
+export type RouterRoutesType = Record<string, RouteObject>
 
 export type RouterStateShape = {
 	routes: RouterRoutesType
 	currentRoute: RouterCurrRouteType
+	mainRoutes: Array<string>
 }
 
 export const initialState: RouterStateShape = {
 	routes: {
-		1: {
+		'1': {
 			id: 1,
 			path: '/',
 			component: lazy(() => import('../../pages/home')),
-			name: 'Home'
+			name: 'Home',
+			exact: true
 		},
-		2: {
+		'2': {
 			id: 2,
 			path: '/search',
 			component: lazy(() => import('../../pages/search')),
 			name: 'Search'
 		},
-		3: {
+		'3': {
 			id: 3,
 			path: '/collection',
 			component: lazy(() => import('../../pages/collections')),
 			name: 'Your Library',
-			withAuth: true
+			withAuth: true,
+			exact: true
 		},
-		4: {
+		'4': {
 			id: 4,
 			path: '/collection/:name',
 			component: lazy(() => import('../../pages/collection')),
 			name: 'Your Library',
 			withAuth: true
 		},
-		5: {
+		'5': {
 			id: 5,
 			path: '/playlist/:id',
 			component: lazy(() => import('../../pages/playlist')),
 			name: 'playlist',
 			withAuth: true
 		},
-		6: {
+		'6': {
 			id: 6,
 			path: '/settings/account',
 			component: lazy(() => import('../../pages/account-settings')),
@@ -55,7 +58,17 @@ export const initialState: RouterStateShape = {
 		}
 	},
 
+	mainRoutes: ['1', '2', '3', '5', '6'],
+
 	currentRoute: null
+}
+
+export const MainRoutesReducer = (
+	mainRoutes = initialState.mainRoutes,
+	action: RouterActionTypes
+) => {
+	// to implement when needed
+	return mainRoutes
 }
 
 export const RoutesReducer = (
@@ -82,5 +95,6 @@ export const CurrRouterRecuder = (
 
 export default combineReducers({
 	routes: RoutesReducer,
-	currentRoute: CurrRouterRecuder
+	currentRoute: CurrRouterRecuder,
+	mainRoutes: MainRoutesReducer
 })

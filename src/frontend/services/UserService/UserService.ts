@@ -2,19 +2,22 @@ import { IUserService, AuthObject, User } from 'types/user-service'
 import { Container } from '../../utils/classes/dependency-injector'
 import { IUserApiClient } from 'types/api-client'
 import { Response } from 'types/http-client'
+import { CancelTokenSource } from 'axios'
 
 const isResponseSuccess = (response: Response) => {
 	return response.statusText === 'OK'
 }
 
 export default class UserService implements IUserService {
-	async isAuthenticated(): Promise<[AuthObject | null, Error | null]> {
+	async isAuthenticated(
+		cancelToken?: CancelTokenSource
+	): Promise<[AuthObject | null, Error | null]> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
 			Container.get('user-api-client')
 		)
 
 		try {
-			const response = await userApiClient.isAuthenticated()
+			const response = await userApiClient.isAuthenticated(cancelToken)
 
 			if (isResponseSuccess(response)) {
 				return [<AuthObject>response.data.auth, null]

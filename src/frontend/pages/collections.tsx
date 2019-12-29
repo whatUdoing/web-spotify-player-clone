@@ -1,7 +1,11 @@
 import React from 'react'
 
 const UserLibrary = () => {
-	return <span>User library</span>
+	return (
+		<div>
+			<h1>Your library Page</h1>
+		</div>
+	)
 }
 
 export default UserLibrary
