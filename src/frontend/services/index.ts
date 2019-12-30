@@ -1,5 +1,5 @@
 import { Container } from '../utils/classes/dependency-injector'
-import UserService from './UserService/UserService'
+import UserService from './user-service/user-service'
 
 /**
  * Note userServices must be initialize after api initialization

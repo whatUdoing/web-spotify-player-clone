@@ -22,10 +22,10 @@ const getMediaQueries = (props: { [index: string]: any }) => {
 
 			if (propSize) {
 				actions[size] = `
-		{
-			flex-basis: ${propSize * colSize}%;	
-		}
-	`
+					{
+						flex-basis: ${propSize * colSize}%;	
+					}
+				`
 			}
 
 			return actions

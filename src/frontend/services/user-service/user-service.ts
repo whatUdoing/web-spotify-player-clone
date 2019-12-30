@@ -64,4 +64,24 @@ export default class UserService implements IUserService {
 
 		return [null, null]
 	}
+
+	async getUserDashboard(
+		cancelToken?: CancelTokenSource
+	): Promise<[object | null, Error | null]> {
+		const userApiClient: IUserApiClient = <IUserApiClient>(
+			Container.get('user-api-client')
+		)
+
+		try {
+			const response = await userApiClient.getUserDashboard()
+
+			if (isResponseSuccess(response)) {
+				return [response.data, null]
+			}
+		} catch (err) {
+			return [null, err]
+		}
+
+		return [null, null]
+	}
 }

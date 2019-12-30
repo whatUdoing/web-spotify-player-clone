@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { RouteObject } from 'types/router'
 
 type Props = {
-	navigationItems: Array<Route>
+	navigationItems: Array<RouteObject>
 }
 
 const mapState = (state: RootStateShape) => {

@@ -1,6 +1,9 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpacPlugin = require('html-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = rootPath => {
 	return {
@@ -35,7 +38,23 @@ module.exports = rootPath => {
 						}
 					]
 				},
-				{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+				{
+					test: /\.css$/,
+					use: [MiniCssExtractPlugin.loader, 'css-loader']
+				},
+				{ enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+				{
+					test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+								name: '[name].[ext]',
+								outputPath: 'fonts/'
+							}
+						}
+					]
+				}
 			]
 		},
 
@@ -43,7 +62,8 @@ module.exports = rootPath => {
 			splitChunks: {
 				chunks: 'all'
 			},
-			usedExports: true
+			usedExports: true,
+			minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
 		},
 
 		plugins: [
@@ -53,6 +73,10 @@ module.exports = rootPath => {
 			new HtmlWebpacPlugin({
 				template: './src/frontend/index.html',
 				filename: './index.html'
+			}),
+			new MiniCssExtractPlugin({
+				filename: '[name].css',
+				chunkFilename: '[id].css'
 			})
 		]
 	}

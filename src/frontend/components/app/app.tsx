@@ -11,8 +11,6 @@ export default () => {
 	return (
 		<Provider store={store}>
 			<Bootstrap>
-				<a href="/login">Log in</a>
-				<br />
 				<Router>
 					<AppShell />
 				</Router>

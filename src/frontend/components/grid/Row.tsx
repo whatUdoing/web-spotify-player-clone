@@ -3,27 +3,20 @@ import { css } from '@emotion/core'
 
 type RowProps = {
 	children: ReactNode
-} & typeof DefaultRowProps
-
-const DefaultRowProps = {
-	justify: 'flex-start',
-	align: 'center'
+	justify: string
+	align: string
 }
 
-// export const Row = styled.div<RowProps>`
-// 	display: flex;
-// 	flex-wrap: wrap;
-// 	justify-content: ${(props: RowProps) => props.justify};
-// 	align-items: ${({ align }) => align};
-// `
-// Row.defaultProps = DefaultRowProps
-
-export const Row = ({ children, justify, align }: RowProps) => {
+export const Row = ({
+	children,
+	justify = 'flex-start',
+	align = 'top'
+}: RowProps) => {
 	return (
 		<div
 			css={css`
 				display: flex;
-				flex-wrap: wrap;
+				flex-wrap: no-wrap;
 				justify-content: ${justify};
 				align-items: ${align};
 			`}

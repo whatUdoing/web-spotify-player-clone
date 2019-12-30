@@ -10,7 +10,7 @@ export default class UserApiClient implements IUserApiClient {
 	}
 
 	isAuthenticated(cancelToken?: CancelTokenSource) {
-		return this.httpClient.get('/isAuthenticated', {
+		return this.httpClient.get('/is-authenticated', {
 			cancelToken: cancelToken ? cancelToken.token : undefined
 		})
 	}
@@ -22,5 +22,11 @@ export default class UserApiClient implements IUserApiClient {
 	getUserProfile() {
 		// todo move prefix to config file
 		return this.httpClient.get('/v1/me')
+	}
+
+	getUserDashboard(cancelToken?: CancelTokenSource) {
+		return this.httpClient.get('/v1/home-dashboard', {
+			cancelToken: cancelToken ? cancelToken.token : undefined
+		})
 	}
 }

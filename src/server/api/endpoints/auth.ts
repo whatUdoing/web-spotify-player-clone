@@ -36,7 +36,7 @@ export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
 		return resp.redirect(
 			`${AuthUrls.authorization}?${querystring.stringify({
 				response_type: 'code',
-				scope: 'user-read-private user-read-email',
+				scope: 'user-read-private user-read-email user-top-read',
 				client_id: clientId,
 				redirect_uri: redirectUri
 			})}`
@@ -94,7 +94,7 @@ export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
 		})
 	})
 
-	router.get('/isAuthenticated', async (req, resp) => {
+	router.get('/is-authenticated', async (req, resp) => {
 		const authService: IAuthService = Container.get('auth-service')
 		const accessToken = req.cookies.access_token
 		let tokenExpires

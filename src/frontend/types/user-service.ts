@@ -6,6 +6,9 @@ export interface IUserService {
 	): Promise<[AuthObject | null, Error | null]>
 	getUserProfile(): Promise<[User | null, Error | null]>
 	logout(): Promise<[boolean | null, Error | null]>
+	getUserDashboard(
+		cancelToken?: CancelTokenSource
+	): Promise<[object | null, Error | null]>
 }
 
 /**

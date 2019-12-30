@@ -10,4 +10,4 @@ const mapState = (state: RootStateShape) => {
 	}
 }
 
-export default connect(mapState, null)(RouteManager)
+export default connect(mapState)(RouteManager)

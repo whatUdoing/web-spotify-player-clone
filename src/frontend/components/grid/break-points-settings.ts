@@ -1,18 +1,17 @@
 export type BreakPointsKeys = 'xs' | 'md' | 'lg' | 'xl'
 
-export const breakPoints: { [key in BreakPointsKeys]?: number } = {
-	xs: 540,
-	md: 720,
-	lg: 1140
+export const breakPoints: { [key in BreakPointsKeys]: number } = {
+	xs: 576,
+	md: 768,
+	lg: 992,
+	xl: 1200
 }
 
 export const mediaQueries: { [index: string]: string } = {
-	xs: `@media (max-width: ${breakPoints.xs}px)`,
-	md: `@media (min-width: ${breakPoints.xs &&
-		breakPoints.xs + 1}px) and (max-width: ${breakPoints.md}px)`,
-	lg: `@media (max-width: ${breakPoints.md &&
-		breakPoints.md + 1})px) and (max-width: ${breakPoints.lg}px`,
-	xl: `@media (min-width: ${breakPoints.lg && breakPoints.lg + 1}px)`
+	xs: `@media (min-width: ${breakPoints.xs}px)`,
+	md: `@media (min-width: ${breakPoints.md}px)`,
+	lg: `@media (min-width: ${breakPoints.lg}px)`,
+	xl: `@media (min-width: ${breakPoints.xl}px)`
 }
 
 export type MediaActions = {
