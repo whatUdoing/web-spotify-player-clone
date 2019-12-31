@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 const SliderItem = ({ children }) => {
 	return (
@@ -9,8 +9,13 @@ const SliderItem = ({ children }) => {
 	)
 }
 
-const Slider = ({ children }) => {
-	console.log(children)
+type Props = {
+	children: ReactNode
+	title: string
+}
+
+const Slider = ({ children }: Props) => {
+	// console.log(children)
 	return (
 		<div>
 			{React.Children.map(children, child => (

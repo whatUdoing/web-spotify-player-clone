@@ -51,44 +51,56 @@ export const initProfile: () => Router = () => {
 
 		if (accessToken) {
 			//your playlist
-			const presonalPlaylists: Response = await httpClient.get(
+			const presonalPlaylistsResponse: Response = await httpClient.get(
 				ProfileUrl.mePlaylists,
 				{
 					headers: getTokenAuthorizationHeader(accessToken)
 				}
 			)
 
-			dashboardContent.items.push(presonalPlaylists.data)
+			const presonalPlaylists = presonalPlaylistsResponse.data
+			presonalPlaylists.type = 'playlist'
+			presonalPlaylists.title = 'Your playlists'
+			dashboardContent.items.push(presonalPlaylists)
 
 			//personalization
 
-			const topTracks: Response = await httpClient.get(
+			const topTracksResponse: Response = await httpClient.get(
 				ProfileUrl.topTracks,
 				{
 					headers: getTokenAuthorizationHeader(accessToken)
 				}
 			)
 
-			dashboardContent.items.push(topTracks.data)
+			const topTracks = topTracksResponse.data
+			topTracks.title = 'Top tracks for you'
+			topTracks.type = 'track'
+			dashboardContent.items.push(topTracks)
 
-			const topArtists: Response = await httpClient.get(
+			const topArtistsResponse: Response = await httpClient.get(
 				ProfileUrl.topArtists,
 				{
 					headers: getTokenAuthorizationHeader(accessToken)
 				}
 			)
 
-			dashboardContent.items.push(topArtists.data)
+			const topArtists = topArtistsResponse.data
+			topArtists.title = 'Top artists for you'
+			topArtists.type = 'artist'
+			dashboardContent.items.push(topArtists)
 
 			// new releases
-			const newReleasess: Response = await httpClient.get(
+			const newReleasesResponse: Response = await httpClient.get(
 				ProfileUrl.newReleases,
 				{
 					headers: getTokenAuthorizationHeader(accessToken)
 				}
 			)
 
-			dashboardContent.items.push(newReleasess.data.albums)
+			const newReleases = newReleasesResponse.data.albums
+			newReleases.title = 'New releases'
+			newReleases.type = 'album'
+			dashboardContent.items.push(newReleases)
 
 			// recommendations
 

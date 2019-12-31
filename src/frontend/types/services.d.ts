@@ -14,14 +14,22 @@ export type ServiceType = { [index: string]: Function } & (
  * User service
  */
 
-export type DashboardItemTypes =
+export type DashboardItemTypesObject =
 	| SpotifyApi.PlaylistObjectSimplified
 	| SpotifyApi.AlbumObjectSimplified
 	| SpotifyApi.ArtistObjectSimplified
 	| SpotifyApi.TrackObjectSimplified
 
 export type MyDashboardResponse = {
-	items: Array<SpotifyApi.PagingObject<DashboardItemTypes>>
+	items: Array<MyDashboardPagingObject>
+}
+
+export type DashboardItemTypes = 'playlist' | 'album' | 'artist' | 'track'
+export type MyDashboardPagingObject = SpotifyApi.PagingObject<
+	DashboardItemTypesObject
+> & {
+	title: string
+	type: string
 }
 
 export interface IUserService {

@@ -5,12 +5,14 @@ import {
 	IUserService,
 	DashboardItemTypes,
 	MyDashboardResponse,
-	ServiceResponse
+	ServiceResponse,
+	MyDashboardPagingObject
 } from 'types/services'
 import axios, { CancelToken, CancelTokenSource } from 'axios'
 import Slider from '../../components/slider/slider'
 import { PreviewItemObject } from 'types/components'
 import PreviewItem from '../../components/preview-item/preview-item'
+import { processResponse } from './helpers'
 
 const useServiceRequest: <R, E>(
 	service: ServiceType,
@@ -55,6 +57,8 @@ const Home = () => {
 
 	useEffect(() => {
 		if (response?.items?.length) {
+			console.log('response', response.items)
+			console.log(processResponse(response))
 			setItems(response.items as never[])
 		}
 	}, [response])
@@ -63,10 +67,10 @@ const Home = () => {
 		<div>
 			<h1>Home Page</h1>
 
-			{response.items.map(collectionItem => {
+			{items.map((pagingObject: MyDashboardPagingObject) => {
 				return (
-					<Slider key={collectionItem.href}>
-						{items.map((item: PreviewItemObject) => {
+					<Slider key={pagingObject.href} title={pagingObject.title}>
+						{pagingObject.items.map((item: PreviewItemObject) => {
 							return (
 								<PreviewItem
 									key={item.id}

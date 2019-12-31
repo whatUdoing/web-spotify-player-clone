@@ -21,7 +21,7 @@ const useLazyLoading = (
 		(entries: Array<IntersectionObserverEntry>) => {
 			entries.forEach((entry: IntersectionObserverEntry) => {
 				if (entry.isIntersecting) {
-					console.log('visible', entries)
+					// console.log('visible', entries)
 					observer.unobserve($target.current as Element)
 					setVisibility(true)
 				}
@@ -39,7 +39,6 @@ const useLazyLoading = (
 
 		return () => {
 			if (observer) {
-				console.log('unobserver')
 				observer.unobserve($target.current as Element)
 			}
 		}
