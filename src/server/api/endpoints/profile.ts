@@ -42,14 +42,11 @@ export const initProfile: () => Router = () => {
 	router.get('/home-dashboard', async (req, resp) => {
 		//TODO refactor
 		const dashboardContent: {
-			content: {
-				items: Array<Response>
-			}
+			items: Array<any>
 		} = {
-			content: {
-				items: []
-			}
+			items: []
 		}
+
 		const accessToken = req.cookies.access_token
 
 		if (accessToken) {
@@ -61,7 +58,7 @@ export const initProfile: () => Router = () => {
 				}
 			)
 
-			dashboardContent.content.items.push(presonalPlaylists.data)
+			dashboardContent.items.push(presonalPlaylists.data)
 
 			//personalization
 
@@ -72,7 +69,7 @@ export const initProfile: () => Router = () => {
 				}
 			)
 
-			dashboardContent.content.items.push(topTracks.data)
+			dashboardContent.items.push(topTracks.data)
 
 			const topArtists: Response = await httpClient.get(
 				ProfileUrl.topArtists,
@@ -81,7 +78,7 @@ export const initProfile: () => Router = () => {
 				}
 			)
 
-			dashboardContent.content.items.push(topArtists.data)
+			dashboardContent.items.push(topArtists.data)
 
 			// new releases
 			const newReleasess: Response = await httpClient.get(
@@ -91,7 +88,7 @@ export const initProfile: () => Router = () => {
 				}
 			)
 
-			dashboardContent.content.items.push(newReleasess.data.albums)
+			dashboardContent.items.push(newReleasess.data.albums)
 
 			// recommendations
 

@@ -36,7 +36,8 @@ export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
 		return resp.redirect(
 			`${AuthUrls.authorization}?${querystring.stringify({
 				response_type: 'code',
-				scope: 'user-read-private user-read-email user-top-read',
+				scope:
+					'user-read-private user-read-email user-top-read playlist-read-private',
 				client_id: clientId,
 				redirect_uri: redirectUri
 			})}`

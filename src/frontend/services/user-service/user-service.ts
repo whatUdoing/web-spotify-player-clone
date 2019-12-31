@@ -1,4 +1,10 @@
-import { IUserService, AuthObject, User } from 'types/user-service'
+import {
+	ServiceResponse,
+	IUserService,
+	AuthObject,
+	User,
+	MyDashboardResponse
+} from 'types/services'
 import { Container } from '../../utils/classes/dependency-injector'
 import { IUserApiClient } from 'types/api-client'
 import { Response } from 'types/http-client'
@@ -11,7 +17,7 @@ const isResponseSuccess = (response: Response) => {
 export default class UserService implements IUserService {
 	async isAuthenticated(
 		cancelToken?: CancelTokenSource
-	): Promise<[AuthObject | null, Error | null]> {
+	): ServiceResponse<AuthObject> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
 			Container.get('user-api-client')
 		)
@@ -29,7 +35,7 @@ export default class UserService implements IUserService {
 		return [{ isAuth: false }, null]
 	}
 
-	async logout(): Promise<[boolean | null, Error | null]> {
+	async logout(): ServiceResponse<boolean> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
 			Container.get('user-api-client')
 		)
@@ -47,7 +53,7 @@ export default class UserService implements IUserService {
 		return [false, null]
 	}
 
-	async getUserProfile(): Promise<[User | null, Error | null]> {
+	async getUserProfile(): ServiceResponse<User> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
 			Container.get('user-api-client')
 		)
@@ -67,13 +73,13 @@ export default class UserService implements IUserService {
 
 	async getUserDashboard(
 		cancelToken?: CancelTokenSource
-	): Promise<[object | null, Error | null]> {
+	): ServiceResponse<MyDashboardResponse> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
 			Container.get('user-api-client')
 		)
 
 		try {
-			const response = await userApiClient.getUserDashboard()
+			const response = await userApiClient.getUserDashboard(cancelToken)
 
 			if (isResponseSuccess(response)) {
 				return [response.data, null]

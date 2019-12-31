@@ -2,15 +2,10 @@ import React from 'react'
 import LazyImage from '../image/lazy-image/lazy-image'
 import { Link } from 'react-router-dom'
 import { css } from '@emotion/core'
+import { PreviewItemObject } from 'types/components'
 
 type Props = {
-	item: {
-		image?: {
-			url: string
-		}
-		name?: string
-		description?: string
-	}
+	item: PreviewItemObject
 }
 
 const PreviewItem = ({ item }: Props) => {

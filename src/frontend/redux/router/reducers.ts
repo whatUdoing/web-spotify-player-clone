@@ -17,7 +17,7 @@ export const initialState: RouterStateShape = {
 		'1': {
 			id: 1,
 			path: '/',
-			component: lazy(() => import('../../pages/home')),
+			component: lazy(() => import('../../pages/home/home')),
 			name: 'Home',
 			exact: true
 		},

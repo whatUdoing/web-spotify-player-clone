@@ -5,5 +5,5 @@ export interface IUserApiClient {
 	isAuthenticated(cancelToken?: CancelTokenSource): Promise<Response>
 	logout(): Promise<Response>
 	getUserProfile(): Promise<Response>
-	getUserDashboard(): Promise<Response>
+	getUserDashboard(cancelToken?: CancelTokenSource): Promise<Response>
 }
