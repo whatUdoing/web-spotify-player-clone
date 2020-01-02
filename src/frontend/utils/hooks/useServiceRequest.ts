@@ -5,8 +5,8 @@ import axios from 'axios'
 export const useServiceRequest: <R, E>(
 	service: ServiceType,
 	method: string,
-	requestOptions?: object
-) => [boolean, R, E] = (service, method, requestOptions = {}) => {
+	requestOptions?: []
+) => [boolean, R, E] = (service, method, requestOptions = []) => {
 	const [response, setResponse] = useState()
 	const [isLoading, setLoading] = useState(true)
 	const [error, setError] = useState()
@@ -15,7 +15,9 @@ export const useServiceRequest: <R, E>(
 	useEffect(() => {
 		;(async () => {
 			try {
-				const [response, error] = await service[method](requestOptions)
+				const [response, error] = await service[method](
+					...requestOptions
+				)
 
 				setResponse(response)
 				setError(error)

@@ -1,5 +1,10 @@
 import { LazyExoticComponent, ReactNode } from 'react'
-import { PlaylistObjectSimplified } from './services'
+import {
+	PlaylistObjectSimplified,
+	AuthObject,
+	User,
+	PlaylistObjectFull
+} from './services'
 
 /**
  * Navigation
@@ -41,5 +46,18 @@ export type RouterStateShape = {
  */
 
 export type PlaylistsStateShape = {
-	currentUserPlaylists: SpotifyApi.PagingObject<PlaylistObjectSimplified>
+	playlists: Record<string, PlaylistObjectFull>
+}
+
+/**
+ * User
+ */
+
+export type UserStateShape = {
+	auth: AuthObject
+	profile: User | null
+	isLoading: boolean
+	currentUserPlaylists: SpotifyApi.PagingObject<
+		PlaylistObjectSimplified
+	> | null
 }

@@ -1,9 +1,9 @@
 import {
 	CREATE_PLAYLIST,
-	SET_CURR_USER_PLAYLISTS,
+	ADD_PLAYLIST,
 	NEW_PLAYLIST_CREATED
 } from './actions-types'
-import { PlaylistObjectSimplified, PlaylistObjectFull } from 'types/services'
+import { PlaylistObjectFull } from 'types/services'
 
 export const createPlaylist = (playlistName: string) => {
 	return {
@@ -14,13 +14,11 @@ export const createPlaylist = (playlistName: string) => {
 	}
 }
 
-export const setCurrUserPlaylists = (
-	playlistsPaging: SpotifyApi.PagingObject<PlaylistObjectSimplified>
-) => {
+export const addPlaylist = (playlist: PlaylistObjectFull) => {
 	return {
-		type: SET_CURR_USER_PLAYLISTS,
+		type: ADD_PLAYLIST,
 		payload: {
-			playlistsPaging
+			playlist
 		}
 	}
 }

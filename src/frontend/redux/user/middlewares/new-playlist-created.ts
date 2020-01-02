@@ -7,9 +7,8 @@ export const newPlaylistCreated: Middleware = ({ dispatch }) => next => (
 	action: playlistsActionTypes
 ) => {
 	next(action)
-	console.log(action.type)
+
 	if (action.type === NEW_PLAYLIST_CREATED) {
-		console.log('NEW_PLAYLIST_CREATED')
 		dispatch(getUserPlaylists())
 	}
 }

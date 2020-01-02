@@ -1,26 +1,28 @@
-import { playlistsActionTypes, SET_CURR_USER_PLAYLISTS } from './actions-types'
+import { playlistsActionTypes, ADD_PLAYLIST } from './actions-types'
 import { combineReducers } from 'redux'
+import { PlaylistsStateShape } from 'types/redux'
 
-const initialState = {
-	playlists: {},
-
-	currentUserPlaylists: {}
+const initialState: PlaylistsStateShape = {
+	playlists: {}
 }
 
 const playlistsReducer = (
-	currentUserPlaylists = initialState.currentUserPlaylists,
+	playlists = initialState.playlists,
 	action: playlistsActionTypes
 ) => {
 	switch (action.type) {
-		case SET_CURR_USER_PLAYLISTS:
-			console.log('pagging', action.payload.playlistsPaging)
-			return action.payload.playlistsPaging
+		case ADD_PLAYLIST:
+			const playlist = action.payload.playlist
+			return {
+				...playlists,
+				[playlist.id]: playlist
+			}
 
 		default:
-			return currentUserPlaylists
+			return playlists
 	}
 }
 
 export default combineReducers({
-	currentUserPlaylists: playlistsReducer
+	playlists: playlistsReducer
 })

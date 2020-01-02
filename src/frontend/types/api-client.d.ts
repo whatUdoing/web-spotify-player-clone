@@ -15,4 +15,9 @@ export interface IPlaylistsApiClient {
 		userId: string,
 		cancelToken?: CancelTokenSource
 	): Promise<Response>
+
+	getPlaylist(
+		playlistId: string,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
 }

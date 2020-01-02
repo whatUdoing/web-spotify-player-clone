@@ -81,4 +81,9 @@ export interface IPlaylistsService {
 		userId: string,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<PlaylistObjectFull>
+
+	getPlaylist(
+		playlistId: string,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectFull>>
 }

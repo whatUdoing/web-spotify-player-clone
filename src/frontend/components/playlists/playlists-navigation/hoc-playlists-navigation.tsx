@@ -4,7 +4,7 @@ import PlaylistsNavigation from './playlists-navigation'
 
 const mapState = (state: RootStateShape) => {
 	return {
-		playlists: state.playlists.currentUserPlaylists?.items
+		playlists: state.user?.currentUserPlaylists?.items
 	}
 }
 

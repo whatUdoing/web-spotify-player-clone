@@ -1,19 +1,12 @@
-import { User, AuthObject } from 'types/services'
 import {
 	userActionTypes,
 	SET_USER_PROFILE,
 	SET_USER_AUTH,
-	SET_USER_LOADING
+	SET_USER_LOADING,
+	SET_CURR_USER_PLAYLISTS
 } from './actions-types'
 import { combineReducers } from 'redux'
-import { Container } from '../../utils/classes/dependency-injector'
-import { IObserver } from 'types/observer'
-
-export type UserStateShape = {
-	auth: AuthObject
-	profile: User | null
-	isLoading: boolean
-}
+import { UserStateShape } from 'types/redux'
 
 const initialState: UserStateShape = {
 	auth: {
@@ -21,8 +14,12 @@ const initialState: UserStateShape = {
 	},
 
 	profile: null,
-	isLoading: false
+	isLoading: false,
+
+	currentUserPlaylists: null
 }
+
+// TODO split reducers to seprate files
 
 const UserReducer = (
 	profile = initialState.profile,
@@ -37,8 +34,21 @@ const UserReducer = (
 	}
 }
 
+const CurrentUserPlaylistsReducer = (
+	currentUserPlaylists = initialState.currentUserPlaylists,
+	action: userActionTypes
+) => {
+	switch (action.type) {
+		case SET_CURR_USER_PLAYLISTS:
+			return action.payload.playlistsPaging
+
+		default:
+			return currentUserPlaylists
+	}
+}
+
 const AuthReducer = (auth = initialState.auth, action: userActionTypes) => {
-	const EventBus = <IObserver>Container.get('event-bus')
+	// const EventBus = <IObserver>Container.get('event-bus')
 
 	switch (action.type) {
 		case SET_USER_AUTH: {
@@ -78,5 +88,6 @@ const LoadingReducer = (
 export default combineReducers({
 	auth: AuthReducer,
 	profile: UserReducer,
-	isLoading: LoadingReducer
+	isLoading: LoadingReducer,
+	currentUserPlaylists: CurrentUserPlaylistsReducer
 })
