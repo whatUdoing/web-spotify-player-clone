@@ -6,17 +6,29 @@ const ImagePlaceholder = () => {
 	return (
 		<div
 			css={css`
-				display: flex;
-				justify-content: center;
-				align-items: center;
+				position: relative;
 				color: #ffffff;
 				background: #230a59;
 				width: 100%;
-				height: 100%;
-				padding: 20px;
+				height: 0%;
+				padding-top: 100%;
+				max-width: 100%;
+				max-height: 100%;
 			`}
 		>
-			<i className="fas fa-music"></i>
+			<i
+				css={css`
+					position: absolute;
+					color: #ffffff;
+					height: 1.25em;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					margin: auto;
+				`}
+				className="fas fa-music fa-2x fa-fw"
+			></i>
 		</div>
 	)
 }

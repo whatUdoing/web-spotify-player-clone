@@ -1,16 +1,7 @@
 import { RouterActionTypes, SET_CURRENT_ROUTE } from './action-types'
 import { combineReducers } from 'redux'
 import { lazy } from 'react'
-import { RouteObject } from 'types/router'
-
-export type RouterCurrRouteType = number | null
-export type RouterRoutesType = Record<string, RouteObject>
-
-export type RouterStateShape = {
-	routes: RouterRoutesType
-	currentRoute: RouterCurrRouteType
-	mainRoutes: Array<string>
-}
+import { RouterStateShape } from 'types/redux'
 
 export const initialState: RouterStateShape = {
 	routes: {

@@ -1,12 +1,8 @@
 import React, { ReactNode } from 'react'
+import { Container, Row, Col } from '../flexobx-grid'
 
 const SliderItem = ({ children }) => {
-	return (
-		<div>
-			slider item <br />
-			{children}
-		</div>
-	)
+	return <div>{children}</div>
 }
 
 type Props = {
@@ -14,13 +10,19 @@ type Props = {
 	title: string
 }
 
-const Slider = ({ children }: Props) => {
-	// console.log(children)
+const Slider = ({ children, title }: Props) => {
 	return (
 		<div>
-			{React.Children.map(children, child => (
-				<SliderItem>{child}</SliderItem>
-			))}
+			<h3>{title}</h3>
+			<Container>
+				<Row>
+					{React.Children.map(children, child => (
+						<Col>
+							<SliderItem>{child}</SliderItem>
+						</Col>
+					))}
+				</Row>
+			</Container>
 		</div>
 	)
 }

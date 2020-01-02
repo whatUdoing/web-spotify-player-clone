@@ -3,7 +3,8 @@ import {
 	IUserService,
 	AuthObject,
 	User,
-	MyDashboardResponse
+	MyDashboardResponse,
+	PlaylistObjectSimplified
 } from 'types/services'
 import { Container } from '../../utils/classes/dependency-injector'
 import { IUserApiClient } from 'types/api-client'
@@ -80,6 +81,26 @@ export default class UserService implements IUserService {
 
 		try {
 			const response = await userApiClient.getUserDashboard(cancelToken)
+
+			if (isResponseSuccess(response)) {
+				return [response.data, null]
+			}
+		} catch (err) {
+			return [null, err]
+		}
+
+		return [null, null]
+	}
+
+	async getUserPlaylists(
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectSimplified>> {
+		const userApiClient: IUserApiClient = <IUserApiClient>(
+			Container.get('user-api-client')
+		)
+
+		try {
+			const response = await userApiClient.getUserPlaylists(cancelToken)
 
 			if (isResponseSuccess(response)) {
 				return [response.data, null]

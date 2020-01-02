@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Container } from '../../utils/classes/dependency-injector'
-import { IUserService } from 'types/user-service'
+import { IUserService } from 'types/services'
 
 const useAuth = () => {
 	const [error, setError] = useState()
 	const [isLoading, setLoading] = useState(true)
-	const [isAuth, setAuth] = useState(false)
+	const [auth, setAuth] = useState()
 	const cancelToken = axios.CancelToken.source()
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ const useAuth = () => {
 				setError(error)
 			}
 
-			setAuth(!!auth?.isAuth)
+			setAuth(auth)
 			setLoading(false)
 		})()
 
@@ -28,7 +28,7 @@ const useAuth = () => {
 		}
 	}, [])
 
-	return [isLoading, isAuth, error]
+	return [isLoading, auth, error]
 }
 
 export default useAuth

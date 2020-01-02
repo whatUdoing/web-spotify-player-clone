@@ -1,6 +1,7 @@
 import { IUserApiClient } from 'types/api-client'
 import { IHttpClient } from 'types/http-client'
 import { CancelTokenSource } from 'axios'
+import apiConfig from './config'
 
 export default class UserApiClient implements IUserApiClient {
 	httpClient: IHttpClient
@@ -21,11 +22,17 @@ export default class UserApiClient implements IUserApiClient {
 
 	getUserProfile() {
 		// todo move prefix to config file
-		return this.httpClient.get('/v1/me')
+		return this.httpClient.get(`${apiConfig.apiPrefix}/me`)
 	}
 
 	getUserDashboard(cancelToken?: CancelTokenSource) {
-		return this.httpClient.get('/v1/home-dashboard', {
+		return this.httpClient.get(`${apiConfig.apiPrefix}/home-dashboard`, {
+			cancelToken: cancelToken ? cancelToken.token : undefined
+		})
+	}
+
+	getUserPlaylists(cancelToken?: CancelTokenSource) {
+		return this.httpClient.get(`${apiConfig.apiPrefix}/me/playlists`, {
 			cancelToken: cancelToken ? cancelToken.token : undefined
 		})
 	}

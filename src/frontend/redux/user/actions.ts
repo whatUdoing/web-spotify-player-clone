@@ -1,10 +1,11 @@
 import {
 	SET_USER_AUTH,
 	SET_USER_LOADING,
-	SET_USER_PROFILE
+	SET_USER_PROFILE,
+	GET_USER_PLAYLISTS
 } from './actions-types'
-import { AuthObject } from 'types/user-service'
-import { User } from 'types/user-service'
+import { AuthObject } from 'types/services'
+import { User } from 'types/services'
 
 export const setUserAuth = (auth: AuthObject) => {
 	return {
@@ -30,5 +31,11 @@ export const setUserProfile = (user: User) => {
 		payload: {
 			user
 		}
+	}
+}
+
+export const getUserPlaylists = () => {
+	return {
+		type: GET_USER_PLAYLISTS
 	}
 }

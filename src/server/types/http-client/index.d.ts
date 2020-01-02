@@ -14,5 +14,10 @@ declare module 'http-client' {
 			body?: object | string,
 			options?: RequestOptions
 		): Promise<Response>
+		put(
+			url: string,
+			body?: object | string,
+			options?: RequestOptions
+		): Promise<Response>
 	}
 }

@@ -1,8 +1,8 @@
 import { Middleware } from 'redux'
-import { userActionTypes, SET_USER_AUTH } from './actions-types'
-import { setUserLoading, setUserProfile } from './actions'
-import { Container } from '../../utils/classes/dependency-injector'
-import { IUserService } from 'types/user-service'
+import { userActionTypes, SET_USER_AUTH } from '../actions-types'
+import { setUserLoading, setUserProfile, getUserPlaylists } from '../actions'
+import { Container } from '../../../utils/classes/dependency-injector'
+import { IUserService } from 'types/services'
 
 /**
  * This was the first concept, use middleware to dispatch another actions, later i change to experiment with
@@ -36,10 +36,10 @@ export const userAuth: Middleware = ({ dispatch }) => next => async (
 			}
 
 			if (profile) {
+				console.log('user setted', profile)
 				dispatch(setUserProfile(profile))
+				dispatch(getUserPlaylists())
 			}
 		}
 	}
 }
-
-export const userMiddlewares = [userAuth]

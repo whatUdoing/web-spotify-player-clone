@@ -14,11 +14,20 @@ export type ServiceType = { [index: string]: Function } & (
  * User service
  */
 
+export type ImageObject = SpotifyApi.ImageObject
+export type TrackObjectFull = SpotifyApi.TrackObjectFull
+export type ArtistObjectFull = SpotifyApi.ArtistObjectFull
+export type AlbumObjectFull = SpotifyApi.AlbumObjectFull
+
+export type TrackObjectSimplified = SpotifyApi.TrackObjectSimplified
+export type ArtistObjectSimplified = SpotifyApi.ArtistObjectSimplified
+export type AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
+
 export type DashboardItemTypesObject =
-	| SpotifyApi.PlaylistObjectSimplified
-	| SpotifyApi.AlbumObjectSimplified
-	| SpotifyApi.ArtistObjectSimplified
-	| SpotifyApi.TrackObjectSimplified
+	| PlaylistObjectSimplified
+	| AlbumObjectSimplified
+	| ArtistObjectSimplified
+	| TrackObjectSimplified
 
 export type MyDashboardResponse = {
 	items: Array<MyDashboardPagingObject>
@@ -44,6 +53,10 @@ export interface IUserService {
 	getUserDashboard(
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<MyDashboardResponse>
+
+	getUserPlaylists(
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectSimplified>>
 }
 
 /**
@@ -59,11 +72,13 @@ export type AuthObject = {
 /**
  * PLaylist service
  */
-export type PlaylistObject = SpotifyApi.PlaylistObjectSimplified
+export type PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
+export type PlaylistObjectFull = SpotifyApi.PlaylistObjectFull
 
 export interface IPlaylistsService {
-	getDashboardPlaylists(): Array<PlaylistObject>
-	getPlaylist(playlistId: string): PlaylistObject
-	addPlaylist(playlistName: string): void
-	removePlaylist(playlistId: string): void
+	createPlaylist(
+		playlistName: string,
+		userId: string,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<PlaylistObjectFull>
 }

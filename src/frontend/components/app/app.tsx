@@ -3,7 +3,7 @@ import AppShell from '../app-shell/app-shell'
 import { Provider } from 'react-redux'
 import { initStore } from '../../redux/store'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Bootstrap from '../bootstrap/redux-bootstrap'
+import Bootstrap from '../bootstrap/hoc-bootstrap'
 
 export default () => {
 	const store = initStore()

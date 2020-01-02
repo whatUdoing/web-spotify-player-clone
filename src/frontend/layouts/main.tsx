@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from '../components/grid/index'
+import { Container, Row, Col } from '../components/flexobx-grid/index'
 
 type Props = {
 	header?: React.ReactNode | string

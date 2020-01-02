@@ -24,11 +24,11 @@ export const setTokenCookie = (resp: ExpressResponse, token: TokenObject) => {
 	})
 }
 
-export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
+export const initAuthEndpoints: ({
 	config
 }: {
 	config: AuthConfigObject
-}) => {
+}) => Router = ({ config }: { config: AuthConfigObject }) => {
 	const router = Router()
 	const { clientId, clientSecret, redirectUri } = config
 
@@ -37,7 +37,7 @@ export const initAuth: ({ config }: { config: AuthConfigObject }) => Router = ({
 			`${AuthUrls.authorization}?${querystring.stringify({
 				response_type: 'code',
 				scope:
-					'user-read-private user-read-email user-top-read playlist-read-private',
+					'user-read-private user-read-email user-top-read playlist-read-private playlist-modify-private playlist-modify-public playlist-read-collaborative',
 				client_id: clientId,
 				redirect_uri: redirectUri
 			})}`

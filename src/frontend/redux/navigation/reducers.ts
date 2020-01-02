@@ -1,17 +1,6 @@
 import { navigationActionTypes } from './actions-type'
 import { combineReducers } from 'redux'
 
-export type NavigationItem = {
-	id: number
-	to: string
-	name: string
-}
-
-export type NavigationStateShape = {
-	main: Array<number>
-	playlist: Array<NavigationItem>
-}
-
 const initialState = {
 	/**
 	 * This nav is based on router objects, and is static

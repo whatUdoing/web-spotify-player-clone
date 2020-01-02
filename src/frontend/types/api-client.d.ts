@@ -6,4 +6,13 @@ export interface IUserApiClient {
 	logout(): Promise<Response>
 	getUserProfile(): Promise<Response>
 	getUserDashboard(cancelToken?: CancelTokenSource): Promise<Response>
+	getUserPlaylists(cancelToken?: CancelTokenSource): Promise<Response>
+}
+
+export interface IPlaylistsApiClient {
+	createPlaylist(
+		playlistName: string,
+		userId: string,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
 }

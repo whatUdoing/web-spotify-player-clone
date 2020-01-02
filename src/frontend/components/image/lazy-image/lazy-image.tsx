@@ -20,12 +20,14 @@ const LazyImage = ({ src, alt, title, children }: Props) => {
 			<img
 				css={css`
 					display: ${isVisible && isLoaded ? 'block' : 'none'};
+					width: 100%;
+					max-width: 100%;
 				`}
 				data-href={isVisible ? null : src}
 				src={isVisible ? src : undefined}
 				title={title}
 				alt={alt}
-				onLoad={() => setLoading(false)}
+				onLoad={() => setLoading(true)}
 			/>
 
 			{!isVisible ||

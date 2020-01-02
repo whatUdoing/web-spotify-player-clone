@@ -9,7 +9,6 @@ import {
 const useLazyLoading = (
 	$target: MutableRefObject<null | HTMLElement | ReactNode>,
 	options = {
-		root: document.body,
 		rootMargin: '0px',
 		threshold: 1.0
 	}
@@ -21,7 +20,6 @@ const useLazyLoading = (
 		(entries: Array<IntersectionObserverEntry>) => {
 			entries.forEach((entry: IntersectionObserverEntry) => {
 				if (entry.isIntersecting) {
-					// console.log('visible', entries)
 					observer.unobserve($target.current as Element)
 					setVisibility(true)
 				}

@@ -12,8 +12,10 @@ export default class HttpClient {
 	}
 
 	post(url: string, body: object = {}, options: RequestOptions = {}) {
-		return this.client
-			.post(url, body, options)
-			.catch(err => console.error(err))
+		return this.client.post(url, body, options)
+	}
+
+	put(url: string, body: object = {}, options: RequestOptions = {}) {
+		return this.client.put(url, body, options)
 	}
 }

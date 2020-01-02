@@ -1,55 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from '../../utils/classes/dependency-injector'
-import {
-	ServiceType,
-	IUserService,
-	DashboardItemTypes,
-	MyDashboardResponse,
-	ServiceResponse,
-	MyDashboardPagingObject
-} from 'types/services'
-import axios, { CancelToken, CancelTokenSource } from 'axios'
-import Slider from '../../components/slider/slider'
-import { PreviewItemObject } from 'types/components'
-import PreviewItem from '../../components/preview-item/preview-item'
+import { ServiceType, IUserService, MyDashboardResponse } from 'types/services'
+import { PreviewSectionObject } from 'types/components'
 import { processResponse } from './helpers'
-
-const useServiceRequest: <R, E>(
-	service: ServiceType,
-	method: string,
-	requestOptions?: object
-) => [boolean, R, E] = (service, method, requestOptions = {}) => {
-	const [response, setResponse] = useState()
-	const [isLoading, setLoading] = useState(true)
-	const [error, setError] = useState()
-	const cancelToken = axios.CancelToken.source()
-
-	useEffect(() => {
-		;(async () => {
-			try {
-				const [response, error] = await service[method](requestOptions)
-
-				setResponse(response)
-				setError(error)
-				setLoading(false)
-			} catch (error) {
-				setError(error)
-			}
-		})()
-
-		return () => {
-			if (cancelToken) {
-				cancelToken.cancel()
-			}
-		}
-	}, [])
-
-	return [isLoading, response, error]
-}
+import PreviewSection, {
+	PreviewHeader,
+	PreviewList
+} from '../../components/preview/preview-section/preview-section'
+import { useServiceRequest } from '../../utils/hooks/useServiceRequest'
 
 const Home = () => {
 	const UserService = Container.get('user-service') as IUserService
-	const [items, setItems] = useState([])
+	const [items, setItems] = useState<Array<PreviewSectionObject>>([])
 	const [isLoading, response, error] = useServiceRequest<
 		MyDashboardResponse,
 		Error
@@ -58,16 +20,27 @@ const Home = () => {
 	useEffect(() => {
 		if (response?.items?.length) {
 			console.log('response', response.items)
-			console.log(processResponse(response))
-			setItems(response.items as never[])
+			setItems(processResponse(response).items)
 		}
 	}, [response])
 
 	return (
 		<div>
 			<h1>Home Page</h1>
+			{items.map((pagingObject, index) => {
+				return (
+					<PreviewSection
+						key={pagingObject.href}
+						items={pagingObject.items}
+					>
+						<PreviewHeader>{pagingObject.title}</PreviewHeader>
+						<PreviewList />
+					</PreviewSection>
+				)
+			})}
 
-			{items.map((pagingObject: MyDashboardPagingObject) => {
+			{/* TODO: slider, later to implement */}
+			{/* {items.map((pagingObjectw: MyDashboardPagingObject) => {
 				return (
 					<Slider key={pagingObject.href} title={pagingObject.title}>
 						{pagingObject.items.map((item: PreviewItemObject) => {
@@ -88,7 +61,7 @@ const Home = () => {
 						})}
 					</Slider>
 				)
-			})}
+			})} */}
 		</div>
 	)
 }

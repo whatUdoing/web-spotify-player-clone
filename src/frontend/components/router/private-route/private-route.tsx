@@ -1,9 +1,6 @@
-import React, { useEffect, useState, ReactNode, ReactChild } from 'react'
+import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { Container } from '../../../utils/classes/dependency-injector'
-import { IUserService } from 'types/user-service'
 import useAuth from '../../../utils/hooks/useAuth'
-import axios from 'axios'
 
 type Props = {
 	component: React.ElementType
@@ -11,11 +8,11 @@ type Props = {
 	exact: boolean
 }
 const PrivateRoute = ({ component: Component, path, exact }: Props) => {
-	const [isLoading, isAuth, error] = useAuth()
+	const [isLoading, auth, error] = useAuth()
 
 	if (isLoading) return null
 
-	return isAuth ? <Component /> : <Redirect to="/" />
+	return auth?.isAuth ? <Component /> : <Redirect to="/" />
 }
 
 export default PrivateRoute

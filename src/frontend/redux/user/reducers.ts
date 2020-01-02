@@ -1,4 +1,4 @@
-import { User, AuthObject } from 'types/user-service'
+import { User, AuthObject } from 'types/services'
 import {
 	userActionTypes,
 	SET_USER_PROFILE,
@@ -8,7 +8,6 @@ import {
 import { combineReducers } from 'redux'
 import { Container } from '../../utils/classes/dependency-injector'
 import { IObserver } from 'types/observer'
-import { UserAuthenticatedEvent } from './events/event-user-auth'
 
 export type UserStateShape = {
 	auth: AuthObject
@@ -20,6 +19,7 @@ const initialState: UserStateShape = {
 	auth: {
 		isAuth: false
 	},
+
 	profile: null,
 	isLoading: false
 }
@@ -77,6 +77,6 @@ const LoadingReducer = (
 
 export default combineReducers({
 	auth: AuthReducer,
-	user: UserReducer,
+	profile: UserReducer,
 	isLoading: LoadingReducer
 })

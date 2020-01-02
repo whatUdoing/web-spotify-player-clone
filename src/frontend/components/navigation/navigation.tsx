@@ -1,6 +1,8 @@
 import React from 'react'
-import GlobalNavigation from './global-navigation/redux-global-nav'
-import PlaylistsNavigation from './playlists-navigation/redux-playlists-nav'
+import GlobalNavigation from './global-navigation/hoc-global-nav'
+import CreatePlaylistBtn from '../playlists/create-playlist/hoc-create-btn'
+import PlaylistsNavigation from '../playlists/playlists-navigation/hoc-playlists-navigation'
+
 const Navigation = () => {
 	return (
 		<nav>
@@ -10,7 +12,7 @@ const Navigation = () => {
 
 			<h3>playlists</h3>
 
-			<button>add playlist</button>
+			<CreatePlaylistBtn />
 
 			<PlaylistsNavigation />
 		</nav>

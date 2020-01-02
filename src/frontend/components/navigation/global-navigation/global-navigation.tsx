@@ -1,19 +1,9 @@
 import React from 'react'
+import { RouteObject } from 'types/redux'
 import NavigationList from '../navigation-list/navigation-list'
-import { RootStateShape } from '../../../redux/store'
-import { connect } from 'react-redux'
-import { RouteObject } from 'types/router'
 
 type Props = {
 	navigationItems: Array<RouteObject>
-}
-
-const mapState = (state: RootStateShape) => {
-	return {
-		navigationItems: state.navigation.main.map(
-			routeId => state.router.routes[routeId]
-		)
-	}
 }
 
 const GlobalNavigation = ({ navigationItems }: Props) => {
@@ -26,4 +16,4 @@ const GlobalNavigation = ({ navigationItems }: Props) => {
 	return <NavigationList items={globalNavigationItems} />
 }
 
-export default connect(mapState)(GlobalNavigation)
+export default GlobalNavigation
