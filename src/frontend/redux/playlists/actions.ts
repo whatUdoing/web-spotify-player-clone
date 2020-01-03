@@ -1,7 +1,9 @@
 import {
 	CREATE_PLAYLIST,
 	ADD_PLAYLIST,
-	NEW_PLAYLIST_CREATED
+	NEW_PLAYLIST_CREATED,
+	GET_PLAYLIST,
+	GET_MORE_PLAYLIST_TRACKS
 } from './actions-types'
 import { PlaylistObjectFull } from 'types/services'
 
@@ -19,6 +21,24 @@ export const addPlaylist = (playlist: PlaylistObjectFull) => {
 		type: ADD_PLAYLIST,
 		payload: {
 			playlist
+		}
+	}
+}
+
+export const getPlaylist = (playlistId: string) => {
+	return {
+		type: GET_PLAYLIST,
+		payload: {
+			playlistId
+		}
+	}
+}
+
+export const getMorePlaylistTracks = (playlistId: string) => {
+	return {
+		type: GET_MORE_PLAYLIST_TRACKS,
+		payload: {
+			playlistId
 		}
 	}
 }

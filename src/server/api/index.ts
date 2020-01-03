@@ -5,6 +5,7 @@ import { initUserEndpoints } from './endpoints/user'
 import Container from 'typedi'
 import { IConfigService } from 'config-service'
 import apiConfing from './config'
+import { initPlaylistsEndpoints } from './endpoints/playlists'
 
 export const initAPI = async ({ app }: { app: Application }) => {
 	const configService: IConfigService = Container.get('config-service')
@@ -16,10 +17,12 @@ export const initAPI = async ({ app }: { app: Application }) => {
 
 	const profileRouter = initProfileEndpoints()
 	const userRouter = initUserEndpoints()
+	const playlistsRouter = initPlaylistsEndpoints()
 
 	router.use(authRouter)
 	router.use(`/${apiConfing.apiVersion}`, profileRouter)
 	router.use(`/${apiConfing.apiVersion}`, userRouter)
+	router.use(`/${apiConfing.apiVersion}`, playlistsRouter)
 
 	app.use(router)
 }

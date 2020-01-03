@@ -34,4 +34,18 @@ export default class PlaylistsApiClient implements IPlaylistsApiClient {
 			}
 		)
 	}
+
+	getTracks(
+		playlistId: string,
+		params?: object,
+		cancelToken?: CancelTokenSource
+	) {
+		return this.httpClient.get(
+			`${apiConfig.apiPrefix}/playlists/${playlistId}/tracks`,
+			{
+				params: params ?? null,
+				cancelToken: cancelToken ? cancelToken.token : undefined
+			}
+		)
+	}
 }

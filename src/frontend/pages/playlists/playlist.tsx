@@ -5,30 +5,42 @@ import {
 	ServiceType
 } from 'types/services'
 import { Container } from '../../utils/classes/dependency-injector'
-import { useServiceRequest } from '../../utils/hooks/useServiceRequest'
+import { useServiceRequest } from '../../utils/hooks/use-service-request'
 import { useParams } from 'react-router-dom'
+import { getPlaylist } from '../../redux/playlists/actions'
+import { Dispatch, Store } from 'redux'
+import { connect } from 'react-redux'
+import { RootStateShape } from 'redux/store'
+import PlaylistFullView from '../../components/playlists/playlist-full-view/hoc-playlist-full-view'
 
-const Playlist = () => {
+type Props = {
+	getPlaylist: (playlistId: string) => void
+}
+
+const Playlist = ({ getPlaylist }: Props) => {
 	const { playlistId } = useParams()
+
+	useEffect(() => {
+		if (playlistId) {
+			getPlaylist(playlistId)
+		}
+	}, [playlistId])
 
 	if (!playlistId) return null
 
-	const PlaylistsService = Container.get(
-		'playlists-service'
-	) as IPlaylistsService
-	const [items, setItems] = useState<Array<PlaylistObjectFull>>([])
-	const [isLoading, response, error] = useServiceRequest<
-		PlaylistObjectFull,
-		Error
-	>(PlaylistsService as ServiceType, 'getPlaylist', [playlistId])
-	// todo: query params
-	useEffect(() => {
-		if (response?.items?.length) {
-			console.log('response', response.items)
-		}
-	}, [response])
-
-	return <span>Player</span>
+	return (
+		<div>
+			<PlaylistFullView playlistId={playlistId} />
+		</div>
+	)
 }
 
-export default Playlist
+const mapDispatch = (dispatch: Dispatch) => {
+	return {
+		getPlaylist(playlistId: string) {
+			dispatch(getPlaylist(playlistId))
+		}
+	}
+}
+
+export default connect(null, mapDispatch)(Playlist)

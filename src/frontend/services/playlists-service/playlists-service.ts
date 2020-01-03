@@ -1,7 +1,11 @@
 import { Container } from '../../utils/classes/dependency-injector'
 import { IPlaylistsApiClient } from 'types/api-client'
 import { isResponseSuccess } from '../../utils/functions/xhr'
-import { PlaylistObjectFull, ServiceResponse } from 'types/services'
+import {
+	PlaylistObjectFull,
+	ServiceResponse,
+	TrackObjectFull
+} from 'types/services'
 import { CancelTokenSource } from 'axios'
 
 export default class PlaylistsService {
@@ -33,6 +37,31 @@ export default class PlaylistsService {
 		playlistId: string,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectFull>> {
+		const playlistsApiClient: IPlaylistsApiClient = <IPlaylistsApiClient>(
+			Container.get('playlists-api-client')
+		)
+
+		try {
+			const response = await playlistsApiClient.getPlaylist(
+				playlistId,
+				cancelToken
+			)
+
+			if (isResponseSuccess(response)) {
+				return [response.data, null]
+			}
+		} catch (err) {
+			return [null, err]
+		}
+
+		return [null, null]
+	}
+
+	async getTracks(
+		playlistId: string,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<SpotifyApi.PagingObject<TrackObjectFull>> {
+		// TODO: refactor to one function
 		const playlistsApiClient: IPlaylistsApiClient = <IPlaylistsApiClient>(
 			Container.get('playlists-api-client')
 		)

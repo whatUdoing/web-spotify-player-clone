@@ -34,6 +34,7 @@ export type RouteObject = {
 
 export type RouterCurrRouteType = number | null
 export type RouterRoutesType = Record<string, RouteObject>
+export type PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 
 export type RouterStateShape = {
 	routes: RouterRoutesType

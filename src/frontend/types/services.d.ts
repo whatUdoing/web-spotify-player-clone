@@ -1,4 +1,5 @@
 import { CancelTokenSource } from 'axios'
+import { PlaylistTrackObject } from './redux'
 
 /**
  * General services types
@@ -85,5 +86,11 @@ export interface IPlaylistsService {
 	getPlaylist(
 		playlistId: string,
 		cancelToken?: CancelTokenSource
-	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectFull>>
+	): ServiceResponse<PlaylistObjectFull>
+
+	getTracks(
+		playlistId: string,
+		queryParams?: string,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<SpotifyApi.PagingObject<PlaylistTrackObject>>
 }

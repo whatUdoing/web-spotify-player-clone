@@ -9,7 +9,7 @@ import { replaceUrlParams, isRequestSuccess } from '../../utils/tools'
 const { baseApi, apiVersion } = apiConfig
 const baseApiUrl = `${baseApi}/${apiVersion}`
 
-export const ProfileUrl = {
+export const UserUrl = {
 	createPlaylist: `/users/:userId/playlists`
 }
 
@@ -17,13 +17,13 @@ export const initUserEndpoints = () => {
 	const httpClient: IHttpClient = Container.get('http-client')
 	const router = Router()
 
-	router.post(ProfileUrl.createPlaylist, withAuth, async (req, resp) => {
+	router.post(UserUrl.createPlaylist, withAuth, async (req, resp) => {
 		const userId = req.params.userId
 		const accessToken = req.cookies.access_token
 
 		try {
 			const shopifyResp = await httpClient.post(
-				replaceUrlParams(`${baseApiUrl}${ProfileUrl.createPlaylist}`, {
+				replaceUrlParams(`${baseApiUrl}${UserUrl.createPlaylist}`, {
 					':userId': userId
 				}),
 				{

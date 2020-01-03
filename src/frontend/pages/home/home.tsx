@@ -7,7 +7,7 @@ import PreviewSection, {
 	PreviewHeader,
 	PreviewList
 } from '../../components/preview/preview-section/preview-section'
-import { useServiceRequest } from '../../utils/hooks/useServiceRequest'
+import { useServiceRequest } from '../../utils/hooks/use-service-request'
 
 const Home = () => {
 	const UserService = Container.get('user-service') as IUserService

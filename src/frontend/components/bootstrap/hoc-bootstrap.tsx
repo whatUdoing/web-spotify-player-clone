@@ -3,7 +3,7 @@ import React, { ReactNode, useEffect } from 'react'
 import { setUserAuth } from '../../redux/user/actions'
 import { Dispatch } from 'redux'
 import { connect, ConnectedProps } from 'react-redux'
-import useAuth from '../../utils/hooks/useAuth'
+import useAuth from '../../utils/hooks/use-auth'
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
 	setUserAuth: (auth: AuthObject) => {

@@ -6,7 +6,7 @@ import {
 	ReactNode
 } from 'react'
 
-const useLazyLoading = (
+const useImageLazyLoading = (
 	$target: MutableRefObject<null | HTMLElement | ReactNode>,
 	options = {
 		rootMargin: '0px',
@@ -45,4 +45,4 @@ const useLazyLoading = (
 	return isVisible
 }
 
-export default useLazyLoading
+export default useImageLazyLoading

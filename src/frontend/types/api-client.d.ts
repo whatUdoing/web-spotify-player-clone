@@ -20,4 +20,10 @@ export interface IPlaylistsApiClient {
 		playlistId: string,
 		cancelToken?: CancelTokenSource
 	): Promise<Response>
+
+	getTracks(
+		playlistId: string,
+		queryParams?: string,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
 }

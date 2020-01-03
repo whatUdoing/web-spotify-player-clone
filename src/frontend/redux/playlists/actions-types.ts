@@ -1,8 +1,15 @@
-import { PlaylistObjectFull, PlaylistObjectSimplified } from 'types/services'
+import { PlaylistObjectFull, TrackObjectFull } from 'types/services'
+import { PlaylistTrackObject } from 'types/redux'
 
 export const CREATE_PLAYLIST = '[ playlists ] CREATE_PLAYLIST'
 export const NEW_PLAYLIST_CREATED = '[ playlists ] NEW_PLAYLIST_CREATED'
+
 export const ADD_PLAYLIST = '[ playlists ] ADD_PLAYLIST'
+
+export const GET_PLAYLIST = '[ playlists ] GET_PLAYLIST'
+export const GET_MORE_PLAYLIST_TRACKS = '[ playlists ] GET_MORE_PLAYLIST_TRACKS'
+
+export const ADD_TRACKS = '[ playlists ] ADD_TRACKS'
 
 interface ICreatePlaylist {
 	type: typeof CREATE_PLAYLIST
@@ -25,7 +32,32 @@ interface IAddPlaylist {
 	}
 }
 
+interface IGetMorePlaylistTracks {
+	type: typeof GET_MORE_PLAYLIST_TRACKS
+	payload: {
+		playlistId: string
+	}
+}
+
+interface IGetPLaylist {
+	type: typeof GET_PLAYLIST
+	payload: {
+		playlistId: string
+	}
+}
+
+interface IAddTracks {
+	type: typeof ADD_TRACKS
+	payload: {
+		playlistId: string
+		trackObject: SpotifyApi.PagingObject<PlaylistTrackObject>
+	}
+}
+
 export type playlistsActionTypes =
 	| ICreatePlaylist
 	| INewPlaylistCreated
 	| IAddPlaylist
+	| IGetPLaylist
+	| IGetMorePlaylistTracks
+	| IAddTracks

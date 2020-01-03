@@ -9,6 +9,7 @@ export const getPlaylists: Middleware = ({ dispatch }) => next => async (
 ) => {
 	next(action)
 
+	// add load more
 	if (action.type === GET_USER_PLAYLISTS) {
 		const userService: IUserService = Container.get(
 			'user-service'
