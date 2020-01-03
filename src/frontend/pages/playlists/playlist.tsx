@@ -6,8 +6,13 @@ import {
 } from 'types/services'
 import { Container } from '../../utils/classes/dependency-injector'
 import { useServiceRequest } from '../../utils/hooks/useServiceRequest'
+import { useParams } from 'react-router-dom'
 
 const Playlist = () => {
+	const { playlistId } = useParams()
+
+	if (!playlistId) return null
+
 	const PlaylistsService = Container.get(
 		'playlists-service'
 	) as IPlaylistsService
@@ -15,7 +20,7 @@ const Playlist = () => {
 	const [isLoading, response, error] = useServiceRequest<
 		PlaylistObjectFull,
 		Error
-	>(PlaylistsService as ServiceType, 'getPlaylists', [])
+	>(PlaylistsService as ServiceType, 'getPlaylist', [playlistId])
 	// todo: query params
 	useEffect(() => {
 		if (response?.items?.length) {

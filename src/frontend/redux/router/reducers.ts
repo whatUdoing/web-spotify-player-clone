@@ -35,7 +35,7 @@ export const initialState: RouterStateShape = {
 		},
 		'5': {
 			id: 5,
-			path: '/playlist/:id',
+			path: '/playlists/:playlistId',
 			component: lazy(() => import('../../pages/playlists/playlist')),
 			name: 'playlist',
 			withAuth: true

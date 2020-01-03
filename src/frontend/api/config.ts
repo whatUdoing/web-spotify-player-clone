@@ -1,3 +1,4 @@
 export default {
-	apiPrefix: '/v1'
+	apiPrefix: '/v1',
+	spotifyBaseApiUrl: 'https://api.spotify.com'
 }

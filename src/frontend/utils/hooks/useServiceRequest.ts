@@ -5,7 +5,7 @@ import axios from 'axios'
 export const useServiceRequest: <R, E>(
 	service: ServiceType,
 	method: string,
-	requestOptions?: []
+	requestOptions?: Array<any>
 ) => [boolean, R, E] = (service, method, requestOptions = []) => {
 	const [response, setResponse] = useState()
 	const [isLoading, setLoading] = useState(true)

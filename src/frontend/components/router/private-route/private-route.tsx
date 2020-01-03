@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import useAuth from '../../../utils/hooks/useAuth'
 
 type Props = {
-	component: React.ElementType
+	component: FunctionComponent
 	path: string
 	exact: boolean
 }
@@ -12,7 +12,11 @@ const PrivateRoute = ({ component: Component, path, exact }: Props) => {
 
 	if (isLoading) return null
 
-	return auth?.isAuth ? <Component /> : <Redirect to="/" />
+	return auth?.isAuth ? (
+		<Route exact={exact} path={path} component={Component} />
+	) : (
+		<Redirect to="/" />
+	)
 }
 
 export default PrivateRoute
