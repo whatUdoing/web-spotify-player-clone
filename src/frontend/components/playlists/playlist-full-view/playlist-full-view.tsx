@@ -2,22 +2,28 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Container, Row, Col } from '../../../components/flexobx-grid'
 import Tracks from '../../music/tracks/tracks'
 import { PlaylistObjectFull, TrackObjectFull } from 'types/services'
+import { PagingTrackObject } from 'types/redux'
 
 type Props = {
 	playlist: PlaylistObjectFull
+	loadMoreTracks(playlistId: string): void
 }
 
 const defaultTracks = [] as Array<TrackObjectFull>
 
-const PlaylistFullView = ({ playlist }: Props) => {
+const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
 	const [tracks, setTracks] = useState<Array<TrackObjectFull>>(defaultTracks)
-	const loadMoreTracks = useCallback(() => {
-		console.log('load more tracks if exist')
-	}, [])
+	const handleLoadMoreTracks = () => {
+		if (playlist) {
+			loadMoreTracks(playlist.id)
+		}
+	}
+
+	const allLoaded =
+		(playlist?.tracks as PagingTrackObject)?.allLoaded ?? false
 
 	useEffect(() => {
 		if (playlist) {
-			console.log(playlist.tracks)
 			setTracks(playlist.tracks.items.map(item => item.track))
 		}
 	}, [playlist])
@@ -29,7 +35,11 @@ const PlaylistFullView = ({ playlist }: Props) => {
 			<Row>
 				<Col>Playlist picture</Col>
 				<Col>
-					<Tracks tracks={tracks} onTracksLoad={loadMoreTracks} />
+					<Tracks
+						tracks={tracks}
+						loadAction={handleLoadMoreTracks}
+						allLoaded={allLoaded}
+					/>
 				</Col>
 			</Row>
 		</Container>

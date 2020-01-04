@@ -57,19 +57,23 @@ export default class PlaylistsService {
 		return [null, null]
 	}
 
-	async getTracks(
-		playlistId: string,
+	async getPlaylistTracks(
+		playlist: PlaylistObjectFull,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<SpotifyApi.PagingObject<TrackObjectFull>> {
 		// TODO: refactor to one function
+		const tracks = playlist.tracks
+		const queryParams = {
+			offset: tracks.offset + tracks.limit
+		}
 		const playlistsApiClient: IPlaylistsApiClient = <IPlaylistsApiClient>(
 			Container.get('playlists-api-client')
 		)
 
 		try {
-			const response = await playlistsApiClient.getPlaylist(
-				playlistId,
-				cancelToken
+			const response = await playlistsApiClient.getTracks(
+				playlist.id,
+				queryParams
 			)
 
 			if (isResponseSuccess(response)) {

@@ -11,7 +11,7 @@ const playlistsReducer = (
 	action: playlistsActionTypes
 ) => {
 	switch (action.type) {
-		case ADD_PLAYLIST:
+		case ADD_PLAYLIST: {
 			const playlist = action.payload.playlist
 
 			playlists[playlist.id] = playlist
@@ -19,12 +19,25 @@ const playlistsReducer = (
 				...playlists,
 				[playlist.id]: playlist
 			}
+		}
 
-		case ADD_TRACKS:
+		case ADD_TRACKS: {
 			const playlistId = action.payload.playlistId
+			const playlist = playlists[playlistId]
 
-			playlists[playlistId].tracks = action.payload.trackObject
-			return playlists
+			const previousTracks = playlist.tracks.items
+			const newTracks = action.payload.trackObject
+			newTracks.items = [...previousTracks, ...newTracks.items]
+			newTracks.allLoaded = action.payload.allLoaded
+
+			return {
+				...playlists,
+				[playlist.id]: {
+					...playlist,
+					tracks: newTracks
+				}
+			}
+		}
 		default:
 			return playlists
 	}

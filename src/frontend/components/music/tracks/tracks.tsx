@@ -1,43 +1,23 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef } from 'react'
 import TracksList from '../tracks-list/tracks-list'
 import { TrackObjectFull } from 'types/services'
+import LoaderGuardian from '../../loader-guardian/loader-guardia'
+import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
 
 type Props = {
 	tracks: Array<TrackObjectFull>
-	onTracksLoad: () => void
+	loadAction: Function
+	allLoaded: boolean
 }
 
-const Tracks = ({ tracks, onTracksLoad }: Props) => {
+const Tracks = ({ tracks, loadAction, allLoaded }: Props) => {
 	const $guardian = useRef<Element>(null)
-	const [isObserving, setObserving] = useState(false)
-
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries: Array<IntersectionObserverEntry>) => {
-				entries.forEach((entry: IntersectionObserverEntry) => {
-					if (entry.isIntersecting && $guardian.current) {
-						observer.unobserve($guardian.current)
-						setObserving(true)
-						onTracksLoad()
-					}
-				})
-			},
-			{
-				rootMargin: '0px',
-				threshold: 1.0
-			}
-		)
-
-		if ($guardian.current && !isObserving) {
-			setObserving(true)
-			observer.observe($guardian.current)
-		}
-	}, [$guardian, tracks])
+	useGuardianLazyLoading($guardian, allLoaded, loadAction)
 
 	return (
 		<div>
 			<TracksList tracks={tracks} />
-			<div ref={$guardian}></div>
+			<LoaderGuardian ref={$guardian} />
 		</div>
 	)
 }

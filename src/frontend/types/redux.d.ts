@@ -6,6 +6,13 @@ import {
 	PlaylistObjectFull
 } from './services'
 
+export type RootStateShape = {
+	router: RouterStateShape
+	navigation: NavigationStateShape
+	user: UserStateShape
+	playlists: PlaylistsStateShape
+}
+
 /**
  * Navigation
  */
@@ -35,6 +42,9 @@ export type RouteObject = {
 export type RouterCurrRouteType = number | null
 export type RouterRoutesType = Record<string, RouteObject>
 export type PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
+export type PagingTrackObject = SpotifyApi.PagingObject<PlaylistTrackObject> & {
+	allLoaded?: boolean
+}
 
 export type RouterStateShape = {
 	routes: RouterRoutesType
@@ -54,11 +64,15 @@ export type PlaylistsStateShape = {
  * User
  */
 
+export type PagingPlaylistObject = SpotifyApi.PagingObject<
+	PlaylistTrackObject
+> & {
+	allLoaded: boolean
+}
+
 export type UserStateShape = {
 	auth: AuthObject
 	profile: User | null
 	isLoading: boolean
-	currentUserPlaylists: SpotifyApi.PagingObject<
-		PlaylistObjectSimplified
-	> | null
+	currentUserPlaylists: PagingPlaylistObject | null
 }

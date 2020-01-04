@@ -10,8 +10,8 @@ const TracksList = ({ tracks }: Props) => {
 	return (
 		<>
 			<ul>
-				{tracks.map((track: TrackObjectFull) => {
-					return <li key={track.id}>{track.name}</li>
+				{tracks.map((track: TrackObjectFull, index: number) => {
+					return <li key={index}>{track.name}</li>
 				})}
 			</ul>
 		</>

@@ -3,10 +3,17 @@ import { CancelTokenSource } from 'axios'
 
 export interface IUserApiClient {
 	isAuthenticated(cancelToken?: CancelTokenSource): Promise<Response>
+
 	logout(): Promise<Response>
+
 	getUserProfile(): Promise<Response>
+
 	getUserDashboard(cancelToken?: CancelTokenSource): Promise<Response>
-	getUserPlaylists(cancelToken?: CancelTokenSource): Promise<Response>
+
+	getUserPlaylists(
+		queryParams?: string,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
 }
 
 export interface IPlaylistsApiClient {
@@ -23,7 +30,7 @@ export interface IPlaylistsApiClient {
 
 	getTracks(
 		playlistId: string,
-		queryParams?: string,
+		queryParams?: object,
 		cancelToken?: CancelTokenSource
 	): Promise<Response>
 }

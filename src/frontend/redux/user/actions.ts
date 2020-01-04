@@ -7,6 +7,7 @@ import {
 } from './actions-types'
 import { AuthObject, PlaylistObjectSimplified } from 'types/services'
 import { User } from 'types/services'
+import { PagingPlaylistObject } from 'types/redux'
 
 export const setUserAuth = (auth: AuthObject) => {
 	return {
@@ -41,9 +42,7 @@ export const getUserPlaylists = () => {
 	}
 }
 
-export const setCurrUserPlaylists = (
-	playlistsPaging: SpotifyApi.PagingObject<PlaylistObjectSimplified>
-) => {
+export const setCurrUserPlaylists = (playlistsPaging: PagingPlaylistObject) => {
 	return {
 		type: SET_CURR_USER_PLAYLISTS,
 		payload: {

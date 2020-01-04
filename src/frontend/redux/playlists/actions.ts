@@ -3,9 +3,11 @@ import {
 	ADD_PLAYLIST,
 	NEW_PLAYLIST_CREATED,
 	GET_PLAYLIST,
-	GET_MORE_PLAYLIST_TRACKS
+	GET_PLAYLIST_TRACKS,
+	ADD_TRACKS
 } from './actions-types'
 import { PlaylistObjectFull } from 'types/services'
+import { PlaylistTrackObject, PagingTrackObject } from 'types/redux'
 
 export const createPlaylist = (playlistName: string) => {
 	return {
@@ -34,11 +36,26 @@ export const getPlaylist = (playlistId: string) => {
 	}
 }
 
-export const getMorePlaylistTracks = (playlistId: string) => {
+export const getPlaylistTracks = (playlistId: string) => {
 	return {
-		type: GET_MORE_PLAYLIST_TRACKS,
+		type: GET_PLAYLIST_TRACKS,
 		payload: {
 			playlistId
+		}
+	}
+}
+
+export const setNewTracksObject = (
+	playlistId: string,
+	trackObject: PagingTrackObject,
+	allLoaded: boolean
+) => {
+	return {
+		type: ADD_TRACKS,
+		payload: {
+			playlistId,
+			trackObject,
+			allLoaded
 		}
 	}
 }

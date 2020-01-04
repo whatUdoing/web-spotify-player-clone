@@ -1,6 +1,8 @@
 import PlaylistFullView from './playlist-full-view'
 import { connect } from 'react-redux'
 import { RootStateShape } from 'redux/store'
+import { getPlaylistTracks } from '../../../redux/playlists/actions'
+import { Dispatch } from 'redux'
 
 const mapState = (
 	state: RootStateShape,
@@ -14,4 +16,12 @@ const mapState = (
 	}
 }
 
-export default connect(mapState)(PlaylistFullView)
+const mapDispatch = (dispatch: Dispatch) => {
+	return {
+		loadMoreTracks(playlistId: string) {
+			dispatch(getPlaylistTracks(playlistId))
+		}
+	}
+}
+
+export default connect(mapState, mapDispatch)(PlaylistFullView)

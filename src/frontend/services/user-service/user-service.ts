@@ -93,6 +93,7 @@ export default class UserService implements IUserService {
 	}
 
 	async getUserPlaylists(
+		queryParams?: string,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectSimplified>> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
@@ -100,7 +101,10 @@ export default class UserService implements IUserService {
 		)
 
 		try {
-			const response = await userApiClient.getUserPlaylists(cancelToken)
+			const response = await userApiClient.getUserPlaylists(
+				queryParams,
+				cancelToken
+			)
 
 			if (isResponseSuccess(response)) {
 				return [response.data, null]
