@@ -5,6 +5,7 @@ import { IHttpClient, Response } from 'http-client'
 import { getTokenAuthorizationHeader } from '../methods'
 import Container from 'typedi'
 import { isRequestSuccess } from '../../utils/tools'
+import querystring from 'querystring'
 
 const { baseApi, apiVersion } = apiConfig
 const baseApiUrl = `${baseApi}/${apiVersion}`
@@ -42,7 +43,7 @@ export const initProfileEndpoints: () => Router = () => {
 
 		try {
 			const shopifyResp: Response = await httpClient.get(
-				ProfileUrl.mePlaylists,
+				`${ProfileUrl.mePlaylists}?${querystring.stringify(req.query)}`,
 				{
 					headers: getTokenAuthorizationHeader(accessToken)
 				}

@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react'
 
-type ContainerProps = {
+type Props = {
 	children: ReactNode
 }
-export const Container = ({ children }: ContainerProps) => {
+export const Container = ({ children }: Props) => {
 	return <div>{children}</div>
 }
 

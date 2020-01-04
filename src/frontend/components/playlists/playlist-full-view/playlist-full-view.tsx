@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Container, Row, Col } from '../../../components/flexobx-grid'
 import Tracks from '../../music/tracks/tracks'
+import CoverPreview from '../../music/cover-preview/cover-preview'
 import { PlaylistObjectFull, TrackObjectFull } from 'types/services'
 import { PagingTrackObject } from 'types/redux'
+import { getImage } from '../../../utils/functions/images'
 
 type Props = {
 	playlist: PlaylistObjectFull
@@ -12,9 +14,11 @@ type Props = {
 const defaultTracks = [] as Array<TrackObjectFull>
 
 const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
+	const [coverItem, setCoverItem] = useState()
 	const [tracks, setTracks] = useState<Array<TrackObjectFull>>(defaultTracks)
 	const handleLoadMoreTracks = () => {
 		if (playlist) {
+			console.log('load more playlist')
 			loadMoreTracks(playlist.id)
 		}
 	}
@@ -24,7 +28,22 @@ const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
 
 	useEffect(() => {
 		if (playlist) {
-			setTracks(playlist.tracks.items.map(item => item.track))
+			setCoverItem({
+				id: playlist.id,
+				image: {
+					src: getImage(playlist.images, 1)?.url,
+					title: `Playlist ${playlist.name} cover`
+				},
+				title: playlist.name,
+				author: playlist.owner.display_name,
+				description: playlist.description
+			})
+
+			setTracks(
+				playlist.tracks.items
+					.filter(item => item.track)
+					.map(item => item.track)
+			)
 		}
 	}, [playlist])
 
@@ -33,7 +52,8 @@ const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
 	return (
 		<Container>
 			<Row>
-				<Col>Playlist picture</Col>
+				<Col>{coverItem && <CoverPreview item={coverItem} />}</Col>
+
 				<Col>
 					<Tracks
 						tracks={tracks}

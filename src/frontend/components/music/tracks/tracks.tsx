@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import TracksList from '../tracks-list/tracks-list'
+import TracksList from './tracks-list/tracks-list'
 import { TrackObjectFull } from 'types/services'
 import LoaderGuardian from '../../loader-guardian/loader-guardia'
 import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
@@ -11,6 +11,7 @@ type Props = {
 }
 
 const Tracks = ({ tracks, loadAction, allLoaded }: Props) => {
+	console.log(tracks)
 	const $guardian = useRef<Element>(null)
 	useGuardianLazyLoading($guardian, allLoaded, loadAction)
 

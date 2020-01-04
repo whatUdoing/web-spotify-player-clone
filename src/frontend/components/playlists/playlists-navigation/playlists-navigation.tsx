@@ -21,7 +21,7 @@ const PlaylistsNavigation = ({
 	const onPlaylistLoad = () => {
 		loadMoreUserPlaylist()
 	}
-
+	console.log('allloaded', allLoaded)
 	useGuardianLazyLoading($guardian, allLoaded, onPlaylistLoad)
 
 	const playlistsNavigationItems = playlists.map(playlist => {

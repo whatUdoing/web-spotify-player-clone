@@ -8,8 +8,14 @@ export type PreviewItemObject = {
 	id: string
 	path: string
 	name?: string
-	image?: ImageObject
+	image?: ImageObject | null
 	description?: string
+}
+
+export type LazyImageObject = {
+	src: string
+	title?: string
+	alt?: string
 }
 
 export type PreviewSectionObject = {

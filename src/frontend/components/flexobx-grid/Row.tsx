@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react'
 import { css } from '@emotion/core'
 
-type RowProps = {
-	children: ReactNode
-	justify: string
-	align: string
+type Props = {
+	children: ReactNode | string | Element
+	justify?: string
+	align?: string
 }
 
 export const Row = ({
 	children,
 	justify = 'flex-start',
 	align = 'top'
-}: RowProps) => {
+}: Props) => {
 	return (
 		<div
 			css={css`

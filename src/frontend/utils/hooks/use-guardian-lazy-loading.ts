@@ -10,6 +10,7 @@ export const useGuardianLazyLoading = (
 			(entries: Array<IntersectionObserverEntry>) => {
 				entries.forEach((entry: IntersectionObserverEntry) => {
 					if (entry.isIntersecting && $guardian.current) {
+						console.log('visible')
 						action()
 					}
 				})
@@ -21,6 +22,7 @@ export const useGuardianLazyLoading = (
 		)
 
 		if ($guardian.current && !allLoaded) {
+			console.log('observer')
 			observer.observe($guardian.current as Element)
 		}
 

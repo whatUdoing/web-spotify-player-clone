@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 import { BreakPointsKeys, generateMediaQueries } from './break-points-settings'
 import { ReactNode } from 'react'
 
-type ColProps = {
+type Props = {
 	[key: string]: string | ReactNode
 	xs?: string
 	md?: string
@@ -36,7 +36,7 @@ const getMediaQueries = (props: { [index: string]: any }) => {
 	return generateMediaQueries(mediaActions)
 }
 
-export const Col = ({ children, ...rest }: ColProps) => {
+export const Col = ({ children, ...rest }: Props) => {
 	const mediaQueries = getMediaQueries(rest)
 
 	return (

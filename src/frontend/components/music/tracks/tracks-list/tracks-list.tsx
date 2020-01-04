@@ -11,7 +11,7 @@ const TracksList = ({ tracks }: Props) => {
 		<>
 			<ul>
 				{tracks.map((track: TrackObjectFull, index: number) => {
-					return <li key={index}>{track.name}</li>
+					return <li key={index}>{track?.name}</li>
 				})}
 			</ul>
 		</>

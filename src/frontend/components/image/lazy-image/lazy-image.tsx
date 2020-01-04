@@ -10,6 +10,7 @@ type Props = {
 	children?: ReactNode | string
 }
 
+// change support fro srcset images
 const LazyImage = ({ src, alt, title, children }: Props) => {
 	const $imgEl = useRef(null)
 	const [isLoaded, setLoading] = useState()
@@ -23,7 +24,6 @@ const LazyImage = ({ src, alt, title, children }: Props) => {
 					width: 100%;
 					max-width: 100%;
 				`}
-				data-href={isVisible ? null : src}
 				src={isVisible ? src : undefined}
 				title={title}
 				alt={alt}

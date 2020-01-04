@@ -10,10 +10,7 @@ import {
 	ArtistObjectFull,
 	TrackObjectFull
 } from 'types/services'
-
-const getImage = (images: Array<ImageObject>) => {
-	return images.length > 1 ? images[1] : images[0]
-}
+import { getImage } from '../../utils/functions/images'
 
 const mapPlaylistObjectToPreviewItem = (
 	playlist: PlaylistObjectSimplified

@@ -12,6 +12,7 @@ const playlistsReducer = (
 ) => {
 	switch (action.type) {
 		case ADD_PLAYLIST: {
+			console.log('addd play')
 			const playlist = action.payload.playlist
 
 			playlists[playlist.id] = playlist

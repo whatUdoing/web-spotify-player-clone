@@ -6,17 +6,15 @@ import { Dispatch } from 'redux'
 import { getUserPlaylists } from '../../../redux/user/actions'
 
 const mapState = (state: RootStateShape) => {
+	const playlistsObject: PagingPlaylistObject =
+		state.user?.currentUserPlaylists
+
 	// todo change loading, add lazy loading
 	return {
 		playlists: state.user?.currentUserPlaylists?.items,
-		allLoaded: (state: RootStateShape) => {
-			const playlistsObject: PagingPlaylistObject =
-				state.user?.currentUserPlaylists
-
-			return playlistsObject
-				? playlistsObject.offset >= playlistsObject.total
-				: false
-		}
+		allLoaded: playlistsObject
+			? playlistsObject.offset >= playlistsObject.total
+			: false
 	}
 }
 

@@ -40,7 +40,15 @@ const CurrentUserPlaylistsReducer = (
 ) => {
 	switch (action.type) {
 		case SET_CURR_USER_PLAYLISTS:
-			return action.payload.playlistsPaging
+			let newPlaylists = action.payload.playlistsPaging
+			if (currentUserPlaylists) {
+				newPlaylists.items = [
+					...currentUserPlaylists.items,
+					...newPlaylists.items
+				]
+			}
+
+			return newPlaylists
 
 		default:
 			return currentUserPlaylists

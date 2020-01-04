@@ -36,9 +36,7 @@ export const userAuth: Middleware = ({ dispatch }) => next => async (
 			}
 
 			if (profile) {
-				console.log('user setted', profile)
 				dispatch(setUserProfile(profile))
-				dispatch(getUserPlaylists())
 			}
 		}
 	}
