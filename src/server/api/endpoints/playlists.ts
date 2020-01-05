@@ -10,7 +10,7 @@ import querystring from 'querystring'
 const { baseApi, apiVersion } = apiConfig
 const baseApiUrl = `${baseApi}/${apiVersion}`
 
-export const PLaylistsUrl = {
+export const PlaylistsUrl = {
 	getPlaylist: `/playlists/:playlistId`,
 	getPlaylistTracks: `/playlists/:playlistId/tracks`
 }
@@ -19,12 +19,12 @@ export const initPlaylistsEndpoints: () => Router = () => {
 	const httpClient: IHttpClient = Container.get('http-client')
 	const router = Router()
 
-	router.get(PLaylistsUrl.getPlaylist, withAuth, async (req, resp) => {
+	router.get(PlaylistsUrl.getPlaylist, withAuth, async (req, resp) => {
 		const accessToken = req.cookies.access_token
 
 		try {
 			const shopifyResp = await httpClient.get(
-				replaceUrlParams(`${baseApiUrl}${PLaylistsUrl.getPlaylist}`, {
+				replaceUrlParams(`${baseApiUrl}${PlaylistsUrl.getPlaylist}`, {
 					':playlistId': req.params.playlistId
 				}),
 				{
@@ -40,14 +40,14 @@ export const initPlaylistsEndpoints: () => Router = () => {
 		}
 	})
 
-	router.get(PLaylistsUrl.getPlaylistTracks, withAuth, async (req, resp) => {
+	router.get(PlaylistsUrl.getPlaylistTracks, withAuth, async (req, resp) => {
 		const accessToken = req.cookies.access_token
 
 		try {
 			const shopifyResp = await httpClient.get(
 				replaceUrlParams(
 					`${baseApiUrl}${
-						PLaylistsUrl.getPlaylistTracks
+						PlaylistsUrl.getPlaylistTracks
 					}?${querystring.stringify(req.query)}`,
 					{
 						':playlistId': req.params.playlistId

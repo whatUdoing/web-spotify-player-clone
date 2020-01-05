@@ -1,6 +1,10 @@
 import { playlistsActionTypes, ADD_PLAYLIST, ADD_TRACKS } from './actions-types'
 import { combineReducers } from 'redux'
-import { PlaylistsStateShape } from 'types/redux'
+import {
+	PlaylistsStateShape,
+	PagingTrackObject,
+	PlaylistTrackObject
+} from 'types/redux'
 
 const initialState: PlaylistsStateShape = {
 	playlists: {}
@@ -12,8 +16,11 @@ const playlistsReducer = (
 ) => {
 	switch (action.type) {
 		case ADD_PLAYLIST: {
-			console.log('addd play')
 			const playlist = action.payload.playlist
+			const tracks = <PagingTrackObject<PlaylistTrackObject>>(
+				playlist.tracks
+			)
+			tracks.allLoaded = !tracks.next
 
 			playlists[playlist.id] = playlist
 			return {
@@ -29,7 +36,7 @@ const playlistsReducer = (
 			const previousTracks = playlist.tracks.items
 			const newTracks = action.payload.trackObject
 			newTracks.items = [...previousTracks, ...newTracks.items]
-			newTracks.allLoaded = action.payload.allLoaded
+			newTracks.allLoaded = !newTracks.next
 
 			return {
 				...playlists,

@@ -1,9 +1,9 @@
 import { createPlaylist } from './create-playlist'
-import { loadPlaylist } from './load-playlist'
-import { loadMorePlaylistTracks } from './load-playlist-tracks'
+import { getPlaylist } from './get-playlist'
+import { getMorePlaylistTracks } from './get-playlist-tracks'
 
 export const playlistsMiddlewares = [
 	createPlaylist,
-	loadPlaylist,
-	loadMorePlaylistTracks
+	getPlaylist,
+	getMorePlaylistTracks
 ]

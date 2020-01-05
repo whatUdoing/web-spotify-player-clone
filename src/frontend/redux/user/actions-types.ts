@@ -35,7 +35,7 @@ interface IGetUserPlaylists {
 interface IAddNewPlaylist {
 	type: typeof SET_CURR_USER_PLAYLISTS
 	payload: {
-		playlistsPaging: PagingPlaylistObject
+		playlistsPaging: PagingPlaylistObject<PlaylistObjectSimplified>
 	}
 }
 

@@ -4,13 +4,12 @@ import { addPlaylist } from '../actions'
 import { IPlaylistsService } from 'types/services'
 import { Container } from '../../../utils/classes/dependency-injector'
 
-export const loadPlaylist: Middleware = ({ dispatch }) => next => async (
+export const getPlaylist: Middleware = ({ dispatch }) => next => async (
 	action: playlistsActionTypes
 ) => {
 	next(action)
 
 	if (action.type === GET_PLAYLIST) {
-		console.log('GET_PLAYLIST')
 		const PlaylistsService = Container.get(
 			'playlists-service'
 		) as IPlaylistsService

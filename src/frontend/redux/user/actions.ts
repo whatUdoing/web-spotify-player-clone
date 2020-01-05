@@ -42,7 +42,9 @@ export const getUserPlaylists = () => {
 	}
 }
 
-export const setCurrUserPlaylists = (playlistsPaging: PagingPlaylistObject) => {
+export const setCurrUserPlaylists = (
+	playlistsPaging: PagingPlaylistObject<PlaylistObjectSimplified>
+) => {
 	return {
 		type: SET_CURR_USER_PLAYLISTS,
 		payload: {

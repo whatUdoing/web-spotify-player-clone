@@ -62,7 +62,7 @@ export interface IUserService {
 	getUserPlaylists(
 		queryParams?: object,
 		cancelToken?: CancelTokenSource
-	): ServiceResponse<PagingPlaylistObject>
+	): ServiceResponse<PagingPlaylistObject<PlaylistObjectSimplified>>
 }
 
 /**
@@ -95,7 +95,31 @@ export interface IPlaylistsService {
 
 	getPlaylistTracks(
 		playlistId: PlaylistObjectFull,
-		queryParams?: string,
 		cancelToken?: CancelTokenSource
-	): ServiceResponse<PagingTrackObject>
+	): ServiceResponse<PagingTrackObject<PlaylistTrackObject>>
+}
+
+/**
+ * Tracks service
+ */
+export interface ITracksService {
+	getTrack(
+		trackId: string,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<TrackObjectFull>
+}
+
+/**
+ * Album service
+ */
+export interface IAlbumsService {
+	getAlbum(
+		albumId: string,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<AlbumObjectFull>
+
+	getAlbumTracks(
+		album: AlbumObjectFull,
+		cancelToken?: CancelTokenSource
+	): ServiceResponse<PagingTrackObject<TrackObjectSimplified>>
 }

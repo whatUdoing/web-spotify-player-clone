@@ -4,11 +4,13 @@ import { isResponseSuccess } from '../../utils/functions/xhr'
 import {
 	PlaylistObjectFull,
 	ServiceResponse,
-	TrackObjectFull
+	TrackObjectFull,
+	IPlaylistsService
 } from 'types/services'
 import { CancelTokenSource } from 'axios'
+import { PagingTrackObject, PlaylistTrackObject } from 'types/redux'
 
-export default class PlaylistsService {
+export default class PlaylistsService implements IPlaylistsService {
 	async createPlaylist(
 		playlistName: string,
 		userId: string
@@ -36,7 +38,7 @@ export default class PlaylistsService {
 	async getPlaylist(
 		playlistId: string,
 		cancelToken?: CancelTokenSource
-	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectFull>> {
+	): ServiceResponse<PlaylistObjectFull> {
 		const playlistsApiClient: IPlaylistsApiClient = <IPlaylistsApiClient>(
 			Container.get('playlists-api-client')
 		)
@@ -60,7 +62,7 @@ export default class PlaylistsService {
 	async getPlaylistTracks(
 		playlist: PlaylistObjectFull,
 		cancelToken?: CancelTokenSource
-	): ServiceResponse<SpotifyApi.PagingObject<TrackObjectFull>> {
+	): ServiceResponse<PagingTrackObject<PlaylistTrackObject>> {
 		// TODO: refactor to one function
 		const tracks = playlist.tracks
 		const queryParams = {
@@ -73,7 +75,8 @@ export default class PlaylistsService {
 		try {
 			const response = await playlistsApiClient.getTracks(
 				playlist.id,
-				queryParams
+				queryParams,
+				cancelToken
 			)
 
 			if (isResponseSuccess(response)) {

@@ -1,16 +1,10 @@
 import React from 'react'
 import { Container, Row, Col } from '../../../components/flexobx-grid'
 import LazyImage from '../../image/lazy-image/lazy-image'
-import { LazyImageObject } from 'types/components'
+import { CoverObject } from 'types/components'
 
 type Props = {
-	item: {
-		id: string
-		author: string
-		image: LazyImageObject
-		description: string
-		title: string
-	}
+	item: CoverObject
 }
 const CoverPreview = ({ item }: Props) => {
 	return (

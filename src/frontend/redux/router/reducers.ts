@@ -35,8 +35,8 @@ export const initialState: RouterStateShape = {
 		},
 		'5': {
 			id: 5,
-			path: '/playlists/:playlistId',
-			component: lazy(() => import('../../pages/playlists/playlist')),
+			path: '/playlist/:playlistId',
+			component: lazy(() => import('../../pages/playlist/playlist')),
 			name: 'playlist',
 			withAuth: true
 		},
@@ -46,10 +46,24 @@ export const initialState: RouterStateShape = {
 			component: lazy(() => import('../../pages/account-settings')),
 			name: 'Your Library',
 			withAuth: true
+		},
+		'7': {
+			id: 7,
+			path: '/track/:trackId',
+			component: lazy(() => import('../../pages/track/track')),
+			name: 'track',
+			withAuth: true
+		},
+		'8': {
+			id: 8,
+			path: '/album/:albumId',
+			component: lazy(() => import('../../pages/album/album')),
+			name: 'album',
+			withAuth: true
 		}
 	},
 
-	mainRoutes: ['1', '2', '3', '5', '6'],
+	mainRoutes: ['1', '2', '3', '5', '6', '7', '8'],
 
 	currentRoute: null
 }

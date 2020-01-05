@@ -30,7 +30,7 @@ const PreviewItem = ({ item }: Props) => {
 			<div>
 				{item.name && (
 					<div>
-						<Link to="/">{trim(item.name)}</Link>
+						<Link to={item.path}>{trim(item.name)}</Link>
 					</div>
 				)}
 

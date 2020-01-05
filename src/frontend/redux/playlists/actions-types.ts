@@ -50,8 +50,7 @@ interface IAddTracks {
 	type: typeof ADD_TRACKS
 	payload: {
 		playlistId: string
-		trackObject: PagingTrackObject
-		allLoaded: boolean
+		trackObject: PagingTrackObject<PlaylistTrackObject>
 	}
 }
 

@@ -1,12 +1,12 @@
 import { Middleware } from 'redux'
 import { playlistsActionTypes, GET_PLAYLIST_TRACKS } from '../actions-types'
-import { setNewTracksObject } from '../actions'
+import { addTracks } from '../actions'
 import { IPlaylistsService } from 'types/services'
 import { Container } from '../../../utils/classes/dependency-injector'
-import { RootStateShape } from 'redux/reducers'
+import { RootStateShape, PlaylistTrackObject } from 'types/redux'
 import { PagingTrackObject } from 'types/redux'
 
-export const loadMorePlaylistTracks: Middleware = ({
+export const getMorePlaylistTracks: Middleware = ({
 	dispatch,
 	getState
 }) => next => async (action: playlistsActionTypes) => {
@@ -16,8 +16,9 @@ export const loadMorePlaylistTracks: Middleware = ({
 		const state: RootStateShape = getState()
 		const playlistId = action.payload.playlistId
 		const playlist = state.playlists.playlists[playlistId]
-		const currTrackObjct = <PagingTrackObject>playlist.tracks
-		let allLoaded = false
+		const currTrackObjct = <PagingTrackObject<PlaylistTrackObject>>(
+			playlist.tracks
+		)
 		// console.log('get more tracks', action.payload.playlistId)
 		// console.log(currTrackObjct)
 		if (currTrackObjct.allLoaded) {
@@ -42,13 +43,7 @@ export const loadMorePlaylistTracks: Middleware = ({
 		if (trackObject) {
 			// console.log('playlistId', playlistId)
 			// console.log('track ob', trackObject)
-			dispatch(
-				setNewTracksObject(
-					playlistId,
-					trackObject,
-					!currTrackObjct.next
-				)
-			)
+			dispatch(addTracks(playlistId, trackObject))
 		}
 	}
 }

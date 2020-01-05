@@ -3,28 +3,29 @@ import { Container, Row, Col } from '../../../components/flexobx-grid'
 import Tracks from '../../music/tracks/tracks'
 import CoverPreview from '../../music/cover-preview/cover-preview'
 import { PlaylistObjectFull, TrackObjectFull } from 'types/services'
-import { PagingTrackObject } from 'types/redux'
+import { PagingTrackObject, PlaylistTrackObject } from 'types/redux'
 import { getImage } from '../../../utils/functions/images'
+import { CoverObject } from 'types/components'
 
 type Props = {
 	playlist: PlaylistObjectFull
 	loadMoreTracks(playlistId: string): void
 }
 
-const defaultTracks = [] as Array<TrackObjectFull>
+const defaultTracks: Array<TrackObjectFull> = []
 
 const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
-	const [coverItem, setCoverItem] = useState()
+	const [coverItem, setCoverItem] = useState<CoverObject>()
 	const [tracks, setTracks] = useState<Array<TrackObjectFull>>(defaultTracks)
 	const handleLoadMoreTracks = () => {
 		if (playlist) {
-			console.log('load more playlist')
 			loadMoreTracks(playlist.id)
 		}
 	}
 
 	const allLoaded =
-		(playlist?.tracks as PagingTrackObject)?.allLoaded ?? false
+		(playlist?.tracks as PagingTrackObject<PlaylistTrackObject>)
+			?.allLoaded ?? false
 
 	useEffect(() => {
 		if (playlist) {
@@ -37,7 +38,7 @@ const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
 				title: playlist.name,
 				author: playlist.owner.display_name,
 				description: playlist.description
-			})
+			} as CoverObject)
 
 			setTracks(
 				playlist.tracks.items

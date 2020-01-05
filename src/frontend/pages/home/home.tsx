@@ -19,7 +19,6 @@ const Home = () => {
 
 	useEffect(() => {
 		if (response?.items?.length) {
-			console.log('response', response.items)
 			setItems(processResponse(response).items)
 		}
 	}, [response])
@@ -27,10 +26,10 @@ const Home = () => {
 	return (
 		<div>
 			<h1>Home Page</h1>
-			{items.map((pagingObject, index) => {
+			{items.map(pagingObject => {
 				return (
 					<PreviewSection
-						key={pagingObject.href}
+						key={pagingObject.id}
 						items={pagingObject.items}
 					>
 						<PreviewHeader>{pagingObject.title}</PreviewHeader>

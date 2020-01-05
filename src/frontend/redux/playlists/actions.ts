@@ -45,17 +45,15 @@ export const getPlaylistTracks = (playlistId: string) => {
 	}
 }
 
-export const setNewTracksObject = (
+export const addTracks = (
 	playlistId: string,
-	trackObject: PagingTrackObject,
-	allLoaded: boolean
+	trackObject: PagingTrackObject<PlaylistTrackObject>
 ) => {
 	return {
 		type: ADD_TRACKS,
 		payload: {
 			playlistId,
-			trackObject,
-			allLoaded
+			trackObject
 		}
 	}
 }

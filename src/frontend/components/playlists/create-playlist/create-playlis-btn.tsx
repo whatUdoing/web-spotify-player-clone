@@ -15,7 +15,6 @@ const CreatePlaylistBtn = ({ createPlaylist }: Props) => {
 
 	const handleAcceptation = (evt: ComponentEventObject) => {
 		setVisibility(false)
-		console.log(evt.payload)
 		//create playlist store
 		createPlaylist(evt.payload.playlistName)
 	}

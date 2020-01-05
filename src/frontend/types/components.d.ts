@@ -7,6 +7,7 @@ import { ImageObject } from './services'
 export type PreviewItemObject = {
 	id: string
 	path: string
+	type: string
 	name?: string
 	image?: ImageObject | null
 	description?: string
@@ -19,7 +20,7 @@ export type LazyImageObject = {
 }
 
 export type PreviewSectionObject = {
-	href: string
+	id: number
 	title: string
 	type: string
 	items: Array<PreviewItemObject>
@@ -31,3 +32,11 @@ export type ComponentEventObject = {
 }
 
 export type ComponentEventHandler = (evt: ComponentEventObject) => void
+
+export type CoverObject = {
+	id: string
+	author: string
+	image: LazyImageObject
+	description: string
+	title: string
+}

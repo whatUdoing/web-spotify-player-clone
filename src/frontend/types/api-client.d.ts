@@ -1,6 +1,9 @@
 import { Response } from 'types/http-client'
 import { CancelTokenSource } from 'axios'
 
+/**
+ * User
+ */
 export interface IUserApiClient {
 	isAuthenticated(cancelToken?: CancelTokenSource): Promise<Response>
 
@@ -16,6 +19,9 @@ export interface IUserApiClient {
 	): Promise<Response>
 }
 
+/**
+ * Playlists
+ */
 export interface IPlaylistsApiClient {
 	createPlaylist(
 		playlistName: string,
@@ -30,6 +36,32 @@ export interface IPlaylistsApiClient {
 
 	getTracks(
 		playlistId: string,
+		queryParams?: object,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
+}
+
+/**
+ * Tracks
+ */
+export interface ITracksApiClient {
+	getTrack(
+		trackId: string,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
+}
+
+/**
+ * Album
+ */
+export interface IAlbumsApiClient {
+	getAlbum(
+		albumId: string,
+		cancelToken?: CancelTokenSource
+	): Promise<Response>
+
+	getTracks(
+		albumId: string,
 		queryParams?: object,
 		cancelToken?: CancelTokenSource
 	): Promise<Response>

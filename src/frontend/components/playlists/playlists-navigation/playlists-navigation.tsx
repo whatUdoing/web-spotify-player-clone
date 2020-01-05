@@ -5,6 +5,7 @@ import { getResourceUri } from '../../../utils/functions/resource-uri'
 import { css } from '@emotion/core'
 import LoaderGuiardian from '../../loader-guardian/loader-guardia'
 import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
+import { PlaylistTrackObject } from 'types/redux'
 
 type Props = {
 	playlists: Array<PlaylistObjectSimplified>
@@ -17,17 +18,19 @@ const PlaylistsNavigation = ({
 	allLoaded,
 	loadMoreUserPlaylist
 }: Props) => {
+	console.log('all loaded', allLoaded)
 	const $guardian = useRef<Element>(null)
 	const onPlaylistLoad = () => {
 		loadMoreUserPlaylist()
 	}
-	console.log('allloaded', allLoaded)
 	useGuardianLazyLoading($guardian, allLoaded, onPlaylistLoad)
 
 	const playlistsNavigationItems = playlists.map(playlist => {
 		return {
 			id: playlist.id,
-			to: getResourceUri(playlist.href), //todo href
+			to: getResourceUri('playlist', {
+				':playlistId': playlist.id
+			}),
 			name: playlist.name
 		}
 	})

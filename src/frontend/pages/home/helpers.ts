@@ -11,53 +11,73 @@ import {
 	TrackObjectFull
 } from 'types/services'
 import { getImage } from '../../utils/functions/images'
+import { getResourceUri } from '../../utils/functions/resource-uri'
 
 const mapPlaylistObjectToPreviewItem = (
 	playlist: PlaylistObjectSimplified
 ): PreviewItemObject => {
+	const type = 'playlist'
+
 	return {
 		id: playlist.id,
-		path: playlist.href,
+		type,
 		name: playlist.name,
 		image: getImage(playlist.images),
-		description: `by ${playlist.owner.display_name}`
+		description: `by ${playlist.owner.display_name}`,
+		path: getResourceUri('playlist', {
+			':playlistId': playlist.id
+		})
 	}
 }
 
 const mapArtistObjectToPreviewItem = (
-	artistObject: ArtistObjectFull
+	artist: ArtistObjectFull
 ): PreviewItemObject => {
+	const type = 'artist'
+
 	return {
-		id: artistObject.id,
-		name: artistObject.name,
-		image: getImage(artistObject.images),
-		path: artistObject.href //TODO convert url
+		id: artist.id,
+		type,
+		name: artist.name,
+		image: getImage(artist.images),
+		path: getResourceUri('artist', {
+			':artistId': artist.id
+		})
 	}
 }
 
 const mapTrackObjectToPreviewItem = (
-	trackObject: TrackObjectFull
+	track: TrackObjectFull
 ): PreviewItemObject => {
+	const type = 'track'
 	return {
-		id: trackObject.id,
-		name: trackObject.name,
-		path: trackObject.href,
-		image: getImage(trackObject.album.images),
-		description: `by ${trackObject.artists
+		id: track.id,
+		type,
+		name: track.name,
+		path: getResourceUri('track', {
+			':trackId': track.id
+		}),
+		image: getImage(track.album.images),
+		description: `by ${track.artists
 			.map(artist => ` ${artist.name}`)
 			.join('')}`
 	}
 }
 
 const mapAlbumObjectToPreviewItem = (
-	albumObject: AlbumObjectFull
+	album: AlbumObjectFull
 ): PreviewItemObject => {
+	const type = 'album'
+
 	return {
-		id: albumObject.id,
-		name: albumObject.name,
-		path: albumObject.href,
-		image: getImage(albumObject.images),
-		description: albumObject.album_type
+		id: album.id,
+		type,
+		name: album.name,
+		image: getImage(album.images),
+		description: album.album_type,
+		path: getResourceUri('album', {
+			':albumId': album.id
+		})
 	}
 }
 
@@ -74,9 +94,9 @@ export const processResponse = (response: MyDashboardResponse) => {
 	}
 
 	const processedItems = response.items.reduce(
-		(prev, pagingObject: MyDashboardPagingObject) => {
+		(prev, pagingObject: MyDashboardPagingObject, index: number) => {
 			prev.items.push({
-				href: pagingObject.href,
+				id: index,
 				title: pagingObject.title,
 				type: pagingObject.type,
 				items: pagingObject.items.map(item => {
