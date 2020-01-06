@@ -1,6 +1,6 @@
 import { Middleware } from 'redux'
 import { albumsActionTypes, GET_ALBUM } from '../actions-types'
-import { Container } from '../../../utils/classes/dependency-injector'
+import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 import { IAlbumsService } from 'types/services'
 import { addAlbum } from '../actions'
 

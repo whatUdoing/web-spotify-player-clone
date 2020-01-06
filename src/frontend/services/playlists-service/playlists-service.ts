@@ -1,6 +1,6 @@
-import { Container } from '../../utils/classes/dependency-injector'
+import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
 import { IPlaylistsApiClient } from 'types/api-client'
-import { isResponseSuccess } from '../../utils/functions/xhr'
+import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
 import {
 	PlaylistObjectFull,
 	ServiceResponse,
@@ -63,7 +63,6 @@ export default class PlaylistsService implements IPlaylistsService {
 		playlist: PlaylistObjectFull,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<PagingTrackObject<PlaylistTrackObject>> {
-		// TODO: refactor to one function
 		const tracks = playlist.tracks
 		const queryParams = {
 			offset: tracks.offset + tracks.limit

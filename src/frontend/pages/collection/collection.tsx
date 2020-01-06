@@ -3,7 +3,9 @@ import React from 'react'
 const UserCollection = () => {
 	return (
 		<div>
-			<h1>Your library Page</h1>
+			<h1>Your library</h1>
+
+			<p>In development</p>
 		</div>
 	)
 }

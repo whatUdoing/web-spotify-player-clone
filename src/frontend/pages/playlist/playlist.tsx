@@ -4,7 +4,7 @@ import {
 	IPlaylistsService,
 	ServiceType
 } from 'types/services'
-import { Container } from '../../utils/classes/dependency-injector'
+import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
 import { useServiceRequest } from '../../utils/hooks/use-service-request'
 import { useParams } from 'react-router-dom'
 import { getPlaylist } from '../../redux/playlists/actions'

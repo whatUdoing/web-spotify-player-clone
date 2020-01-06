@@ -6,10 +6,11 @@ import {
 	MyDashboardResponse,
 	PlaylistObjectSimplified
 } from 'types/services'
-import { Container } from '../../utils/classes/dependency-injector'
+import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
 import { IUserApiClient } from 'types/api-client'
 import { Response } from 'types/http-client'
 import { CancelTokenSource } from 'axios'
+import { PagingPlaylistObject } from 'types/redux'
 
 const isResponseSuccess = (response: Response) => {
 	return response.statusText === 'OK'
@@ -93,9 +94,9 @@ export default class UserService implements IUserService {
 	}
 
 	async getUserPlaylists(
-		queryParams?: string,
+		queryParams?: object,
 		cancelToken?: CancelTokenSource
-	): ServiceResponse<SpotifyApi.PagingObject<PlaylistObjectSimplified>> {
+	): ServiceResponse<PagingPlaylistObject<PlaylistObjectSimplified>> {
 		const userApiClient: IUserApiClient = <IUserApiClient>(
 			Container.get('user-api-client')
 		)

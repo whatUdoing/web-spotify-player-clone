@@ -6,8 +6,8 @@ import {
 } from 'types/services'
 import { CancelTokenSource } from 'axios'
 import { IAlbumsApiClient } from 'types/api-client'
-import { Container } from '../../utils/classes/dependency-injector'
-import { isResponseSuccess } from '../../utils/functions/xhr'
+import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
+import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
 import { PagingTrackObject } from 'types/redux'
 
 export default class AlbumsService implements IAlbumsService {
@@ -39,7 +39,6 @@ export default class AlbumsService implements IAlbumsService {
 		album: AlbumObjectFull,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<PagingTrackObject<TrackObjectSimplified>> {
-		// TODO: refactor to one function
 		const tracks = album.tracks
 		const queryParams = {
 			offset: tracks.offset + tracks.limit

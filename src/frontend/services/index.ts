@@ -1,4 +1,4 @@
-import { Container } from '../utils/classes/dependency-injector'
+import { Container } from '../utils/classes/dependency-injector/dependency-injector'
 import UserService from './user-service/user-service'
 import PlaylistsService from './playlists-service/playlists-service'
 import TracksSrvice from './tracks-service/tracks-service'

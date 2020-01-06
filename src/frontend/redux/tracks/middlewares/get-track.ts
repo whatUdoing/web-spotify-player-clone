@@ -2,7 +2,7 @@ import { Middleware } from 'redux'
 import { tracksActionTypes, GET_TRACK } from '../actions-types'
 import { ITracksService } from 'types/services'
 import { addTrack } from '../actions'
-import { Container } from '../../../utils/classes/dependency-injector'
+import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 
 export const getTrack: Middleware = ({ dispatch }) => next => async (
 	action: tracksActionTypes
@@ -24,7 +24,7 @@ export const getTrack: Middleware = ({ dispatch }) => next => async (
 		}
 
 		if (track) {
-			console.log('dispatch add track', addTrack(track))
+			// console.log('dispatch add track', addTrack(track))
 			dispatch(addTrack(track))
 		}
 	}

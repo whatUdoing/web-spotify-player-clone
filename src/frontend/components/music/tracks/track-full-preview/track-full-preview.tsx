@@ -1,13 +1,13 @@
 import React from 'react'
 import { TrackObjectFull } from 'types/services'
 import { Redirect } from 'react-router-dom'
-import { getResourceUri } from '../../../../utils/functions/resource-uri'
+import { getResourceUri } from '../../../../utils/functions/resource-uri/resource-uri'
 
 type Props = {
 	track: TrackObjectFull
 }
 const TrackFullPreview = ({ track }: Props) => {
-	console.log('track full preview', track)
+	// console.log('track full preview', track)
 	return track?.album?.id ? (
 		<Redirect
 			to={getResourceUri('album', {

@@ -10,7 +10,7 @@ const mapState = (state: RootStateShape) => {
 	const playlistsObject: PagingPlaylistObject<
 		PlaylistObjectSimplified
 	> | null = state.user?.currentUserPlaylists
-
+	console.log(playlistsObject)
 	// todo change loading, add lazy loading
 	return {
 		playlists: playlistsObject?.items ?? [],

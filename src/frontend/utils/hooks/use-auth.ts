@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Container } from '../classes/dependency-injector'
+import { Container } from '../classes/dependency-injector/dependency-injector'
 import { IUserService } from 'types/services'
 
 const useAuth = () => {

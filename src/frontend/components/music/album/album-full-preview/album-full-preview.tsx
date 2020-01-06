@@ -5,7 +5,7 @@ import {
 	TrackObjectSimplified
 } from 'types/services'
 import { CoverObject } from 'types/components'
-import { getImage } from '../../../../utils/functions/images'
+import { getImage } from '../../../../utils/functions/images/images'
 import { Container, Row, Col } from '../../../flexobx-grid'
 import CoverPreview from '../../cover-preview/cover-preview'
 import Tracks from '../../tracks/tracks'
@@ -13,21 +13,25 @@ import { PagingTrackObject } from 'types/redux'
 
 type Props = {
 	album: AlbumObjectFull
+	getAlbumTracks: (albumId: string) => void
 }
 
 const defaultTracks: Array<TrackObjectSimplified> = []
 
-const AlbumFullPreview = ({ album }: Props) => {
+const AlbumFullPreview = ({ album, getAlbumTracks }: Props) => {
 	const [tracks, setTracks] = useState<Array<TrackObjectSimplified>>(
 		defaultTracks
 	)
 	const [coverItem, setCoverItem] = useState<CoverObject>()
 	const handleLoadMoreTracks = () => {
+		console.log(album)
+		console.log(allLoaded)
 		if (album) {
 			console.log('load more tracks')
-			// loadMoreTracks(playlist.id)
+			getAlbumTracks(album.id)
 		}
 	}
+
 	const allLoaded =
 		(album?.tracks as PagingTrackObject<TrackObjectSimplified>)
 			?.allLoaded ?? false

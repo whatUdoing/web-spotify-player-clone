@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
 import { EventObject } from 'types/observer'
 import { IUserService } from 'types/user-service'
-import { Container } from '../../../utils/classes/dependency-injector'
+import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 import { setUserLoading, setUserProfile } from '../actions'
 
 export const userAuthenticated = (dispatch: Dispatch) => async (

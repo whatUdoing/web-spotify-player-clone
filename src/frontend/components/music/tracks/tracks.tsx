@@ -12,7 +12,7 @@ type Props = {
 
 const Tracks = ({ tracks, loadAction, allLoaded }: Props) => {
 	const $guardian = useRef<Element>(null)
-	useGuardianLazyLoading($guardian, allLoaded, loadAction)
+	useGuardianLazyLoading($guardian, allLoaded, loadAction, tracks.length)
 
 	return (
 		<div>

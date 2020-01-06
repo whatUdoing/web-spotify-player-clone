@@ -22,7 +22,11 @@ export default class UserApiClient implements IUserApiClient {
 
 	getUserProfile() {
 		// todo move prefix to config file
-		return this.httpClient.get(`${apiConfig.apiPrefix}/me`)
+		return this.httpClient.get(`${apiConfig.apiPrefix}/me`).then(resp => {
+			console.log(resp)
+
+			return resp
+		})
 	}
 
 	getUserDashboard(cancelToken?: CancelTokenSource) {
@@ -31,7 +35,7 @@ export default class UserApiClient implements IUserApiClient {
 		})
 	}
 
-	getUserPlaylists(queryParams?: string, cancelToken?: CancelTokenSource) {
+	getUserPlaylists(queryParams?: object, cancelToken?: CancelTokenSource) {
 		return this.httpClient.get(`${apiConfig.apiPrefix}/me/playlists`, {
 			params: queryParams ?? null,
 			cancelToken: cancelToken ? cancelToken.token : undefined

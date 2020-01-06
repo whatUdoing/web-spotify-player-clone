@@ -7,3 +7,5 @@ import { AxiosInstance, AxiosResponse } from 'axios'
 export interface IHttpClient extends AxiosInstance {}
 
 export type Response = AxiosResponse
+
+export type QueryString<T> = Record<string, T>

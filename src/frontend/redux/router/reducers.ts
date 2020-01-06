@@ -15,13 +15,15 @@ export const initialState: RouterStateShape = {
 		'2': {
 			id: 2,
 			path: '/search',
-			component: lazy(() => import('../../pages/search')),
+			component: lazy(() => import('../../pages/search/search')),
 			name: 'Search'
 		},
 		'3': {
 			id: 3,
 			path: '/collection',
-			component: lazy(() => import('../../pages/collections')),
+			component: lazy(() =>
+				import('../../pages/collections/collections')
+			),
 			name: 'Your Library',
 			withAuth: true,
 			exact: true
@@ -29,7 +31,7 @@ export const initialState: RouterStateShape = {
 		'4': {
 			id: 4,
 			path: '/collection/:name',
-			component: lazy(() => import('../../pages/collection')),
+			component: lazy(() => import('../../pages/collection/collection')),
 			name: 'Your Library',
 			withAuth: true
 		},
@@ -43,7 +45,9 @@ export const initialState: RouterStateShape = {
 		'6': {
 			id: 6,
 			path: '/settings/account',
-			component: lazy(() => import('../../pages/account-settings')),
+			component: lazy(() =>
+				import('../../pages/account-settings/account-settings')
+			),
 			name: 'Your Library',
 			withAuth: true
 		},

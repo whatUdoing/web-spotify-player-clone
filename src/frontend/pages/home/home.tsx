@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container } from '../../utils/classes/dependency-injector'
+import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
 import { ServiceType, IUserService, MyDashboardResponse } from 'types/services'
 import { PreviewSectionObject } from 'types/components'
 import { processResponse } from './helpers'

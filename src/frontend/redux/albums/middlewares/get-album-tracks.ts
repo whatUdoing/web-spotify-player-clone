@@ -6,17 +6,18 @@ import {
 	TrackObjectSimplified,
 	IAlbumsService
 } from 'types/services'
-import { Container } from '../../../utils/classes/dependency-injector'
+import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 import { RootStateShape, PlaylistTrackObject } from 'types/redux'
 import { PagingTrackObject } from 'types/redux'
 
-export const getMorePlaylistTracks: Middleware = ({
+export const getAlbumTracks: Middleware = ({
 	dispatch,
 	getState
 }) => next => async (action: albumsActionTypes) => {
 	next(action)
 
 	if (action.type === GET_ALBUM_TRACKS) {
+		console.log('get album tracks')
 		const state: RootStateShape = getState()
 		const albumId = action.payload.albumId
 		const albums = state.albums.albums[albumId]

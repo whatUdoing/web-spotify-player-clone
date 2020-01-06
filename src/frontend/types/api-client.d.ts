@@ -14,7 +14,7 @@ export interface IUserApiClient {
 	getUserDashboard(cancelToken?: CancelTokenSource): Promise<Response>
 
 	getUserPlaylists(
-		queryParams?: string,
+		queryParams?: object,
 		cancelToken?: CancelTokenSource
 	): Promise<Response>
 }

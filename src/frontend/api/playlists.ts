@@ -40,12 +40,15 @@ export default class PlaylistsApiClient implements IPlaylistsApiClient {
 		queryParams?: object,
 		cancelToken?: CancelTokenSource
 	) {
-		return this.httpClient.get(
-			`${apiConfig.apiPrefix}/playlists/${playlistId}/tracks`,
-			{
+		return this.httpClient
+			.get(`${apiConfig.apiPrefix}/playlists/${playlistId}/tracks`, {
 				params: queryParams ?? null,
 				cancelToken: cancelToken ? cancelToken.token : undefined
-			}
-		)
+			})
+			.then(resp => {
+				console.log('get tracks')
+				console.log(resp)
+				return resp
+			})
 	}
 }

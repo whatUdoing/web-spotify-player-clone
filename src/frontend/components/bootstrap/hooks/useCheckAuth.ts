@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { IUserService } from 'types/services'
-import { Container } from '../../../utils/classes/dependency-injector'
+import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 
 export const useAuth = () => {
 	const [auth, setAuth] = useState()

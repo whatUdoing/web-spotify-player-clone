@@ -6,8 +6,8 @@ import {
 } from 'types/services'
 import { CancelTokenSource } from 'axios'
 import { IPlaylistsApiClient, ITracksApiClient } from 'types/api-client'
-import { Container } from '../../utils/classes/dependency-injector'
-import { isResponseSuccess } from '../../utils/functions/xhr'
+import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
+import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
 
 export default class TracksSrvice implements ITracksService {
 	async getTrack(

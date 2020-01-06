@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { PlaylistObjectSimplified } from 'types/services'
 import NavigationList from '../../navigation/navigation-list/navigation-list'
-import { getResourceUri } from '../../../utils/functions/resource-uri'
+import { getResourceUri } from '../../../utils/functions/resource-uri/resource-uri'
 import { css } from '@emotion/core'
 import LoaderGuiardian from '../../loader-guardian/loader-guardia'
 import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
@@ -18,12 +18,17 @@ const PlaylistsNavigation = ({
 	allLoaded,
 	loadMoreUserPlaylist
 }: Props) => {
-	console.log('all loaded', allLoaded)
 	const $guardian = useRef<Element>(null)
 	const onPlaylistLoad = () => {
 		loadMoreUserPlaylist()
 	}
-	useGuardianLazyLoading($guardian, allLoaded, onPlaylistLoad)
+
+	useGuardianLazyLoading(
+		$guardian,
+		allLoaded,
+		onPlaylistLoad,
+		playlists.length
+	)
 
 	const playlistsNavigationItems = playlists.map(playlist => {
 		return {

@@ -94,18 +94,6 @@ export const initProfileEndpoints: () => Router = () => {
 		topTracks.type = 'track'
 		dashboardContent.items.push(topTracks)
 
-		const topArtistsResponse: Response = await httpClient.get(
-			ProfileUrl.topArtists,
-			{
-				headers: getTokenAuthorizationHeader(accessToken)
-			}
-		)
-
-		const topArtists = topArtistsResponse.data
-		topArtists.title = 'Top artists for you'
-		topArtists.type = 'artist'
-		dashboardContent.items.push(topArtists)
-
 		// new releases
 		const newReleasesResponse: Response = await httpClient.get(
 			ProfileUrl.newReleases,

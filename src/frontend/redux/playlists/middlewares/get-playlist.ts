@@ -2,7 +2,7 @@ import { Middleware } from 'redux'
 import { playlistsActionTypes, GET_PLAYLIST } from '../actions-types'
 import { addPlaylist } from '../actions'
 import { IPlaylistsService } from 'types/services'
-import { Container } from '../../../utils/classes/dependency-injector'
+import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 
 export const getPlaylist: Middleware = ({ dispatch }) => next => async (
 	action: playlistsActionTypes
