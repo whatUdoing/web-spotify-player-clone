@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { PreviewItemObject } from 'types/components'
+import { PreviewItemObject } from 'components'
 import PreviewItem from '../preview-item/preview-item'
 import { PreviewSectionContext } from './preview-section'
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
-import { ServiceType, IUserService, MyDashboardResponse } from 'types/services'
-import { PreviewSectionObject } from 'types/components'
+import { ServiceType, IUserService, MyDashboardResponse } from 'services'
+import { PreviewSectionObject } from 'components'
 import { processResponse } from './helpers'
 import PreviewSection, {
 	PreviewHeader,

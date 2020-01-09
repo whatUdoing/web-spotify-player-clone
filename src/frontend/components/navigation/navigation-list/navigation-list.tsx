@@ -1,4 +1,4 @@
-import { NavigationItem } from 'types/navigation'
+import { NavigationItem } from 'redux-store'
 import { Link } from 'react-router-dom'
 import React from 'react'
 

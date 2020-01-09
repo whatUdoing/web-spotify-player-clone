@@ -1,4 +1,4 @@
-import { TrackObjectFull } from 'types/services'
+import { TrackObjectFull } from 'services'
 
 export const ADD_TRACK = '[ tracks ] ADD_TRACK'
 export const REMOVE_TRACK = '[ tracks ] REMOVE_TRACK'

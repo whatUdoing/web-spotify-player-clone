@@ -1,6 +1,6 @@
 import PlaylistFullView from './playlist-full-view'
 import { connect } from 'react-redux'
-import { RootStateShape } from 'types/redux'
+import { RootStateShape } from 'redux-store'
 import { getPlaylistTracks } from '../../../redux/playlists/actions'
 import { Dispatch } from 'redux'
 

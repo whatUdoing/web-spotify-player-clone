@@ -1,5 +1,5 @@
 import React from 'react'
-import { TrackObjectFull } from 'types/services'
+import { TrackObjectFull } from 'services'
 import { Redirect } from 'react-router-dom'
 import { getResourceUri } from '../../../../utils/functions/resource-uri/resource-uri'
 

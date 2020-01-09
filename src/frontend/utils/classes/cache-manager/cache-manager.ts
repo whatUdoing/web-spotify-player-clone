@@ -1,4 +1,4 @@
-import { ICacheManager, CacheSettings, CacheItem } from 'types/classes'
+import { ICacheManager, CacheSettings, CacheItem } from 'classes'
 
 export default class CacheManager<T> implements ICacheManager<T> {
 	storage: Record<string, CacheItem<T>>

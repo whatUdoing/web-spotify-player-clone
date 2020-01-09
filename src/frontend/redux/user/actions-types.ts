@@ -1,5 +1,5 @@
-import { User, AuthObject, PlaylistObjectSimplified } from 'types/services'
-import { PagingPlaylistObject } from 'types/redux'
+import { User, AuthObject, PlaylistObjectSimplified } from 'services'
+import { PagingPlaylistObject } from 'redux-store'
 
 export const SET_USER_PROFILE = '[ user ] SET_USER_PROFILE'
 export const SET_USER_AUTH = '[ user ] SET_USER_AUTH'

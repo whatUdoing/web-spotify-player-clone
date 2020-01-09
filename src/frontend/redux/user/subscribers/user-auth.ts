@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
-import { EventObject } from 'types/observer'
-import { IUserService } from 'types/user-service'
+import { EventObject } from 'observer'
+import { IUserService } from 'user-service'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 import { setUserLoading, setUserProfile } from '../actions'
 

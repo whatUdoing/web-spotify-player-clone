@@ -1,11 +1,13 @@
-import { AxiosInstance, AxiosResponse } from 'axios'
+declare module 'http-client' {
+	import { AxiosInstance, AxiosResponse } from 'axios'
 
-/**
- * For simplicy http we use axios intefaces to define our http-client adapter
- * in production i would be define it by mysel
- */
-export interface IHttpClient extends AxiosInstance {}
+	/**
+	 * For simplicy http we use axios intefaces to define our http-client adapter
+	 * in production i would be define it by mysel
+	 */
+	export interface IHttpClient extends AxiosInstance {}
 
-export type Response = AxiosResponse
+	export type Response = AxiosResponse
 
-export type QueryString<T> = Record<string, T>
+	export type QueryString<T> = Record<string, T>
+}

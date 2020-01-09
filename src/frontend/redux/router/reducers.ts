@@ -1,7 +1,7 @@
 import { RouterActionTypes, SET_CURRENT_ROUTE } from './action-types'
 import { combineReducers } from 'redux'
 import { lazy } from 'react'
-import { RouterStateShape } from 'types/redux'
+import { RouterStateShape } from 'redux-store'
 
 export const initialState: RouterStateShape = {
 	routes: {

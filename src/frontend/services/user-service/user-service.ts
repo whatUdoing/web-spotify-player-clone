@@ -5,12 +5,12 @@ import {
 	User,
 	MyDashboardResponse,
 	PlaylistObjectSimplified
-} from 'types/services'
+} from 'services'
 import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
-import { IUserApiClient } from 'types/api-client'
-import { Response } from 'types/http-client'
+import { IUserApiClient } from 'api-client'
+import { Response } from 'http-client'
 import { CancelTokenSource } from 'axios'
-import { PagingPlaylistObject } from 'types/redux'
+import { PagingPlaylistObject } from 'redux-store'
 
 const isResponseSuccess = (response: Response) => {
 	return response.statusText === 'OK'

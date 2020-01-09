@@ -1,6 +1,6 @@
 import TrackFullPreview from './track-full-preview'
 import { connect } from 'react-redux'
-import { RootStateShape } from 'types/redux'
+import { RootStateShape } from 'redux-store'
 
 const mapState = (
 	state: RootStateShape,

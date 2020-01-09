@@ -1,7 +1,7 @@
 import React, { ReactEventHandler, useState, SyntheticEvent } from 'react'
 import Modal from '../../modal/modal'
 import { css } from '@emotion/core'
-import { ComponentEventHandler } from 'types/components'
+import { ComponentEventHandler } from 'components'
 
 type Props = {
 	isVisible: boolean

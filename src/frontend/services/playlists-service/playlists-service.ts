@@ -1,14 +1,14 @@
 import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
-import { IPlaylistsApiClient } from 'types/api-client'
+import { IPlaylistsApiClient } from 'api-client'
 import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
 import {
 	PlaylistObjectFull,
 	ServiceResponse,
 	TrackObjectFull,
 	IPlaylistsService
-} from 'types/services'
+} from 'services'
 import { CancelTokenSource } from 'axios'
-import { PagingTrackObject, PlaylistTrackObject } from 'types/redux'
+import { PagingTrackObject, PlaylistTrackObject } from 'redux-store'
 
 export default class PlaylistsService implements IPlaylistsService {
 	async createPlaylist(

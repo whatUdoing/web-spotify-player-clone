@@ -1,5 +1,5 @@
-import { PlaylistObjectFull, TrackObjectFull } from 'types/services'
-import { PlaylistTrackObject, PagingTrackObject } from 'types/redux'
+import { PlaylistObjectFull, TrackObjectFull } from 'services'
+import { PlaylistTrackObject, PagingTrackObject } from 'redux-store'
 
 export const CREATE_PLAYLIST = '[ playlists ] CREATE_PLAYLIST'
 export const NEW_PLAYLIST_CREATED = '[ playlists ] NEW_PLAYLIST_CREATED'

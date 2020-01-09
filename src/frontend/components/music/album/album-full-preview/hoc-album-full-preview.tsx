@@ -1,6 +1,6 @@
 import AlbumFullPreview from './album-full-preview'
 import { connect } from 'react-redux'
-import { RootStateShape } from 'types/redux'
+import { RootStateShape } from 'redux-store'
 import { getAlbumTracks } from '../../../../redux/albums/actions'
 import { Dispatch } from 'redux'
 

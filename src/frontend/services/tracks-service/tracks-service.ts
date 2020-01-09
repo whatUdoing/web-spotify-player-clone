@@ -3,9 +3,9 @@ import {
 	ServiceResponse,
 	PlaylistObjectFull,
 	TrackObjectFull
-} from 'types/services'
+} from 'services'
 import { CancelTokenSource } from 'axios'
-import { IPlaylistsApiClient, ITracksApiClient } from 'types/api-client'
+import { IPlaylistsApiClient, ITracksApiClient } from 'api-client'
 import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
 import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
 

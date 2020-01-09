@@ -3,13 +3,13 @@ import {
 	TrackObjectFull,
 	AlbumObjectFull,
 	TrackObjectSimplified
-} from 'types/services'
-import { CoverObject } from 'types/components'
+} from 'services'
+import { CoverObject } from 'components'
 import { getImage } from '../../../../utils/functions/images/images'
 import { Container, Row, Col } from '../../../flexobx-grid'
 import CoverPreview from '../../cover-preview/cover-preview'
 import Tracks from '../../tracks/tracks'
-import { PagingTrackObject } from 'types/redux'
+import { PagingTrackObject } from 'redux-store'
 
 type Props = {
 	album: AlbumObjectFull

@@ -1,7 +1,15 @@
 module.exports = {
+	roots: ['<rootDir>/'],
+
+	moduleFileExtensions: ['js', 'jsx', 'json', 'node', 'ts'],
+
+	transform: {
+		'^.+\\.(ts|tsx)$': 'ts-jest'
+	},
+
 	globals: {
 		'ts-jest': {
-			tsConfig: './src/frontend/tsconfig.json'
+			tsConfig: './tsconfig.test.json'
 		}
 	},
 	preset: 'ts-jest'

@@ -4,8 +4,8 @@ import {
 	GET_ALBUM,
 	GET_ALBUM_TRACKS
 } from './actions-types'
-import { AlbumObjectFull, TrackObjectSimplified } from 'types/services'
-import { PagingTrackObject } from 'types/redux'
+import { AlbumObjectFull, TrackObjectSimplified } from 'services'
+import { PagingTrackObject } from 'redux-store'
 import { ADD_TRACKS } from './actions-types'
 
 export const addAlbum = (album: AlbumObjectFull) => {

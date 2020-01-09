@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { IObserver } from 'types/observer'
+import { IObserver } from 'classes'
 import { UserAuthenticatedEvent } from '../events/event-user-auth'
 import { userAuthenticated } from './user-auth'
 

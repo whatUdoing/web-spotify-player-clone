@@ -4,7 +4,7 @@ import {
 	PlaylistsStateShape,
 	PagingTrackObject,
 	PlaylistTrackObject
-} from 'types/redux'
+} from 'redux-store'
 
 const initialState: PlaylistsStateShape = {
 	playlists: {}

@@ -1,4 +1,4 @@
-import { IDependencyInjector } from 'types/classes'
+import { IDependencyInjector } from 'classes'
 
 class DependencyInjector implements IDependencyInjector {
 	dependencies: { [index: string]: {} }

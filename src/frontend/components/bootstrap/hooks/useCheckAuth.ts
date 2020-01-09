@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { IUserService } from 'types/services'
+import { IUserService } from services
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 
 export const useAuth = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
 import CreatePlaylistModal from './create-playlist-modal'
-import { ComponentEventObject } from 'types/components'
+import { ComponentEventObject } from 'components'
 
 type Props = {
 	createPlaylist: (playlistName: string) => void

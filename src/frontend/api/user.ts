@@ -1,5 +1,5 @@
-import { IUserApiClient } from 'types/api-client'
-import { IHttpClient } from 'types/http-client'
+import { IUserApiClient } from 'api-client'
+import { IHttpClient } from 'http-client'
 import { CancelTokenSource } from 'axios'
 import apiConfig from './config'
 

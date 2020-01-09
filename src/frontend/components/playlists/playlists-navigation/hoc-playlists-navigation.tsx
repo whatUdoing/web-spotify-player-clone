@@ -1,10 +1,10 @@
-import { RootStateShape } from 'types/redux'
+import { RootStateShape } from 'redux-store'
 import { connect } from 'react-redux'
 import PlaylistsNavigation from './playlists-navigation'
-import { PagingPlaylistObject } from 'types/redux'
+import { PagingPlaylistObject } from 'redux-store'
 import { Dispatch } from 'redux'
 import { getUserPlaylists } from '../../../redux/user/actions'
-import { PlaylistObjectSimplified } from 'types/services'
+import { PlaylistObjectSimplified } from 'services'
 
 const mapState = (state: RootStateShape) => {
 	const playlistsObject: PagingPlaylistObject<

@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Container, Row, Col } from '../../../components/flexobx-grid'
 import Tracks from '../../music/tracks/tracks'
 import CoverPreview from '../../music/cover-preview/cover-preview'
-import { PlaylistObjectFull, TrackObjectFull } from 'types/services'
-import { PagingTrackObject, PlaylistTrackObject } from 'types/redux'
+import { PlaylistObjectFull, TrackObjectFull } from 'services'
+import { PagingTrackObject, PlaylistTrackObject } from 'redux-store'
 import { getImage } from '../../../utils/functions/images/images'
-import { CoverObject } from 'types/components'
+import { CoverObject } from 'components'
 
 type Props = {
 	playlist: PlaylistObjectFull

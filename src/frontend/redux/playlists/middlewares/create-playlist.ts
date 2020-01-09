@@ -1,8 +1,8 @@
 import { Middleware } from 'redux'
 import { CREATE_PLAYLIST } from '../actions-types'
-import { IPlaylistsService } from 'types/services'
+import { IPlaylistsService } from 'services'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { RootStateShape } from 'redux/reducers'
+import { RootStateShape } from 'redux-store'
 import { newPlaylistCreated } from '../actions'
 
 export const createPlaylist: Middleware = ({

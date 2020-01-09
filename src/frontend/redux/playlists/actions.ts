@@ -6,8 +6,8 @@ import {
 	GET_PLAYLIST_TRACKS,
 	ADD_TRACKS
 } from './actions-types'
-import { PlaylistObjectFull } from 'types/services'
-import { PlaylistTrackObject, PagingTrackObject } from 'types/redux'
+import { PlaylistObjectFull } from 'services'
+import { PlaylistTrackObject, PagingTrackObject } from 'redux-store'
 
 export const createPlaylist = (playlistName: string) => {
 	return {

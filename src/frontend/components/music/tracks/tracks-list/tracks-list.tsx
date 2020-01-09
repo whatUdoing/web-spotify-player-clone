@@ -1,6 +1,5 @@
-import { TrackObjectFull, TrackObjectSimplified } from 'types/services'
+import { TrackObjectFull, TrackObjectSimplified } from 'services'
 import React from 'react'
-import { PlaylistTrackObject } from 'types/redux'
 
 type Props = {
 	tracks: Array<TrackObjectFull | TrackObjectSimplified>

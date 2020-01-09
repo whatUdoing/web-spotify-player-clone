@@ -1,5 +1,5 @@
-import { AlbumObjectFull, TrackObjectSimplified } from 'types/services'
-import { PagingTrackObject } from 'types/redux'
+import { AlbumObjectFull, TrackObjectSimplified } from 'services'
+import { PagingTrackObject } from 'redux-store'
 
 export const ADD_ALBUM = '[ tracks ] ADD_ALBUM'
 export const REMOVE_ALBUM = '[ tracks ] REMOVE_ALBUM'

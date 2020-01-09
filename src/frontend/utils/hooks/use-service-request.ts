@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ServiceType } from 'types/services'
+import { ServiceType } from 'services'
 import axios from 'axios'
 
 export const useServiceRequest: <R, E>(

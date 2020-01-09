@@ -6,7 +6,7 @@ import {
 	SET_CURR_USER_PLAYLISTS
 } from './actions-types'
 import { combineReducers } from 'redux'
-import { UserStateShape } from 'types/redux'
+import { UserStateShape } from 'redux-store'
 
 const initialState: UserStateShape = {
 	auth: {

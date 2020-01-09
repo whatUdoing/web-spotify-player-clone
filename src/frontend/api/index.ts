@@ -1,4 +1,4 @@
-import { IHttpClient } from 'types/http-client'
+import { IHttpClient } from 'http-client'
 import { Container } from '../utils/classes/dependency-injector/dependency-injector'
 import UserApiClient from './user'
 import PlaylistsApiClient from './playlists'

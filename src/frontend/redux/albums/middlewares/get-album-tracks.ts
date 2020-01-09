@@ -5,10 +5,10 @@ import {
 	IPlaylistsService,
 	TrackObjectSimplified,
 	IAlbumsService
-} from 'types/services'
+} from 'services'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { RootStateShape, PlaylistTrackObject } from 'types/redux'
-import { PagingTrackObject } from 'types/redux'
+import { RootStateShape, PlaylistTrackObject } from 'redux-store'
+import { PagingTrackObject } from 'redux-store'
 
 export const getAlbumTracks: Middleware = ({
 	dispatch,

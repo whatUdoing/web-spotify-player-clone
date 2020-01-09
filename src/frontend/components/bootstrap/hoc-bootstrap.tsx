@@ -1,4 +1,4 @@
-import { AuthObject } from 'types/services'
+import { AuthObject } from 'services'
 import React, { ReactNode, useEffect } from 'react'
 import { setUserAuth } from '../../redux/user/actions'
 import { Dispatch } from 'redux'

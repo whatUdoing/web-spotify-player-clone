@@ -1,5 +1,5 @@
 const { strigifyQueryParams, isResponseSuccess } = require('./xhr')
-const Container = require('../../classes/dependency-injector')
+const Container = require('../../classes/dependency-injector/dependency-injector')
 const CacheManager = require('../../classes/cache-manager/cache-manager')
 
 jest.mock('../../classes/cache-manager/cache-manager')

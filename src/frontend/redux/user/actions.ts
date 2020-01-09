@@ -5,9 +5,9 @@ import {
 	GET_USER_PLAYLISTS,
 	SET_CURR_USER_PLAYLISTS
 } from './actions-types'
-import { AuthObject, PlaylistObjectSimplified } from 'types/services'
-import { User } from 'types/services'
-import { PagingPlaylistObject } from 'types/redux'
+import { AuthObject, PlaylistObjectSimplified } from 'services'
+import { User } from 'services'
+import { PagingPlaylistObject } from 'redux-store'
 
 export const setUserAuth = (auth: AuthObject) => {
 	return {

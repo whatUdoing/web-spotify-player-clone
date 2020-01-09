@@ -1,6 +1,6 @@
 import { Middleware } from 'redux'
 import { tracksActionTypes, GET_TRACK } from '../actions-types'
-import { ITracksService } from 'types/services'
+import { ITracksService } from 'services'
 import { addTrack } from '../actions'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
 

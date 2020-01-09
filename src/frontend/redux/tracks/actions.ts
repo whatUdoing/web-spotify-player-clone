@@ -1,5 +1,5 @@
 import { ADD_TRACK, REMOVE_TRACK, GET_TRACK } from './actions-types'
-import { TrackObjectFull } from 'types/services'
+import { TrackObjectFull } from 'services'
 
 export const addTrack = (track: TrackObjectFull) => {
 	return {

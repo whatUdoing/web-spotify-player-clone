@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useMemo } from 'react'
 import { css } from '@emotion/core'
-import { PreviewItemObject } from 'types/components'
+import { PreviewItemObject } from 'components'
 
 type PreviewContextType = {
 	items: Array<PreviewItemObject>

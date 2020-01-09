@@ -1,5 +1,5 @@
-import { ITracksApiClient } from 'types/api-client'
-import { IHttpClient } from 'types/http-client'
+import { ITracksApiClient } from 'api-client'
+import { IHttpClient } from 'http-client'
 import { CancelTokenSource } from 'axios'
 import apiConfig from './config'
 

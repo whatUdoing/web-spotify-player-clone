@@ -1,10 +1,10 @@
 import { Middleware } from 'redux'
 import { playlistsActionTypes, GET_PLAYLIST_TRACKS } from '../actions-types'
 import { addTracks } from '../actions'
-import { IPlaylistsService } from 'types/services'
+import { IPlaylistsService } from 'services'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { RootStateShape, PlaylistTrackObject } from 'types/redux'
-import { PagingTrackObject } from 'types/redux'
+import { RootStateShape, PlaylistTrackObject } from 'redux-store'
+import { PagingTrackObject } from 'redux-store'
 
 export const getMorePlaylistTracks: Middleware = ({
 	dispatch,

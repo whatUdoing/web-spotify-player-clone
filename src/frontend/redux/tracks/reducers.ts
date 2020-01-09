@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { ADD_TRACK, REMOVE_TRACK, tracksActionTypes } from './actions-types'
-import { TracksStateShape } from 'types/redux'
+import { TracksStateShape } from 'redux-store'
 
 /**
  * To think, move all tracks here, instead keeping them seprate in playlist, albums etc...

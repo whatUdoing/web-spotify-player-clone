@@ -1,5 +1,5 @@
 import React, { Suspense, ReactNode, ElementType } from 'react'
-import { RouteObject } from 'types/router'
+import { RouteObject } from 'redux-store'
 import { Switch, Route } from 'react-router-dom'
 import PrivateRoute from '../private-route/private-route'
 

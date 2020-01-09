@@ -1,4 +1,4 @@
-import { IEvent } from 'types/observer'
+import { IEvent } from 'classes'
 
 export const UserAuthenticatedEvent = {
 	name: '[ user ] authenticated'

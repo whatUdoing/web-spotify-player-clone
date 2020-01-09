@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Container } from '../classes/dependency-injector/dependency-injector'
-import { IUserService } from 'types/services'
+import { IUserService } from 'services'
 
 const useAuth = () => {
 	const [error, setError] = useState()

@@ -2,7 +2,7 @@ import { Middleware } from 'redux'
 import { userActionTypes, SET_USER_AUTH } from '../actions-types'
 import { setUserLoading, setUserProfile, getUserPlaylists } from '../actions'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { IUserService } from 'types/services'
+import { IUserService } from 'services'
 
 /**
  * This was the first concept, use middleware to dispatch another actions, later i change to experiment with

@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { PlaylistObjectSimplified } from 'types/services'
+import { PlaylistObjectSimplified } from 'services'
 import NavigationList from '../../navigation/navigation-list/navigation-list'
 import { getResourceUri } from '../../../utils/functions/resource-uri/resource-uri'
 import { css } from '@emotion/core'
 import LoaderGuiardian from '../../loader-guardian/loader-guardia'
 import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
-import { PlaylistTrackObject } from 'types/redux'
 
 type Props = {
 	playlists: Array<PlaylistObjectSimplified>

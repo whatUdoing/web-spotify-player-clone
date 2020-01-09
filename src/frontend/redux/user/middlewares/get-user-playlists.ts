@@ -1,9 +1,9 @@
 import { Middleware } from 'redux'
 import { userActionTypes, GET_USER_PLAYLISTS } from '../actions-types'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { IUserService } from 'types/services'
+import { IUserService } from 'services'
 import { setCurrUserPlaylists } from '../actions'
-import { RootStateShape } from 'types/redux'
+import { RootStateShape } from 'redux-store'
 
 export const getUserPlaylists: Middleware = ({
 	dispatch,

@@ -1,5 +1,5 @@
 import React from 'react'
-import { RouteObject } from 'types/redux'
+import { RouteObject } from 'redux-store'
 import NavigationList from '../navigation-list/navigation-list'
 
 type Props = {

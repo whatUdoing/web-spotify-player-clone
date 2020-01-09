@@ -1,6 +1,6 @@
-import { Response, QueryString } from 'types/http-client'
+import { Response, QueryString } from 'http-client'
 import { Container } from '../../classes/dependency-injector/dependency-injector'
-import { ICacheManager, CacheSettings } from 'types/classes'
+import { ICacheManager, CacheSettings } from 'classes'
 
 export const isResponseSuccess = (
 	res: Response,

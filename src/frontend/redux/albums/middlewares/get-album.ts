@@ -1,7 +1,7 @@
 import { Middleware } from 'redux'
 import { albumsActionTypes, GET_ALBUM } from '../actions-types'
 import { Container } from '../../../utils/classes/dependency-injector/dependency-injector'
-import { IAlbumsService } from 'types/services'
+import { IAlbumsService } from 'services'
 import { addAlbum } from '../actions'
 
 export const getAlbum: Middleware = ({ dispatch }) => next => async (

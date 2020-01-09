@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from '../../../components/flexobx-grid'
 import LazyImage from '../../image/lazy-image/lazy-image'
-import { CoverObject } from 'types/components'
+import { CoverObject } from 'components'
 
 type Props = {
 	item: CoverObject

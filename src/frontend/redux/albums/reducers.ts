@@ -9,8 +9,8 @@ import {
 	AlbumsStateShape,
 	PagingTrackObject,
 	PlaylistTrackObject
-} from 'types/redux'
-import { TrackObjectSimplified } from 'types/services'
+} from 'redux-store'
+import { TrackObjectSimplified } from 'services'
 
 const inittialState: AlbumsStateShape = {
 	albums: {}

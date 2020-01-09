@@ -2,14 +2,14 @@ import {
 	MyDashboardResponse,
 	MyDashboardPagingObject,
 	PlaylistObjectSimplified
-} from 'types/services'
-import { PreviewItemObject, PreviewSectionObject } from 'types/components'
+} from 'services'
+import { PreviewItemObject, PreviewSectionObject } from 'components'
 import {
 	ImageObject,
 	AlbumObjectFull,
 	ArtistObjectFull,
 	TrackObjectFull
-} from 'types/services'
+} from 'services'
 import { getImage } from '../../utils/functions/images/images'
 import { getResourceUri } from '../../utils/functions/resource-uri/resource-uri'
 

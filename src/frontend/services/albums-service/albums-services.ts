@@ -3,12 +3,12 @@ import {
 	IAlbumsService,
 	AlbumObjectFull,
 	TrackObjectSimplified
-} from 'types/services'
+} from 'services'
 import { CancelTokenSource } from 'axios'
-import { IAlbumsApiClient } from 'types/api-client'
+import { IAlbumsApiClient } from 'api-client'
 import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
 import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
-import { PagingTrackObject } from 'types/redux'
+import { PagingTrackObject } from 'redux-store'
 
 export default class AlbumsService implements IAlbumsService {
 	async getAlbum(

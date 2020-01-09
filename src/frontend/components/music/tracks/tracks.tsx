@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import TracksList from './tracks-list/tracks-list'
-import { TrackObjectFull, TrackObjectSimplified } from 'types/services'
+import { TrackObjectFull, TrackObjectSimplified } from 'services'
 import LoaderGuardian from '../../loader-guardian/loader-guardia'
 import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
 
