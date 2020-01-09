@@ -1,6 +1,5 @@
 import { Response, QueryString } from 'http-client'
-import { Container } from '../../classes/dependency-injector/dependency-injector'
-import { ICacheManager, CacheSettings } from 'classes'
+import { ICacheManager, CacheSettings, CacheItem } from 'classes'
 
 export const isResponseSuccess = (
 	res: Response,
@@ -18,30 +17,29 @@ export const strigifyQueryParams = (
 }
 
 export const getCachedResponse = (
+	cacheManager: ICacheManager<Response>,
 	url: string,
-	queryParams: QueryString<string> = {}
-) => {
-	const CacheManager = <ICacheManager<Response>>(
-		Container.get('request-cache-manager')
-	)
-
-	const fullUrl = `${url}?${strigifyQueryParams(queryParams)}`
-
-	return CacheManager.get(fullUrl)
+	queryParams?: QueryString<string>
+): CacheItem<Response> | null => {
+	const fullUrl = `${url}${
+		queryParams ? `?${strigifyQueryParams(queryParams)}}` : ''
+	}`
+	return cacheManager.get(fullUrl)
 }
 
 export const cacheResponse = (
+	cacheManager: ICacheManager<Response>,
 	resp: Response,
 	settings: CacheSettings = {
 		expiresIn: 60
 	}
 ) => {
-	const CacheManager = <ICacheManager<Response>>(
-		Container.get('request-cache-manager')
-	)
+	// const CacheManager = <ICacheManager<Response>>(
+	// 	Container.get('request-cache-manager')
+	// )
 
 	try {
-		CacheManager.add(resp.request.responseURL, resp, settings)
+		cacheManager.add(resp.request.responseURL, resp, settings)
 	} catch {}
 
 	return resp

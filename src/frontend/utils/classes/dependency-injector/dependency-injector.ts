@@ -8,11 +8,7 @@ class DependencyInjector implements IDependencyInjector {
 	}
 
 	set(name: string, dependency: object): object {
-		if (!this.has(name)) {
-			return (this.dependencies[name] = dependency)
-		}
-
-		return this.dependencies[name]
+		return (this.dependencies[name] = dependency)
 	}
 
 	get(name: string | FunctionConstructor): object | undefined {

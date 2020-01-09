@@ -1,4 +1,4 @@
-import { IObserver, IEvent, EventCallback, EventObject } from 'observer'
+import { IObserver, IEvent, EventCallback, EventObject } from 'classes'
 
 export default class Observer implements IObserver {
 	handlers: Record<string, Array<EventCallback>>
