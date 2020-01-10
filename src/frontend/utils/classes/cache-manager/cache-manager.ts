@@ -6,10 +6,18 @@ export default class CacheManager<T> implements ICacheManager<T> {
 	static defaultCacheTime: 60
 
 	constructor() {
-		this.storage = {}
+		this.storage = Object.create(null)
 	}
 
 	add(key: string, value: T, settings?: CacheSettings): boolean | Error {
+		let valueExists = this.has(key)
+
+		if (valueExists && this.hasExpired(this.storage[key])) {
+			this.remove(key)
+
+			valueExists = this.has(key)
+		}
+
 		if (!this.has(key)) {
 			const cachedTime = Date.now()
 			const expiresIn =
@@ -25,7 +33,7 @@ export default class CacheManager<T> implements ICacheManager<T> {
 			return true
 		}
 
-		return Error('Value with privded key already exists')
+		throw Error('Value with privded key already exists')
 	}
 
 	get(key: string): CacheItem<T> | null {
@@ -41,22 +49,14 @@ export default class CacheManager<T> implements ICacheManager<T> {
 			return Reflect.deleteProperty(this.storage, key)
 		}
 
-		return Error('Provided key does not exist')
+		throw Error('Provided key does not exist')
 	}
 
 	has(key: string): boolean {
-		let item: CacheItem<T> | boolean = this.storage[key]
-
-		if (item && this.hasExpired(item)) {
-			this.remove(key)
-
-			item = false
-		}
-
-		return !!item
+		return !!this.storage[key]
 	}
 
 	hasExpired(item: CacheItem<T>): boolean {
-		return Date.now() < item.expiresTime
+		return Date.now() > item.expiresTime
 	}
 }

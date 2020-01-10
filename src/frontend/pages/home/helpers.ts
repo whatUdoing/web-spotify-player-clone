@@ -25,7 +25,7 @@ const mapPlaylistObjectToPreviewItem = (
 		image: getImage(playlist.images),
 		description: `by ${playlist.owner.display_name}`,
 		path: getResourceUri('playlist', {
-			':playlistId': playlist.id
+			playlistId: playlist.id
 		})
 	}
 }
@@ -41,7 +41,7 @@ const mapArtistObjectToPreviewItem = (
 		name: artist.name,
 		image: getImage(artist.images),
 		path: getResourceUri('artist', {
-			':artistId': artist.id
+			artistId: artist.id
 		})
 	}
 }
@@ -55,7 +55,7 @@ const mapTrackObjectToPreviewItem = (
 		type,
 		name: track.name,
 		path: getResourceUri('track', {
-			':trackId': track.id
+			trackId: track.id
 		}),
 		image: getImage(track.album.images),
 		description: `by ${track.artists
@@ -76,7 +76,7 @@ const mapAlbumObjectToPreviewItem = (
 		image: getImage(album.images),
 		description: album.album_type,
 		path: getResourceUri('album', {
-			':albumId': album.id
+			albumId: album.id
 		})
 	}
 }

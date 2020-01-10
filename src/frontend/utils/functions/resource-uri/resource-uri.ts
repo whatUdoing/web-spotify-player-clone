@@ -10,6 +10,6 @@ export const getResourceUri = (
 	params: Record<string, string>
 ) => {
 	return Object.keys(params).reduce((prev, param) => {
-		return prev.replace(param, params[param])
+		return prev.replace(`:${param}`, params[param])
 	}, mapTypeToUrl[type])
 }
