@@ -16,21 +16,28 @@ const PreviewItem = ({ item }: Props) => {
 	return (
 		<div
 			css={css`
-				background-color: #829fd9;
-				border-radius: 5px;
-				padding: 1rem;
+				padding: calc(var(--global-spacing) * 0.5);
 			`}
 		>
-			{item.image ? (
-				<LazyImage src={item.image.url} />
-			) : (
-				<ImagePlaceholder />
-			)}
+			<div
+				css={css`
+					border-radius: var(--global-border-radius);
+					overflow: hidden;
+				`}
+			>
+				{item.image ? (
+					<LazyImage src={item.image.url} />
+				) : (
+					<ImagePlaceholder />
+				)}
+			</div>
 
 			<div>
 				{item.name && (
 					<div>
-						<Link to={item.path}>{trim(item.name)}</Link>
+						<Link className="link" to={item.path}>
+							{trim(item.name)}
+						</Link>
 					</div>
 				)}
 

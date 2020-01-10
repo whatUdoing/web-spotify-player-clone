@@ -7,8 +7,8 @@ const ImagePlaceholder = () => {
 		<div
 			css={css`
 				position: relative;
-				color: #ffffff;
-				background: #230a59;
+				color: #0c154a;
+				background: #829fd9;
 				width: 100%;
 				height: 0%;
 				padding-top: 100%;
@@ -19,7 +19,7 @@ const ImagePlaceholder = () => {
 			<i
 				css={css`
 					position: absolute;
-					color: #ffffff;
+					color: #c6ceff;
 					height: 1.25em;
 					top: 0;
 					left: 0;

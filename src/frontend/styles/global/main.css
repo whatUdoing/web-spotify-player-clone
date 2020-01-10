@@ -1,0 +1,8 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-display: swap;
+	background-color: var(--theme8);
+	height: 100vh;
+	width: 100%;
+	max-width: 100%;
+}

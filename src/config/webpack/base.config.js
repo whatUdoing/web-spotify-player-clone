@@ -39,6 +39,14 @@ module.exports = rootPath => {
 					]
 				},
 				{
+					test: /\.less$/,
+					use: [
+						MiniCssExtractPlugin.loader,
+						'css-loader',
+						'less-loader'
+					]
+				},
+				{
 					test: /\.css$/,
 					use: [MiniCssExtractPlugin.loader, 'css-loader']
 				},

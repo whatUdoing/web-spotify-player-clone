@@ -1,4 +1,5 @@
 import React from 'react'
+import { css } from '@emotion/core'
 
 import MainLayout from '../../layouts/main'
 import Sidebar from '../sidebar/sidebar'
@@ -18,7 +19,12 @@ const MainView = () => {
 
 const IndexView = () => {
 	return (
-		<>
+		<div
+			css={theme => css`
+				color: ${theme.theme3};
+				background-color: ${theme.theme8};
+			`}
+		>
 			<MainLayout
 				aside={<Sidebar />}
 				footer={<Player />}
@@ -26,7 +32,7 @@ const IndexView = () => {
 			/>
 
 			<ModalPortal />
-		</>
+		</div>
 	)
 }
 

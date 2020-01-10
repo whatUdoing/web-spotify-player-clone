@@ -10,7 +10,7 @@ const useImageLazyLoading = (
 	$target: MutableRefObject<null | HTMLElement | ReactNode>,
 	options = {
 		rootMargin: '0px',
-		threshold: 1.0
+		threshold: 0.1
 	}
 ) => {
 	let observer: IntersectionObserver
@@ -31,7 +31,6 @@ const useImageLazyLoading = (
 	useEffect(() => {
 		if ('IntersectionObserver' in window) {
 			observer = new IntersectionObserver(handIntersected, options)
-
 			observer.observe($target.current as Element)
 		}
 

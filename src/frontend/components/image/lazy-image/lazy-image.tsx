@@ -1,4 +1,4 @@
-import React, { useRef, ReactNode, useState } from 'react'
+import React, { useRef, ReactNode, useState, useEffect } from 'react'
 import { css } from '@emotion/core'
 import useLazyLoading from '../../../utils/hooks/use-image-lazy-loading'
 import ImagePlaceholder from '../image-placeholder/image-placeholder'
@@ -13,7 +13,7 @@ type Props = {
 // change support fro srcset images
 const LazyImage = ({ src, alt, title, children }: Props) => {
 	const $imgEl = useRef(null)
-	const [isLoaded, setLoading] = useState()
+	const [isLoaded, setLoading] = useState(false)
 	let isVisible = useLazyLoading($imgEl)
 
 	return (
@@ -30,10 +30,7 @@ const LazyImage = ({ src, alt, title, children }: Props) => {
 				onLoad={() => setLoading(true)}
 			/>
 
-			{!isVisible ||
-				(!isLoaded && (
-					<>{!children ? <ImagePlaceholder /> : children}</>
-				))}
+			{!isLoaded && <>{!children ? <ImagePlaceholder /> : children}</>}
 		</figure>
 	)
 }

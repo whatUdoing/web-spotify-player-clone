@@ -11,7 +11,7 @@ const TrackFullPreview = ({ track }: Props) => {
 	return track?.album?.id ? (
 		<Redirect
 			to={getResourceUri('album', {
-				':albumId': track.album.id
+				albumId: track.album.id
 			})}
 		/>
 	) : null
