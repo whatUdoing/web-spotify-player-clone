@@ -1,0 +1,54 @@
+import React, { useRef, useState } from 'react'
+import { PlaylistObjectSimplified } from 'services'
+import NavigationList from '../../../../components/navigation/navigation-list/navigation-list'
+import { getResourceUri } from '../../../../lib/helpers/resource-uri/resource-uri'
+import { css } from '@emotion/core'
+import LoaderGuiardian from '../../../../components/loader-guardian/loader-guardia'
+import { useGuardianLazyLoading } from '../../../../lib/hooks/use-guardian-lazy-loading'
+
+type Props = {
+	playlists: Array<PlaylistObjectSimplified>
+	allLoaded: boolean
+	loadMoreUserPlaylist: () => void
+}
+
+const PlaylistsNavigation = ({
+	playlists = [],
+	allLoaded,
+	loadMoreUserPlaylist
+}: Props) => {
+	const $guardian = useRef<Element>(null)
+	const onPlaylistLoad = () => {
+		loadMoreUserPlaylist()
+	}
+
+	useGuardianLazyLoading(
+		$guardian,
+		allLoaded,
+		onPlaylistLoad,
+		playlists.length
+	)
+
+	const playlistsNavigationItems = playlists.map(playlist => {
+		return {
+			id: playlist.id,
+			to: getResourceUri('playlist', {
+				':playlistId': playlist.id
+			}),
+			name: playlist.name
+		}
+	})
+
+	return (
+		<div
+			css={css`
+				border: 1px solid red;
+			`}
+		>
+			<NavigationList items={playlistsNavigationItems} />
+			<LoaderGuiardian ref={$guardian} />
+		</div>
+	)
+}
+
+export default PlaylistsNavigation

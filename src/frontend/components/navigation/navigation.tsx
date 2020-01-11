@@ -1,7 +1,7 @@
 import React from 'react'
 import GlobalNavigation from './global-navigation/hoc-global-nav'
-import CreatePlaylistBtn from '../playlists/create-playlist/hoc-create-btn'
-import PlaylistsNavigation from '../playlists/playlists-navigation/hoc-playlists-navigation'
+import CreatePlaylistBtn from '../../modules/playlist/components/create-playlist/hoc-create-btn'
+import PlaylistsNavigation from '../../modules/playlist/components/playlists-navigation/hoc-playlists-navigation'
 
 const Navigation = () => {
 	return (

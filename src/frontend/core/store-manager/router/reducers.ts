@@ -8,7 +8,9 @@ export const initialState: RouterStateShape = {
 		'1': {
 			id: 1,
 			path: '/',
-			component: lazy(() => import('../../../pages/home/home')),
+			component: lazy(() =>
+				import('../../../modules/user/pages/home/home')
+			),
 			name: 'Home',
 			exact: true
 		},
@@ -40,7 +42,9 @@ export const initialState: RouterStateShape = {
 		'5': {
 			id: 5,
 			path: '/playlist/:playlistId',
-			component: lazy(() => import('../../../pages/playlist/playlist')),
+			component: lazy(() =>
+				import('../../../modules/playlist/pages/playlist/playlist')
+			),
 			name: 'playlist',
 			withAuth: true
 		},
@@ -48,7 +52,9 @@ export const initialState: RouterStateShape = {
 			id: 6,
 			path: '/settings/account',
 			component: lazy(() =>
-				import('../../../pages/account-settings/account-settings')
+				import(
+					'../../../modules/user/pages/account-settings/account-settings'
+				)
 			),
 			name: 'Your Library',
 			withAuth: true
@@ -56,14 +62,18 @@ export const initialState: RouterStateShape = {
 		'7': {
 			id: 7,
 			path: '/track/:trackId',
-			component: lazy(() => import('../../../pages/track/track')),
+			component: lazy(() =>
+				import('../../../modules/track/pages/track/track')
+			),
 			name: 'track',
 			withAuth: true
 		},
 		'8': {
 			id: 8,
 			path: '/album/:albumId',
-			component: lazy(() => import('../../../pages/album/album')),
+			component: lazy(() =>
+				import('../../../modules/album/pages/album/album')
+			),
 			name: 'album',
 			withAuth: true
 		}
