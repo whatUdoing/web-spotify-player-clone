@@ -3,7 +3,7 @@ import LazyImage from '../../image/lazy-image/lazy-image'
 import { Link } from 'react-router-dom'
 import { css } from '@emotion/core'
 import { PreviewItemObject } from 'components'
-import { trimString } from '../../../utils/functions/trim-string/trim-string'
+import { trimString } from '../../../lib/helpers/trim-string/trim-string'
 import ImagePlaceholder from '../../image/image-placeholder/image-placeholder'
 
 type Props = {

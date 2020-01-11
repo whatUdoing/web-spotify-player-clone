@@ -1,4 +1,4 @@
-import { RootStateShape } from '../../../redux/store'
+import { RootStateShape } from 'redux-store'
 import { connect } from 'react-redux'
 import GlobalNavigation from './global-navigation'
 

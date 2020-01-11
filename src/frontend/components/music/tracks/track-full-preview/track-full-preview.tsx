@@ -1,7 +1,7 @@
 import React from 'react'
 import { TrackObjectFull } from 'services'
 import { Redirect } from 'react-router-dom'
-import { getResourceUri } from '../../../../utils/functions/resource-uri/resource-uri'
+import { getResourceUri } from '../../../../lib/helpers/resource-uri/resource-uri'
 
 type Props = {
 	track: TrackObjectFull

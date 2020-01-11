@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
+import { Container } from '../../lib/classes/dependency-injector/dependency-injector'
 import { ServiceType, IUserService, MyDashboardResponse } from 'services'
 import { PreviewSectionObject } from 'components'
 import { processResponse } from './helpers'
@@ -7,7 +7,7 @@ import PreviewSection, {
 	PreviewHeader,
 	PreviewList
 } from '../../components/preview/preview-section/preview-section'
-import { useServiceRequest } from '../../utils/hooks/use-service-request'
+import { useServiceRequest } from '../../lib/hooks/use-service-request'
 
 const Home = () => {
 	const UserService = Container.get('user-service') as IUserService

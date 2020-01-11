@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPlaylist } from '../../redux/playlists/actions'
+import { getPlaylist } from '../../core/store-manager/playlists/actions'
 import { Dispatch, Store } from 'redux'
 import { connect } from 'react-redux'
 import TrackFullPreview from '../../components/music/tracks/track-full-preview/hoc-track-full-preview'
-import { getTrack } from '../../redux/tracks/actions'
+import { getTrack } from '../../core/store-manager/tracks/actions'
 
 type Props = {
 	getTrack: (trackId: string) => void

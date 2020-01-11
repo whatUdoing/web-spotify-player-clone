@@ -10,8 +10,8 @@ import {
 	ArtistObjectFull,
 	TrackObjectFull
 } from 'services'
-import { getImage } from '../../utils/functions/images/images'
-import { getResourceUri } from '../../utils/functions/resource-uri/resource-uri'
+import { getImage } from '../../lib/helpers/images/images'
+import { getResourceUri } from '../../lib/helpers/resource-uri/resource-uri'
 
 const mapPlaylistObjectToPreviewItem = (
 	playlist: PlaylistObjectSimplified

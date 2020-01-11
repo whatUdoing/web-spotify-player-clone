@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { PlaylistObjectFull, IPlaylistsService, ServiceType } from 'services'
-import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
-import { useServiceRequest } from '../../utils/hooks/use-service-request'
+import { Container } from '../../lib/classes/dependency-injector/dependency-injector'
+import { useServiceRequest } from '../../lib/hooks/use-service-request'
 import { useParams } from 'react-router-dom'
-import { getPlaylist } from '../../redux/playlists/actions'
+import { getPlaylist } from '../../core/store-manager/playlists/actions'
 import { Dispatch, Store } from 'redux'
 import { connect } from 'react-redux'
 import { RootStateShape } from 'redux-store'
-import { getAlbum } from '../../redux/albums/actions'
+import { getAlbum } from '../../core/store-manager/albums/actions'
 import AlbumFullPreview from '../../components/music/album/album-full-preview/hoc-album-full-preview'
 
 type Props = {

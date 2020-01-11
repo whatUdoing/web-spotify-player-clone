@@ -1,6 +1,6 @@
 import CreatePlaylistBtn from './create-playlis-btn'
 import { Dispatch } from 'redux'
-import { createPlaylist } from '../../../redux/playlists/actions'
+import { createPlaylist } from '../../../core/store-manager/playlists/actions'
 import { connect } from 'react-redux'
 
 const mapDispatch = (dispatch: Dispatch) => {

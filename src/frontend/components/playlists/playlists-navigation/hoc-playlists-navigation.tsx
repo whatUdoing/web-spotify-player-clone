@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PlaylistsNavigation from './playlists-navigation'
 import { PagingPlaylistObject } from 'redux-store'
 import { Dispatch } from 'redux'
-import { getUserPlaylists } from '../../../redux/user/actions'
+import { getUserPlaylists } from '../../../core/store-manager/user/actions'
 import { PlaylistObjectSimplified } from 'services'
 
 const mapState = (state: RootStateShape) => {

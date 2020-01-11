@@ -1,7 +1,7 @@
 import PlaylistFullView from './playlist-full-view'
 import { connect } from 'react-redux'
 import { RootStateShape } from 'redux-store'
-import { getPlaylistTracks } from '../../../redux/playlists/actions'
+import { getPlaylistTracks } from '../../../core/store-manager/playlists/actions'
 import { Dispatch } from 'redux'
 
 const mapState = (

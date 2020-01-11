@@ -6,7 +6,7 @@ import {
 	MyDashboardResponse,
 	PlaylistObjectSimplified
 } from 'services'
-import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
+import { Container } from '../../lib/classes/dependency-injector/dependency-injector'
 import { IUserApiClient } from 'api-client'
 import { Response } from 'http-client'
 import { CancelTokenSource } from 'axios'

@@ -5,7 +5,7 @@ import {
 	TrackObjectSimplified
 } from 'services'
 import { CoverObject } from 'components'
-import { getImage } from '../../../../utils/functions/images/images'
+import { getImage } from '../../../../lib/helpers/images/images'
 import { Container, Row, Col } from '../../../flexobx-grid'
 import CoverPreview from '../../cover-preview/cover-preview'
 import Tracks from '../../tracks/tracks'

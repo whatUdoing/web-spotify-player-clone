@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { PlaylistObjectSimplified } from 'services'
 import NavigationList from '../../navigation/navigation-list/navigation-list'
-import { getResourceUri } from '../../../utils/functions/resource-uri/resource-uri'
+import { getResourceUri } from '../../../lib/helpers/resource-uri/resource-uri'
 import { css } from '@emotion/core'
 import LoaderGuiardian from '../../loader-guardian/loader-guardia'
-import { useGuardianLazyLoading } from '../../../utils/hooks/use-guardian-lazy-loading'
+import { useGuardianLazyLoading } from '../../../lib/hooks/use-guardian-lazy-loading'
 
 type Props = {
 	playlists: Array<PlaylistObjectSimplified>

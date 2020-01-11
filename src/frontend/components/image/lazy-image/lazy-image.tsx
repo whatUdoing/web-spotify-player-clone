@@ -1,6 +1,6 @@
 import React, { useRef, ReactNode, useState, useEffect } from 'react'
 import { css } from '@emotion/core'
-import useLazyLoading from '../../../utils/hooks/use-image-lazy-loading'
+import useLazyLoading from '../../../lib/hooks/use-image-lazy-loading'
 import ImagePlaceholder from '../image-placeholder/image-placeholder'
 
 type Props = {

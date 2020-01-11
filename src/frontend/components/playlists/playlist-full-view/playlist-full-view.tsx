@@ -4,7 +4,7 @@ import Tracks from '../../music/tracks/tracks'
 import CoverPreview from '../../music/cover-preview/cover-preview'
 import { PlaylistObjectFull, TrackObjectFull } from 'services'
 import { PagingTrackObject, PlaylistTrackObject } from 'redux-store'
-import { getImage } from '../../../utils/functions/images/images'
+import { getImage } from '../../../lib/helpers/images/images'
 import { CoverObject } from 'components'
 
 type Props = {

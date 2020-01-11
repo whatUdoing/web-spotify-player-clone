@@ -1,6 +1,6 @@
-import { Container } from '../../utils/classes/dependency-injector/dependency-injector'
+import { Container } from '../../lib/classes/dependency-injector/dependency-injector'
 import { IPlaylistsApiClient } from 'api-client'
-import { isResponseSuccess } from '../../utils/functions/xhr/xhr'
+import { isResponseSuccess } from '../../lib/helpers/xhr/xhr'
 import {
 	PlaylistObjectFull,
 	ServiceResponse,
