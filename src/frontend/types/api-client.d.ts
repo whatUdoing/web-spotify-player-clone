@@ -14,7 +14,7 @@ declare module 'api-client' {
 
 		getUserDashboard(cancelToken?: CancelTokenSource): Promise<Response>
 
-		getUserPlaylists(
+		getCurrentUserPlaylists(
 			queryParams?: object,
 			cancelToken?: CancelTokenSource
 		): Promise<Response>

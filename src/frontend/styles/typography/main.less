@@ -1,0 +1,77 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	display: block;
+
+	.weight_semibold();
+}
+
+h1,
+h2,
+.h1,
+.h2 {
+	&:not(:last-child) {
+		margin-bottom: @h1h2FontMargin;
+	}
+}
+
+h3,
+h4,
+h5,
+h6,
+.h3,
+.h4,
+.h5,
+.h6 {
+	&:not(:last-child) {
+		margin-bottom: @hxFontMargin;
+	}
+}
+
+h1,
+.h1 {
+	.size_xxxl();
+}
+
+h2,
+.h2 {
+	.size_xxl();
+}
+
+h3,
+.h3 {
+	.size_xl();
+}
+
+h4,
+.h4 {
+	.size_l();
+}
+
+h5,
+.h5 {
+	.size_m();
+}
+
+h6,
+.h6 {
+	.size_xs();
+}
+
+p,
+.p {
+	&:not(:last-child) {
+		margin-bottom: @paragraphMargin;
+	}
+
+	.size_m();
+}

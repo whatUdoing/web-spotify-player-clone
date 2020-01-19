@@ -5,8 +5,16 @@ import { ComponentEventObject } from 'components'
 
 type Props = {
 	createPlaylist: (playlistName: string) => void
+	cssClasses: {
+		button: string
+	}
 }
-const CreatePlaylistBtn = ({ createPlaylist }: Props) => {
+const CreatePlaylistBtn = ({
+	createPlaylist,
+	cssClasses = {
+		button: ''
+	}
+}: Props) => {
 	const [isModalVisible, setVisibility] = useState(false)
 
 	const handleCancelation = () => {
@@ -15,7 +23,6 @@ const CreatePlaylistBtn = ({ createPlaylist }: Props) => {
 
 	const handleAcceptation = (evt: ComponentEventObject) => {
 		setVisibility(false)
-		//create playlist store
 		createPlaylist(evt.payload.playlistName)
 	}
 
@@ -25,17 +32,9 @@ const CreatePlaylistBtn = ({ createPlaylist }: Props) => {
 				onClick={() => {
 					setVisibility(true)
 				}}
-				css={css`
-					border: none;
-					background: none;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					padding: 0;
-					cursor: pointer;
-				`}
+				className={cssClasses.button}
 			>
-				<i className="far fa-plus-square fa-2x"></i>
+				<i className="fas fa-plus"></i>
 
 				<span
 					css={css`

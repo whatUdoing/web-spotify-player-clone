@@ -60,7 +60,7 @@ declare module 'services' {
 			cancelToken?: CancelTokenSource
 		): ServiceResponse<MyDashboardResponse>
 
-		getUserPlaylists(
+		getCurrentUserPlaylists(
 			queryParams?: object,
 			cancelToken?: CancelTokenSource
 		): ServiceResponse<PagingPlaylistObject<PlaylistObjectSimplified>>
@@ -95,7 +95,7 @@ declare module 'services' {
 		): ServiceResponse<PlaylistObjectFull>
 
 		getPlaylistTracks(
-			playlistId: PlaylistObjectFull,
+			playlist: PlaylistObjectFull,
 			cancelToken?: CancelTokenSource
 		): ServiceResponse<PagingTrackObject<PlaylistTrackObject>>
 	}

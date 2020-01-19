@@ -3,7 +3,7 @@ import React from 'react'
 const UserCollection = () => {
 	return (
 		<div>
-			<h1>Your library</h1>
+			<h1>Specific collection</h1>
 
 			<p>In development</p>
 		</div>

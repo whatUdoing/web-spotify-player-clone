@@ -1,0 +1,40 @@
+.list {
+	&_inline {
+		display: flex;
+
+		&-doted {
+			li:not(:last-child) {
+				position: relative;
+
+				&::after {
+					.weight_bold();
+					.font-awesome();
+
+					content: '\f111';
+
+					font-size: 0.5px * @fontSizeBase;
+					display: block;
+					position: absolute;
+					right: -3.5px;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+					height: 0.5px * @fontSizeBase;
+					width: 0.5px * @fontSizeBase;
+				}
+			}
+
+			li:first-child {
+				padding-left: 0;
+			}
+		}
+	}
+
+	li {
+		padding: 0.4 * @globalSpacing 0.5 * @globalSpacing;
+	}
+
+	li:not(:last-child) {
+		margin-bottom: @globalSpacing * 0.5;
+	}
+}

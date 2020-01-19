@@ -1,0 +1,22 @@
+.preview-item {
+	&__image {
+		border-radius: @globalBorderRadius;
+		overflow: hidden;
+	}
+
+	&__content {
+		padding: @globalSpacing 0;
+	}
+
+	&__title {
+		.capitalize();
+		.size_xl();
+	}
+
+	&__description {
+		.size_xs();
+		color: var(--theme3);
+
+		margin-top: @globalSpacing * 0.5;
+	}
+}

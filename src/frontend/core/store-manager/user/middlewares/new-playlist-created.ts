@@ -1,7 +1,9 @@
 import { Middleware } from 'redux'
-import { playlistsActionTypes } from 'redux/playlists/actions-types'
-import { NEW_PLAYLIST_CREATED } from '../../playlists/actions-types'
-import { getUserPlaylists } from '../actions'
+import {
+	NEW_PLAYLIST_CREATED,
+	playlistsActionTypes
+} from '../../playlists/actions-types'
+import { getCurrentUserPlaylists } from '../actions'
 
 export const newPlaylistCreated: Middleware = ({ dispatch }) => next => (
 	action: playlistsActionTypes
@@ -9,6 +11,6 @@ export const newPlaylistCreated: Middleware = ({ dispatch }) => next => (
 	next(action)
 
 	if (action.type === NEW_PLAYLIST_CREATED) {
-		dispatch(getUserPlaylists())
+		dispatch(getCurrentUserPlaylists())
 	}
 }

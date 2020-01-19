@@ -17,7 +17,7 @@ export const useGuardianLazyLoading = (
 			},
 			{
 				rootMargin: '0px',
-				threshold: 1.0
+				threshold: 0.1
 			}
 		)
 

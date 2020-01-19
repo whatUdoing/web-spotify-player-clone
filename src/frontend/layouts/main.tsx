@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container, Row, Col } from '../components/flexobx-grid/index'
 
 type Props = {
 	header?: React.ReactNode | string
@@ -10,38 +9,19 @@ type Props = {
 }
 const MainLayout = ({ header, main, aside, footer }: Props) => {
 	return (
-		<Container>
-			{header && (
-				<Row>
-					<Col>
-						<header>{header}</header>}
-					</Col>
-				</Row>
+		<div className="ui">
+			{header && <header className="ui__header">{header}</header>}
+
+			{aside && <aside className="ui__aside">{aside}</aside>}
+
+			{main && (
+				<main className="ui__main">
+					<div className="ui__box">{main}</div>
+				</main>
 			)}
 
-			{(aside || main) && (
-				<Row>
-					{aside && (
-						<Col xs="4">
-							<aside>{aside}</aside>
-						</Col>
-					)}
-					{main && (
-						<Col xs="8">
-							<main>{main}</main>
-						</Col>
-					)}
-				</Row>
-			)}
-
-			{footer && (
-				<Row>
-					<Col>
-						<footer>{footer}</footer>
-					</Col>
-				</Row>
-			)}
-		</Container>
+			{footer && <footer className="ui__footer">{footer}</footer>}
+		</div>
 	)
 }
 

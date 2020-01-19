@@ -1,7 +1,7 @@
 import React from 'react'
 
-const TopBar = () => {
-	return <span>TopBar</span>
+const Player = () => {
+	return <span>Player</span>
 }
 
-export default TopBar
+export default Player

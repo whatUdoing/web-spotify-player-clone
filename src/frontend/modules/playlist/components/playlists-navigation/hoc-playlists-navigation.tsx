@@ -3,25 +3,25 @@ import { connect } from 'react-redux'
 import PlaylistsNavigation from './playlists-navigation'
 import { PagingPlaylistObject } from 'redux-store'
 import { Dispatch } from 'redux'
-import { getUserPlaylists } from '../../../../core/store-manager/user/actions'
+import { getPlaylists } from '../../../../core/store-manager/collection/actions'
 import { PlaylistObjectSimplified } from 'services'
 
 const mapState = (state: RootStateShape) => {
+	const playlists = state.collection?.playlists
 	const playlistsObject: PagingPlaylistObject<
 		PlaylistObjectSimplified
-	> | null = state.user?.currentUserPlaylists
-	console.log(playlistsObject)
-	// todo change loading, add lazy loading
+	> | null = playlists?.paging
+
 	return {
-		playlists: playlistsObject?.items ?? [],
-		allLoaded: playlistsObject?.next ? !playlistsObject.next : false
+		playlists: playlists?.items ?? [],
+		allLoaded: playlistsObject?.next === null
 	}
 }
 
 const mapDispatch = (dispatch: Dispatch) => {
 	return {
 		loadMoreUserPlaylist() {
-			dispatch(getUserPlaylists())
+			dispatch(getPlaylists())
 		}
 	}
 }

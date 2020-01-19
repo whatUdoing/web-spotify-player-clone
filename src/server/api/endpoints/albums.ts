@@ -12,7 +12,7 @@ const baseApiUrl = `${baseApi}/${apiVersion}`
 
 export const PlaylistsUrl = {
 	getAlbum: `/albums/:albumId`,
-	getAlbumTracks: `/album/:albumId/tracks`
+	getAlbumTracks: `/albums/:albumId/tracks`
 }
 
 export const initAlbumsEndpoints = () => {

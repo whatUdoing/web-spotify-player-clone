@@ -5,7 +5,7 @@ import LoaderGuardian from '../../../../components/loader-guardian/loader-guardi
 import { useGuardianLazyLoading } from '../../../../lib/hooks/use-guardian-lazy-loading'
 
 type Props = {
-	tracks: Array<TrackObjectFull | TrackObjectSimplified>
+	tracks: Array<TrackObjectSimplified>
 	loadAction: Function
 	allLoaded: boolean
 }

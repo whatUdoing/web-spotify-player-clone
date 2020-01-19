@@ -7,13 +7,13 @@ type Props = {
 	path: string
 	exact: boolean
 }
-const PrivateRoute = ({ component: Component, path, exact }: Props) => {
+const PrivateRoute = ({ component, path, exact }: Props) => {
 	const [isLoading, auth, error] = useAuth()
 
 	if (isLoading) return null
 
 	return auth?.isAuth ? (
-		<Route exact={exact} path={path} component={Component} />
+		<Route exact={exact} path={path} component={component} />
 	) : (
 		<Redirect to="/" />
 	)

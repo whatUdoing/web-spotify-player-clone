@@ -36,13 +36,13 @@ export const setUserProfile = (user: User) => {
 	}
 }
 
-export const getUserPlaylists = () => {
+export const getCurrentUserPlaylists = () => {
 	return {
 		type: GET_USER_PLAYLISTS
 	}
 }
 
-export const setCurrUserPlaylists = (
+export const setUserPlaylists = (
 	playlistsPaging: PagingPlaylistObject<PlaylistObjectSimplified>
 ) => {
 	return {

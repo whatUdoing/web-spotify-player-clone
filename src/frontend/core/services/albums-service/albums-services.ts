@@ -43,12 +43,12 @@ export default class AlbumsService implements IAlbumsService {
 		const queryParams = {
 			offset: tracks.offset + tracks.limit
 		}
-		const playlistsApiClient: IAlbumsApiClient = <IAlbumsApiClient>(
+		const albumsApiClient: IAlbumsApiClient = <IAlbumsApiClient>(
 			Container.get('albums-api-client')
 		)
 
 		try {
-			const response = await playlistsApiClient.getTracks(
+			const response = await albumsApiClient.getTracks(
 				album.id,
 				queryParams,
 				cancelToken

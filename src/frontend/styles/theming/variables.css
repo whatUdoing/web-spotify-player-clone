@@ -1,10 +1,16 @@
 :root {
 	--theme1: #000000;
 	--theme2: #ffffff;
-	--theme3: #c6ceff;
+	--theme3: #a9abaf;
 	--theme4: #2039cc;
 	--theme5: #192da1;
-	--theme6: #111e6c;
+	--theme6: #042440;
 	--theme7: #0c154a;
 	--theme8: #080e33;
+	--theme9: #f25ca2;
+	--theme10: #0b9ed9;
+	--theme11: #042440;
+	--theme12: rgba(242, 92, 162, 0.8);
+	--theme13: #8795af;
+	--theme14: #8795af;
 }

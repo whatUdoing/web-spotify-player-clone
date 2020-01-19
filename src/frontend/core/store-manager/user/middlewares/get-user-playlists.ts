@@ -2,10 +2,10 @@ import { Middleware } from 'redux'
 import { userActionTypes, GET_USER_PLAYLISTS } from '../actions-types'
 import { Container } from '../../../../lib/classes/dependency-injector/dependency-injector'
 import { IUserService } from 'services'
-import { setCurrUserPlaylists } from '../actions'
+import { setUserPlaylists } from '../actions'
 import { RootStateShape } from 'redux-store'
 
-export const getUserPlaylists: Middleware = ({
+export const getCurrentUserPlaylists: Middleware = ({
 	dispatch,
 	getState
 }) => next => async (action: userActionTypes) => {
@@ -28,7 +28,7 @@ export const getUserPlaylists: Middleware = ({
 			'user-service'
 		) as IUserService
 
-		const [playlists, error] = await userService.getUserPlaylists(
+		const [playlists, error] = await userService.getCurrentUserPlaylists(
 			queryParams
 		)
 
@@ -40,7 +40,7 @@ export const getUserPlaylists: Middleware = ({
 		}
 
 		if (playlists) {
-			dispatch(setCurrUserPlaylists(playlists))
+			dispatch(setUserPlaylists(playlists))
 		}
 	}
 }

@@ -3,14 +3,17 @@ import { RouteObject } from 'redux-store'
 import NavigationList from '../navigation-list/navigation-list'
 
 type Props = {
-	navigationItems: Array<RouteObject>
+	routes: Array<RouteObject>
 }
 
-const GlobalNavigation = ({ navigationItems }: Props) => {
-	const globalNavigationItems = navigationItems.map(route => ({
-		id: route.id,
+const GlobalNavigation = ({ routes }: Props) => {
+	console.log(routes)
+	const globalNavigationItems = routes.map(route => ({
+		id: route.key,
 		to: route.path,
-		name: route.name
+		name: route.name,
+		exact: route.exact,
+		icon: route.icon
 	}))
 
 	return <NavigationList items={globalNavigationItems} />

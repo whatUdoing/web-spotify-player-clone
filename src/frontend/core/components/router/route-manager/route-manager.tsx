@@ -1,7 +1,8 @@
 import React, { Suspense, ReactNode, ElementType } from 'react'
-import { RouteObject } from 'redux-store'
+import { RouteObject } from 'router'
 import { Switch, Route } from 'react-router-dom'
 import PrivateRoute from '../private-route/private-route'
+import RouteWithSubroutes from '../route-with-subroutes/route-with-subroutes'
 
 type Props = {
 	routes: Array<RouteObject>
@@ -9,22 +10,20 @@ type Props = {
 const RouteManager = ({ routes }: Props) => {
 	return (
 		<Suspense fallback="loading...">
-			<Switch>
-				{routes.map((route: RouteObject) => {
-					const Component: ElementType = route.withAuth
-						? PrivateRoute
-						: Route
-
+			{routes.map((route: RouteObject) => {
+				if (route.withAuth) {
 					return (
-						<Component
-							key={route.id}
-							exact={route.exact}
+						<PrivateRoute
+							key={route.key}
+							exact={!!route.exact}
 							path={route.path}
 							component={route.component}
 						/>
 					)
-				})}
-			</Switch>
+				}
+
+				return <RouteWithSubroutes key={route.key} {...route} />
+			})}
 		</Suspense>
 	)
 }

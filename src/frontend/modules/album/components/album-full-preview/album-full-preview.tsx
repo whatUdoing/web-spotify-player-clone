@@ -1,72 +1,61 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
+import { Container, Row, Col } from '../../../../components/flexobx-grid'
+import Tracks from '../../../track/components/tracks/tracks'
+import CoverPreview from '../media-item/media-item'
 import {
+	PlaylistObjectFull,
 	TrackObjectFull,
 	AlbumObjectFull,
 	TrackObjectSimplified
 } from 'services'
-import { CoverObject } from 'components'
 import { getImage } from '../../../../lib/helpers/images/images'
-import { Container, Row, Col } from '../../../../components/flexobx-grid'
-import CoverPreview from '../cover-preview/cover-preview'
-import Tracks from '../../../track/components/tracks/tracks'
-import { PagingTrackObject } from 'redux-store'
+import { CoverObject } from 'components'
+import { AlbumContext } from '../../store/index'
 
-type Props = {
-	album: AlbumObjectFull
-	getAlbumTracks: (albumId: string) => void
-}
+const getCoverImage = (playlist: AlbumObjectFull): CoverObject =>
+	({
+		id: playlist.id,
+		image: {
+			src: getImage(playlist.images, 1)?.url,
+			title: `Playlist ${playlist.name} cover`
+		},
+		title: playlist.name,
+		author: 'playlist',
+		description: 'sssss'
+	} as CoverObject)
 
-const defaultTracks: Array<TrackObjectSimplified> = []
-
-const AlbumFullPreview = ({ album, getAlbumTracks }: Props) => {
-	const [tracks, setTracks] = useState<Array<TrackObjectSimplified>>(
-		defaultTracks
-	)
+const AlbumFullView = () => {
+	const context = useContext(AlbumContext)
 	const [coverItem, setCoverItem] = useState<CoverObject>()
-	const handleLoadMoreTracks = () => {
-		console.log(album)
-		console.log(allLoaded)
-		if (album) {
-			console.log('load more tracks')
-			getAlbumTracks(album.id)
-		}
-	}
-
-	const allLoaded =
-		(album?.tracks as PagingTrackObject<TrackObjectSimplified>)
-			?.allLoaded ?? false
+	const [tracks, setTracks] = useState<Array<TrackObjectSimplified>>([])
 
 	useEffect(() => {
-		if (album) {
-			setCoverItem({
-				id: album.id,
-				image: {
-					src: getImage(album.images, 1)?.url,
-					title: `Playlist ${album.name} cover`
-				},
-				title: album.name,
-				author: album.artists.join(', '),
-				description: album.name
-			} as CoverObject)
-
-			setTracks(album.tracks.items.filter(track => track ?? false))
+		// console.log('context.album', context.album)
+		if (context.album) {
+			setCoverItem(getCoverImage(context.album))
+			setTracks(context.album.tracks.items.filter(item => item))
 		}
-	}, [album])
-	return (
-		<Container>
-			<Row>
-				<Col>{coverItem && <CoverPreview item={coverItem} />}</Col>
+	}, [context.album])
 
-				<Col>
-					<Tracks
-						tracks={tracks}
-						loadAction={handleLoadMoreTracks}
-						allLoaded={allLoaded}
-					/>
-				</Col>
-			</Row>
-		</Container>
+	return (
+		<div className="row">
+			<div className="col-xs-12 col-sm-4">
+				{coverItem && <CoverPreview item={coverItem} />}
+			</div>
+
+			<div className="col-xs col-sm-8">
+				{tracks && (
+					<div className="ui__box_s">
+						<Tracks
+							tracks={tracks}
+							loadAction={context.loadTracks}
+							allLoaded={context.tracksLoaded}
+						/>
+					</div>
+				)}
+			</div>
+		</div>
 	)
 }
 
-export default AlbumFullPreview
+export default AlbumFullView

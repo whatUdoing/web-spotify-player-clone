@@ -1,0 +1,21 @@
+.custom-scrollbar
+	(@bgColor: @scrollBarBgColor, @width: @scrollBarWidth, @radius: @scrollBarRadius, @thumbColor: @scrollBarThumbColor) {
+	&::-webkit-scrollbar {
+		width: @width;
+
+		border-radius: @radius;
+	}
+
+	&::-webkit-scrollbar-track {
+		border-radius: @radius;
+		background-color: @bgColor;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		width: 8px;
+		border: 3px solid @bgColor;
+
+		border-radius: @radius;
+		background-color: @thumbColor;
+	}
+}

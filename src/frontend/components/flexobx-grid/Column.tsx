@@ -42,7 +42,7 @@ export const Col = ({ children, ...rest }: Props) => {
 	return (
 		<div
 			css={css`
-				flex-basis: 100%;
+				flex-basis: auto;
 				${mediaQueries}
 			`}
 		>

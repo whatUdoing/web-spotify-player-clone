@@ -46,8 +46,6 @@ export default class PlaylistsApiClient implements IPlaylistsApiClient {
 				cancelToken: cancelToken ? cancelToken.token : undefined
 			})
 			.then(resp => {
-				console.log('get tracks')
-				console.log(resp)
 				return resp
 			})
 	}

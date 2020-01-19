@@ -25,7 +25,8 @@ const Home = () => {
 
 	return (
 		<div>
-			<h1>Home Page</h1>
+			<h1>Home</h1>
+
 			{items.map(pagingObject => {
 				return (
 					<PreviewSection
@@ -37,30 +38,6 @@ const Home = () => {
 					</PreviewSection>
 				)
 			})}
-
-			{/* TODO: slider, later to implement */}
-			{/* {items.map((pagingObjectw: MyDashboardPagingObject) => {
-				return (
-					<Slider key={pagingObject.href} title={pagingObject.title}>
-						{pagingObject.items.map((item: PreviewItemObject) => {
-							return (
-								<PreviewItem
-									key={item.id}
-									item={{
-										name: item.name,
-										description: item.description,
-										image: {
-											//item.images.length > 2 ? item.images[2] : ''
-											url:
-												'https://omarrr.com/wp-content/uploads/2012/03/github_angry_unicorn_300.png'
-										}
-									}}
-								/>
-							)
-						})}
-					</Slider>
-				)
-			})} */}
 		</div>
 	)
 }

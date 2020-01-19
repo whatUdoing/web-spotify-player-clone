@@ -28,7 +28,7 @@ interface ISetUserLoading {
 	}
 }
 
-interface IGetUserPlaylists {
+interface IgetCurrentUserPlaylists {
 	type: typeof GET_USER_PLAYLISTS
 }
 
@@ -43,5 +43,5 @@ export type userActionTypes =
 	| ISetUserProfile
 	| ISetUserAuth
 	| ISetUserLoading
-	| IGetUserPlaylists
+	| IgetCurrentUserPlaylists
 	| IAddNewPlaylist

@@ -5,14 +5,15 @@ import MainLayout from '../../../layouts/main'
 import Sidebar from '../../../components/sidebar/sidebar'
 import Player from '../../../modules/music-player/components/player/player'
 import TopBar from '../../../components/top-bar/top-bar'
-import RouteManager from '../router/route-manager/hoc-route-manager'
+import RouteManager from '../router/route-manager/route-manager'
 import ModalPortal from '../../../components/modal/modal-portal'
+import Routes from '../../../routes/index'
 
 const MainView = () => {
 	return (
 		<>
-			<TopBar />
-			<RouteManager />
+			{/* <TopBar /> */}
+			<RouteManager routes={Routes} />
 		</>
 	)
 }
@@ -26,9 +27,10 @@ const AppShell = () => {
 			`}
 		>
 			<MainLayout
+				header={<TopBar />}
 				aside={<Sidebar />}
-				footer={<Player />}
 				main={<MainView />}
+				footer={<Player />}
 			/>
 
 			<ModalPortal />

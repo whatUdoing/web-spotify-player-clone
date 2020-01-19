@@ -6,61 +6,21 @@ declare module 'redux-store' {
 		User,
 		PlaylistObjectFull,
 		TrackObjectFull,
-		AlbumObjectFull
+		AlbumObjectFull,
+		ArtistObjectFull
 	} from 'services'
 
 	export type RootStateShape = {
-		router: RouterStateShape
-		navigation: NavigationStateShape
 		user: UserStateShape
 		playlists: PlaylistsStateShape
 		tracks: TracksStateShape
 		albums: AlbumsStateShape
-	}
-
-	/**
-	 * Navigation
-	 */
-	export type NavigationItem = {
-		id: number
-		to: string
-		name: string
-	}
-
-	export type NavigationStateShape = {
-		main: Array<number>
-		playlist: Array<NavigationItem>
-	}
-
-	/**
-	 * Router
-	 */
-	export type RouteObject = {
-		id: number
-		path: string
-		name: string
-		component: LazyExoticComponent<() => JSX.Element> | ReactNode
-		withAuth?: boolean
-		exact?: boolean
-	}
-
-	export type RouterCurrRouteType = number | null
-	export type RouterRoutesType = Record<string, RouteObject>
-	export type PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
-	export type PagingTrackObject<T> = SpotifyApi.PagingObject<T> & {
-		allLoaded?: boolean
-	}
-
-	export type RouterStateShape = {
-		routes: RouterRoutesType
-		currentRoute: RouterCurrRouteType
-		mainRoutes: Array<string>
+		collection: CollectionStateShape
 	}
 
 	/**
 	 * Playlists
 	 */
-
 	export type PlaylistsStateShape = {
 		playlists: Record<string, PlaylistObjectFull>
 	}
@@ -68,7 +28,6 @@ declare module 'redux-store' {
 	/**
 	 * User
 	 */
-
 	export type PagingPlaylistObject<T> = SpotifyApi.PagingObject<T> & {
 		allLoaded: boolean
 	}
@@ -77,9 +36,9 @@ declare module 'redux-store' {
 		auth: AuthObject
 		profile: User | null
 		isLoading: boolean
-		currentUserPlaylists: PagingPlaylistObject<
-			PlaylistObjectSimplified
-		> | null
+		// currentUserPlaylists: PagingPlaylistObject<
+		// 	PlaylistObjectSimplified
+		// > | null
 	}
 
 	/**
@@ -92,8 +51,20 @@ declare module 'redux-store' {
 	/**
 	 * Albums
 	 */
-
 	export type AlbumsStateShape = {
 		albums: Record<string, AlbumObjectFull>
+	}
+
+	/**
+	 * Collection
+	 */
+	export type CollectionStateShape = {
+		playlists: {
+			paging: PagingPlaylistObject<PlaylistObjectSimplified> | null
+			items: Array<PlaylistObjectSimplified>
+		}
+		tracks: Record<string, TrackObjectFull> | null
+		albums: Record<string, AlbumObjectFull> | null
+		artists: Record<string, ArtistObjectFull> | null
 	}
 }

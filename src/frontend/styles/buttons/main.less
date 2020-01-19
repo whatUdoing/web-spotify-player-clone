@@ -1,0 +1,20 @@
+.btn {
+	.size_xs();
+
+	text-decoration: none;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	padding: 0.6 * @globalSpacing @globalSpacing * 1.5;
+	border-radius: @btnBorderRadius;
+	text-transform: uppercase;
+
+	&_bg {
+		color: var(--theme2);
+		background: var(--theme9);
+
+		&:hover {
+			background: var(--theme12);
+		}
+	}
+}

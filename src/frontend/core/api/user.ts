@@ -35,7 +35,10 @@ export default class UserApiClient implements IUserApiClient {
 		})
 	}
 
-	getUserPlaylists(queryParams?: object, cancelToken?: CancelTokenSource) {
+	getCurrentUserPlaylists(
+		queryParams?: object,
+		cancelToken?: CancelTokenSource
+	) {
 		return this.httpClient.get(`${apiConfig.apiPrefix}/me/playlists`, {
 			params: queryParams ?? null,
 			cancelToken: cancelToken ? cancelToken.token : undefined

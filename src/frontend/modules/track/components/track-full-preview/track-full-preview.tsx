@@ -7,7 +7,6 @@ type Props = {
 	track: TrackObjectFull
 }
 const TrackFullPreview = ({ track }: Props) => {
-	// console.log('track full preview', track)
 	return track?.album?.id ? (
 		<Redirect
 			to={getResourceUri('album', {

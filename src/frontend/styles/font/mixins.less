@@ -1,0 +1,9 @@
+.font-size (@fontSize, @unit: 'rem') {
+	@rem: (@fontSize / @fontSizeBase);
+	font-size: @fontSize * 1px;
+	font-size: ~'@{rem}@{unit}';
+}
+
+.font-awesome {
+	font-family: 'Font Awesome 5 Free';
+}

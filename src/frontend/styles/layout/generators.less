@@ -1,0 +1,41 @@
+.generate-spacing(@n, @s, @i: 0) when (@i =< @n) {
+	.ml-@{i} {
+		margin-left: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.mt-@{i} {
+		margin-top: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.mr-@{i} {
+		margin-right: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.mb-@{i} {
+		margin-bottom: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.pl-@{i} {
+		padding-left: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.pt-@{i} {
+		padding-top: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.pr-@{i} {
+		padding-right: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.pb-@{i} {
+		padding-bottom: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.p-all-@{i} {
+		padding: ((@globalSpacing * 0.5) / @s) * @i;
+	}
+
+	.generate-spacing(@n, @s, (@i + 1));
+}
+
+.generate-spacing(10, 1);

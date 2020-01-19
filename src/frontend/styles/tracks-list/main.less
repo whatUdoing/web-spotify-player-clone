@@ -1,0 +1,25 @@
+.tracks-list {
+	&__item {
+		padding: @globalSpacing * 0.5 @globalSpacing * 0.5 @globalSpacing * 0.2
+			@globalSpacing * 2;
+		position: relative;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--theme6);
+		}
+
+		&::before {
+			.weight_bold();
+			.font-awesome();
+			.size_xxs();
+			.color_light-2();
+
+			position: absolute;
+			left: 0.5 * @globalSpacing;
+
+			content: '\f001';
+			display: block;
+		}
+	}
+}

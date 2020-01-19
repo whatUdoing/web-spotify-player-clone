@@ -93,7 +93,7 @@ export default class UserService implements IUserService {
 		return [null, null]
 	}
 
-	async getUserPlaylists(
+	async getCurrentUserPlaylists(
 		queryParams?: object,
 		cancelToken?: CancelTokenSource
 	): ServiceResponse<PagingPlaylistObject<PlaylistObjectSimplified>> {
@@ -102,7 +102,7 @@ export default class UserService implements IUserService {
 		)
 
 		try {
-			const response = await userApiClient.getUserPlaylists(
+			const response = await userApiClient.getCurrentUserPlaylists(
 				queryParams,
 				cancelToken
 			)

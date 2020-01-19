@@ -14,17 +14,8 @@ const PreviewItem = ({ item }: Props) => {
 	const trim = trimString(50)
 
 	return (
-		<div
-			css={css`
-				padding: calc(var(--global-spacing) * 0.5);
-			`}
-		>
-			<div
-				css={css`
-					border-radius: var(--global-border-radius);
-					overflow: hidden;
-				`}
-			>
+		<div className="preview-item">
+			<div className="cover">
 				{item.image ? (
 					<LazyImage src={item.image.url} />
 				) : (
@@ -32,16 +23,18 @@ const PreviewItem = ({ item }: Props) => {
 				)}
 			</div>
 
-			<div>
+			<div className="preview-item__content">
 				{item.name && (
-					<div>
-						<Link className="link" to={item.path}>
-							{trim(item.name)}
-						</Link>
-					</div>
+					<Link className="link preview-item__title" to={item.path}>
+						{trim(item.name)}
+					</Link>
 				)}
 
-				{item.description && <p>{trim(item.description)}</p>}
+				{item.description && (
+					<p className="preview-item__description">
+						{trim(item.description)}
+					</p>
+				)}
 			</div>
 		</div>
 	)

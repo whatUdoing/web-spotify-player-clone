@@ -1,69 +1,58 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 import { Container, Row, Col } from '../../../../components/flexobx-grid'
 import Tracks from '../../../track/components/tracks/tracks'
-import CoverPreview from '../../../album/components/cover-preview/cover-preview'
+import CoverPreview from '../../../album/components/media-item/media-item'
 import { PlaylistObjectFull, TrackObjectFull } from 'services'
-import { PagingTrackObject, PlaylistTrackObject } from 'redux-store'
 import { getImage } from '../../../../lib/helpers/images/images'
 import { CoverObject } from 'components'
+import { PlaylistContext } from '../../store/index'
 
-type Props = {
-	playlist: PlaylistObjectFull
-	loadMoreTracks(playlistId: string): void
-}
+const getCoverImage = (playlist: PlaylistObjectFull): CoverObject =>
+	({
+		id: playlist.id,
+		image: {
+			src: getImage(playlist.images, 1)?.url,
+			title: `Playlist ${playlist.name} cover`
+		},
+		title: playlist.name,
+		author: playlist.owner.display_name,
+		description: playlist.description
+	} as CoverObject)
 
-const defaultTracks: Array<TrackObjectFull> = []
-
-const PlaylistFullView = ({ playlist, loadMoreTracks }: Props) => {
+const PlaylistFullView = () => {
+	const context = useContext(PlaylistContext)
 	const [coverItem, setCoverItem] = useState<CoverObject>()
-	const [tracks, setTracks] = useState<Array<TrackObjectFull>>(defaultTracks)
-	const handleLoadMoreTracks = () => {
-		if (playlist) {
-			loadMoreTracks(playlist.id)
-		}
-	}
-
-	const allLoaded =
-		(playlist?.tracks as PagingTrackObject<PlaylistTrackObject>)
-			?.allLoaded ?? false
+	const [tracks, setTracks] = useState<Array<TrackObjectFull>>([])
 
 	useEffect(() => {
-		if (playlist) {
-			setCoverItem({
-				id: playlist.id,
-				image: {
-					src: getImage(playlist.images, 1)?.url,
-					title: `Playlist ${playlist.name} cover`
-				},
-				title: playlist.name,
-				author: playlist.owner.display_name,
-				description: playlist.description
-			} as CoverObject)
-
+		if (context.playlist) {
+			setCoverItem(getCoverImage(context.playlist))
 			setTracks(
-				playlist.tracks.items
-					.filter(item => item.track)
+				context.playlist.tracks.items
+					.filter(item => item)
 					.map(item => item.track)
 			)
 		}
-	}, [playlist])
-
-	if (!playlist) return null
+	}, [context.playlist])
 
 	return (
-		<Container>
-			<Row>
-				<Col>{coverItem && <CoverPreview item={coverItem} />}</Col>
+		<div className="row">
+			<div className="col-xs-12 col-sm-4">
+				<div className="pr-1">
+					{coverItem && <CoverPreview item={coverItem} />}
+				</div>
+			</div>
 
-				<Col>
+			<div className="col-xs col-sm-8">
+				{tracks && (
 					<Tracks
 						tracks={tracks}
-						loadAction={handleLoadMoreTracks}
-						allLoaded={allLoaded}
+						loadAction={context.loadTracks}
+						allLoaded={context.tracksLoaded}
 					/>
-				</Col>
-			</Row>
-		</Container>
+				)}
+			</div>
+		</div>
 	)
 }
 

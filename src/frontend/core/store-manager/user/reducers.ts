@@ -14,9 +14,9 @@ const initialState: UserStateShape = {
 	},
 
 	profile: null,
-	isLoading: false,
+	isLoading: false
 
-	currentUserPlaylists: null
+	// currentUserPlaylists: null
 }
 
 // TODO split reducers to seprate files
@@ -34,26 +34,26 @@ const UserReducer = (
 	}
 }
 
-const CurrentUserPlaylistsReducer = (
-	currentUserPlaylists = initialState.currentUserPlaylists,
-	action: userActionTypes
-) => {
-	switch (action.type) {
-		case SET_CURR_USER_PLAYLISTS:
-			let newPlaylists = action.payload.playlistsPaging
-			if (currentUserPlaylists) {
-				newPlaylists.items = [
-					...currentUserPlaylists.items,
-					...newPlaylists.items
-				]
-			}
+// const CurrentUserPlaylistsReducer = (
+// 	currentUserPlaylists = initialState.currentUserPlaylists,
+// 	action: userActionTypes
+// ) => {
+// 	switch (action.type) {
+// 		case SET_CURR_USER_PLAYLISTS:
+// 			let newPlaylists = action.payload.playlistsPaging
+// 			if (currentUserPlaylists) {
+// 				newPlaylists.items = [
+// 					...currentUserPlaylists.items,
+// 					...newPlaylists.items
+// 				]
+// 			}
 
-			return newPlaylists
+// 			return newPlaylists
 
-		default:
-			return currentUserPlaylists
-	}
-}
+// 		default:
+// 			return currentUserPlaylists
+// 	}
+// }
 
 const AuthReducer = (auth = initialState.auth, action: userActionTypes) => {
 	// const EventBus = <IObserver>Container.get('event-bus')
@@ -96,6 +96,6 @@ const LoadingReducer = (
 export default combineReducers({
 	auth: AuthReducer,
 	profile: UserReducer,
-	isLoading: LoadingReducer,
-	currentUserPlaylists: CurrentUserPlaylistsReducer
+	isLoading: LoadingReducer
+	// currentUserPlaylists: CurrentUserPlaylistsReducer
 })

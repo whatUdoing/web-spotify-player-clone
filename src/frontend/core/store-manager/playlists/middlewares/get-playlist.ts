@@ -10,11 +10,9 @@ export const getPlaylist: Middleware = ({ dispatch }) => next => async (
 	next(action)
 
 	if (action.type === GET_PLAYLIST) {
-		const PlaylistsService = Container.get(
-			'playlists-service'
-		) as IPlaylistsService
+		const UserService = Container.get('user-service') as IPlaylistsService
 
-		const [playlist, error] = await PlaylistsService.getPlaylist(
+		const [playlist, error] = await UserService.getPlaylist(
 			action.payload.playlistId
 		)
 

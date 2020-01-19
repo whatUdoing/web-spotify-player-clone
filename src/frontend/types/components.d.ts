@@ -41,4 +41,19 @@ declare module 'components' {
 		description: string
 		title: string
 	}
+
+	/**
+	 * Navigation
+	 */
+	export type NavigationItem = {
+		id: number
+		to: string
+		name: string
+		exact: boolean
+	}
+
+	export type NavigationStateShape = {
+		main: Array<number>
+		playlist: Array<NavigationItem>
+	}
 }

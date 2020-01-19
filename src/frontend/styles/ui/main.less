@@ -1,0 +1,48 @@
+.ui {
+	display: grid;
+
+	grid-template-columns: 300px 1fr;
+	grid-template-rows:
+		@uiHeaderHeight calc(100vh - (@uiFooterHeight + @uiHeaderHeight))
+		@uiFooterHeight;
+	grid-template-areas:
+		'aside header '
+		'aside main '
+		'footer footer ';
+
+	&__aside {
+		.custom-scrollbar();
+
+		overflow: auto;
+		grid-area: aside;
+	}
+
+	&__main {
+		.custom-scrollbar();
+
+		grid-area: main;
+		overflow-y: auto;
+	}
+
+	&__box {
+		padding: @globalSpacing * 2;
+
+		&_s {
+			padding: @globalSpacing;
+		}
+	}
+
+	&__footer {
+		border: 1px solid white;
+		grid-area: footer;
+	}
+
+	&__header {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		grid-area: header;
+
+		background-color: var(--theme8);
+	}
+}
