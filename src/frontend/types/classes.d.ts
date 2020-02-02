@@ -23,10 +23,11 @@ declare module 'classes' {
 	 * Dependency Injector
 	 */
 
-	export interface IDependencyInjector {
-		get: (dependency: string | FunctionConstructor) => object | void
-		set: (name: string, dependency: object) => void
+	export interface IDependencyInjector<T> {
+		get: (dependency: string | FunctionConstructor) => T | void
+		set: (name: string, dependency: T) => void
 		has: (name: string) => boolean
+		remove: (name: string) => boolean | Error
 	}
 
 	/**

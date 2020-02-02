@@ -8,6 +8,7 @@
 	padding: 0.6 * @globalSpacing @globalSpacing * 1.5;
 	border-radius: @btnBorderRadius;
 	text-transform: uppercase;
+	transition: color 0.3s, background-color 0.3s;
 
 	&_bg {
 		color: var(--theme2);
@@ -16,5 +17,27 @@
 		&:hover {
 			background: var(--theme12);
 		}
+	}
+
+	&_disabled {
+		pointer-events: none;
+		cursor: none;
+	}
+
+	&_light {
+		.color_light-4();
+
+		&:hover {
+			color: var(--theme2);
+		}
+
+		&-inactive {
+			color: var(--theme15);
+		}
+	}
+
+	&_round-icon {
+		border-radius: 50%;
+		padding: 0.6 * @globalSpacing 0.7 * @globalSpacing;
 	}
 }

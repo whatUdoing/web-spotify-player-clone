@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+
+		<style>
+			#box {
+				border: 1px solid red;
+				width: 50px;
+				height: 50px;
+			}
+
+			.hidden {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" class="hidden"></div>
+
+		<script>
+			const numberOfEvents = 1200
+			let start
+			let end
+
+			for (let i = 0; i < numberOfEvents; ++i) {
+				const btn = document.createElement('button')
+				btn.textContent = 'btn'
+				btn.classList.add('btn')
+				document.body.appendChild(btn)
+			}
+
+			document.querySelectorAll('.btn').forEach((el, index) => {
+				el.index = index
+				document.addEventListener('click', evt => {
+					if (evt.target.closest('.body')) {
+					}
+					if (el.index === 1) {
+						start = performance.now()
+					}
+
+					console.log('asd')
+					if (el.index === numberOfEvents - 1) {
+						console.log('my super event click response')
+						end = performance.now()
+						document
+							.getElementById('box')
+							.classList.remove('hidden')
+
+						console.log('lag', end - start)
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

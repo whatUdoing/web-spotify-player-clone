@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import LazyImage from '../../image/lazy-image/lazy-image'
 import { Link } from 'react-router-dom'
 import { css } from '@emotion/core'
@@ -6,24 +6,29 @@ import { PreviewItemObject } from 'components'
 import { trimString } from '../../../lib/helpers/trim-string/trim-string'
 import ImagePlaceholder from '../../image/image-placeholder/image-placeholder'
 
+export const PreviewItemContext = createContext<PreviewItemObject>({
+	id: '',
+	path: '',
+	type: ''
+})
+
 type Props = {
 	item: PreviewItemObject
 }
+const trim = trimString(50)
 
 const PreviewItem = ({ item }: Props) => {
-	const trim = trimString(50)
-
 	return (
 		<div className="preview-item">
-			<div className="cover">
+			{/* <div className="cover">
 				{item.image ? (
 					<LazyImage src={item.image.url} />
 				) : (
 					<ImagePlaceholder />
 				)}
-			</div>
+			</div> */}
 
-			<div className="preview-item__content">
+			{/* <div className="preview-item__content">
 				{item.name && (
 					<Link className="link preview-item__title" to={item.path}>
 						{trim(item.name)}
@@ -35,7 +40,7 @@ const PreviewItem = ({ item }: Props) => {
 						{trim(item.description)}
 					</p>
 				)}
-			</div>
+			</div> */}
 		</div>
 	)
 }

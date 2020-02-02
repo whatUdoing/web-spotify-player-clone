@@ -1,0 +1,21 @@
+.input-range {
+	padding: @globalSpacing * 0.4 0;
+	width: 100%;
+	cursor: pointer;
+
+	&__progress {
+		border-radius: 10px;
+		background: var(--theme15);
+
+		&-value {
+			background: var(--theme14);
+			display: block;
+			height: 5px;
+			border-radius: 10px;
+
+			&:hover {
+				background: var(--theme2);
+			}
+		}
+	}
+}

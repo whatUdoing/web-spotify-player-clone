@@ -20,7 +20,7 @@ const MainLayout = ({ header, main, aside, footer }: Props) => {
 				</main>
 			)}
 
-			{footer && <footer className="ui__footer">{footer}</footer>}
+			{footer && <footer className="ui__footer p-all-2">{footer}</footer>}
 		</div>
 	)
 }

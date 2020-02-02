@@ -7,7 +7,8 @@ declare module 'redux-store' {
 		PlaylistObjectFull,
 		TrackObjectFull,
 		AlbumObjectFull,
-		ArtistObjectFull
+		ArtistObjectFull,
+		TrackObjectSimplified
 	} from 'services'
 
 	export type RootStateShape = {
@@ -16,6 +17,7 @@ declare module 'redux-store' {
 		tracks: TracksStateShape
 		albums: AlbumsStateShape
 		collection: CollectionStateShape
+		player: PlayerStateShape
 	}
 
 	/**
@@ -66,5 +68,19 @@ declare module 'redux-store' {
 		tracks: Record<string, TrackObjectFull> | null
 		albums: Record<string, AlbumObjectFull> | null
 		artists: Record<string, ArtistObjectFull> | null
+	}
+
+	/**
+	 * Player
+	 */
+
+	export type PlayerStateShape = {
+		currentTrack: TrackObjectSimplified | TrackObjectFull | null
+
+		isPlaying: boolean
+		currentTrackNumber: number
+
+		tracks: Array<TrackObjectSimplified | TrackObjectFull>
+		queue: Array<TrackObjectSimplified | TrackObjectFull>
 	}
 }

@@ -4,9 +4,10 @@ import { converMsToMin } from '../../../../lib/helpers/numbers/numbers'
 
 type Props = {
 	tracks: Array<TrackObjectFull | TrackObjectSimplified>
+	handleTrackClick: (track: TrackObjectFull | TrackObjectSimplified) => void
 }
 
-const TracksList = ({ tracks }: Props) => {
+const TracksList = ({ tracks, handleTrackClick }: Props) => {
 	return (
 		<>
 			<ul className="tracks-list">
@@ -26,6 +27,15 @@ const TracksList = ({ tracks }: Props) => {
 											{converMsToMin(track.duration_ms)}
 										</span>
 									</div>
+
+									<button
+										onClick={() => {
+											handleTrackClick(track)
+										}}
+										className="btn btn_bg"
+									>
+										Play
+									</button>
 								</div>
 
 								<div className="row">
