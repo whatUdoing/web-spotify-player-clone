@@ -4,10 +4,15 @@ import { setUserAuth } from '../../store-manager/user/actions'
 import { Dispatch } from 'redux'
 import { connect, ConnectedProps } from 'react-redux'
 import useAuth from '../../../lib/hooks/use-auth'
+import { hideSidebar, showSidebar } from '../../store-manager/ui/actions'
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
 	setUserAuth: (auth: AuthObject) => {
 		dispatch(setUserAuth(auth))
+	},
+
+	hideSidebar: () => {
+		dispatch(hideSidebar())
 	}
 })
 
@@ -17,8 +22,16 @@ type Props = {
 	children: ReactNode
 } & ConnectedProps<typeof connector>
 
-const Bootstrap = ({ children, setUserAuth }: Props) => {
+const Bootstrap = ({ children, setUserAuth, hideSidebar }: Props) => {
 	const [isLoading, auth, error] = useAuth()
+
+	useEffect(() => {
+		/**
+		 * This is for mobile purpose only, on desktop navigation is always visible,
+		 * regardless of isSidebarVisible store property
+		 */
+		hideSidebar()
+	}, [])
 
 	useEffect(() => {
 		if (auth) {
