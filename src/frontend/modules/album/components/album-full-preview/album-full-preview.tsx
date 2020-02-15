@@ -39,11 +39,9 @@ const AlbumFullView = () => {
 
 	return (
 		<div className="row">
-			<div className="col-xs-12 col-sm-4">
-				{coverItem && <CoverPreview item={coverItem} />}
-			</div>
+			<div>{coverItem && <CoverPreview item={coverItem} />}</div>
 
-			<div className="col-xs col-sm-8">
+			<div className="col-xs">
 				{tracks && (
 					<div className="ui__box_s">
 						<Tracks

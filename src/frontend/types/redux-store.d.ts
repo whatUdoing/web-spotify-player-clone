@@ -18,6 +18,7 @@ declare module 'redux-store' {
 		albums: AlbumsStateShape
 		collection: CollectionStateShape
 		player: PlayerStateShape
+		ui: UiStateShape
 	}
 
 	/**
@@ -79,8 +80,16 @@ declare module 'redux-store' {
 
 		isPlaying: boolean
 		currentTrackNumber: number
+		currentVolumeLevel: number
 
 		tracks: Array<TrackObjectSimplified | TrackObjectFull>
 		queue: Array<TrackObjectSimplified | TrackObjectFull>
+	}
+
+	/**
+	 * Ui
+	 */
+	export type UiStateShape = {
+		isSidebarOpen: boolean
 	}
 }

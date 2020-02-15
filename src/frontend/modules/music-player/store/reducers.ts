@@ -5,22 +5,27 @@ import {
 	PLAYER_SET_TRACKS,
 	PLAYER_PLAY_NEXT,
 	PLAYER_PLAY_PREV,
-	PLAYER_SET_TRACK
+	PLAYER_SET_TRACK,
+	PLAYER_SET_VOLUME
 } from './actions-types'
 
 import { PlayerStateShape } from 'redux-store'
 
-const initialState = {
+const initialState: PlayerStateShape = {
 	currentTrack: null,
 
 	currentTrackNumber: -1, //index of current playing track
 	isPlaying: false,
+	currentVolumeLevel: 1,
 
 	tracks: [],
 	queue: []
-} as PlayerStateShape
+}
 
-const playerReducers = (state = initialState, action: playerActionsTypes) => {
+const playerReducers = (
+	state = initialState,
+	action: playerActionsTypes
+): PlayerStateShape => {
 	switch (action.type) {
 		case PLAYER_PLAY_TRACK:
 			return {
@@ -65,6 +70,12 @@ const playerReducers = (state = initialState, action: playerActionsTypes) => {
 				...state,
 				currentTrack: prevTrack ?? null,
 				currentTrackNumber: prevTrack ? --state.currentTrackNumber : -1
+			}
+		}
+		case PLAYER_SET_VOLUME: {
+			return {
+				...state,
+				currentVolumeLevel: action.payload.volume
 			}
 		}
 		default:

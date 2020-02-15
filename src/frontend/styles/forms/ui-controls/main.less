@@ -1,0 +1,20 @@
+.ui-controls {
+	&__element {
+		display: block;
+	}
+
+	&__label {
+		display: block;
+		margin-bottom: 0.4 * @globalSpacing;
+
+		&_required {
+			&::after {
+				.size_xl();
+
+				content: '*';
+				display: inline-block;
+				margin-left: @globalSpacing * 0.3;
+			}
+		}
+	}
+}

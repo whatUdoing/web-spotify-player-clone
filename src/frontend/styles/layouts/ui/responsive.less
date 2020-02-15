@@ -1,0 +1,31 @@
+@media (max-width: @breakPointSm) {
+	.ui {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'header '
+			'main '
+			'footer ';
+
+		&__aside {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+
+			border-left: 1px solid var(--theme14);
+
+			overflow-y: auto;
+
+			z-index: 1;
+
+			width: @uiSidebarWidth;
+
+			transform: translateX(@uiSidebarWidth);
+			transition: transform 0.2s ease-out;
+
+			&_open {
+				transform: translateX(0);
+			}
+		}
+	}
+}

@@ -46,7 +46,7 @@ declare module 'components' {
 	 * Navigation
 	 */
 	export type NavigationItem = {
-		id: number
+		id: string
 		to: string
 		name: string
 		exact: boolean

@@ -13,11 +13,10 @@ export const getCurrentUserPlaylists: Middleware = ({
 
 	// add load more
 	if (action.type === GET_PLAYLISTS) {
-		console.log('GET_PLAYLISTS')
 		const state: RootStateShape = getState()
 		const currPlaylists = state.collection.playlists.paging
 		let queryParams = {}
-		console.log('currPlaylists length', currPlaylists?.items.length)
+
 		if (currPlaylists) {
 			queryParams = {
 				...queryParams,

@@ -6,7 +6,8 @@ import {
 	playNextTrack,
 	playPrevTrack,
 	stopTrack,
-	startTrack
+	startTrack,
+	setVolume
 } from '../../store/actions'
 
 const mapState = (state: RootStateShape) => {
@@ -14,6 +15,7 @@ const mapState = (state: RootStateShape) => {
 		currentTrack: state.player.currentTrack,
 		currentTrackNumber: state.player.currentTrackNumber,
 		isPlaying: state.player.isPlaying,
+		currentVolumeLevel: state.player.currentVolumeLevel,
 
 		tracks: state.player.tracks
 	}
@@ -35,6 +37,10 @@ const mapDispatch = (displatch: Dispatch) => {
 
 		resume() {
 			displatch(startTrack())
+		},
+
+		setVolume(volume: number) {
+			displatch(setVolume(volume))
 		}
 	}
 }

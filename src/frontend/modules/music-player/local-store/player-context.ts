@@ -1,5 +1,6 @@
 import React from 'react'
 import { TrackObjectSimplified, TrackObjectFull } from 'services'
+import { setVolume } from '../store/actions'
 
 export type PlayerContextType = {
 	currentTrack: TrackObjectFull | TrackObjectSimplified | null
@@ -15,7 +16,7 @@ export type PlayerContextType = {
 	playPrev: () => void
 	pause: () => void
 	resume: () => void
-	handleVolumeChange: (value: number) => void
+	setVolume: (value: number) => void
 }
 
 const defaultValue = {
@@ -23,6 +24,7 @@ const defaultValue = {
 	isPlaying: false,
 	tracks: [],
 	currentTrackNumber: -1,
+	currentVolumeLevel: 1,
 	hasNext: false,
 	hasPrev: false,
 
@@ -30,7 +32,7 @@ const defaultValue = {
 	playPrev: () => {},
 	pause: () => {},
 	resume: () => {},
-	handleVolumeChange: () => {}
+	setVolume: () => {}
 }
 
 export const PlayerContext = React.createContext<PlayerContextType>(

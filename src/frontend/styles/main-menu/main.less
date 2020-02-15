@@ -6,12 +6,28 @@
 		padding: 0;
 	}
 
+	&__header {
+		display: flex;
+		justify-content: flex-end;
+	}
+
 	&__section-header {
 		font-weight: 700;
 		text-transform: uppercase;
 		color: var(--theme2);
 		padding: @globalSpacing;
 		padding-left: @globalSpacing * 2;
+	}
+
+	&__toggler {
+		.size_xl();
+		.color_light-3();
+
+		display: none;
+		cursor: pointer;
+		border: none;
+		background: transparent;
+		padding: @globalSpacing;
 	}
 
 	&__link,

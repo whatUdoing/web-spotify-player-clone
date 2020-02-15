@@ -11,7 +11,12 @@ const Modal = ({ children, isVisible = false, css = '' }: Props) => {
 	const portal = document.querySelector('.js__modal-portal')
 
 	return portal && isVisible
-		? createPortal(<div css={css}>{children}</div>, portal)
+		? createPortal(
+				<div className="modal" css={css}>
+					{children}
+				</div>,
+				portal
+		  )
 		: null
 }
 

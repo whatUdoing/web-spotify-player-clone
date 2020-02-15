@@ -6,16 +6,10 @@ import {
 import InputRange from '../../../../components/input-range/input-range'
 
 const VolumeController = () => {
-	const { handleVolumeChange } = useContext<PlayerContextType>(PlayerContext)
+	const { setVolume } = useContext<PlayerContextType>(PlayerContext)
 	const [value] = useState(1)
 
-	return (
-		<InputRange
-			initialValue={value}
-			max={2}
-			onChange={handleVolumeChange}
-		/>
-	)
+	return <InputRange initialValue={value} max={2} onChange={setVolume} />
 }
 
 export default VolumeController

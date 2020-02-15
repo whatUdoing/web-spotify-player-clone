@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { trimString } from '../../../lib/helpers/trim-string/trim-string'
 import React, { useContext } from 'react'
 import { PreviewItemObject } from 'components'
-import { PreviewItemContext } from './preview-item'
+import { PreviewItemContext } from './state/context'
 
 const trim = trimString(50)
 

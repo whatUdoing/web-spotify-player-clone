@@ -5,7 +5,8 @@ import {
 	PLAYER_SET_TRACKS,
 	PLAYER_SET_TRACK,
 	PLAYER_PLAY_NEXT,
-	PLAYER_PLAY_PREV
+	PLAYER_PLAY_PREV,
+	PLAYER_SET_VOLUME
 } from './actions-types'
 import { TrackObjectSimplified, TrackObjectFull } from 'services'
 
@@ -58,6 +59,15 @@ export const setTrack = (track: TrackObjectSimplified | TrackObjectFull) => {
 		type: PLAYER_SET_TRACK,
 		payload: {
 			track
+		}
+	}
+}
+
+export const setVolume = (volume: number) => {
+	return {
+		type: PLAYER_SET_VOLUME,
+		payload: {
+			volume
 		}
 	}
 }

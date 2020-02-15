@@ -1,17 +1,23 @@
 import React from 'react'
 import GlobalNavigation from './global-navigation/global-navigation'
-import CreatePlaylistBtn from '../../modules/playlist/components/create-playlist/hoc-create-btn'
 import PlaylistsNavigation from '../../modules/playlist/components/playlists-navigation/hoc-playlists-navigation'
 import { NavigationRoutes } from '../../routes/index'
 
-const Navigation = () => {
+type Props = {
+	isAuth: boolean
+	hideSidebar: () => void
+}
+const Navigation = ({ isAuth, hideSidebar }: Props) => {
 	return (
 		<nav className="main-menu">
 			<div className="main-menu__header">
-				<GlobalNavigation routes={NavigationRoutes} />
+				<button className="main-menu__toggler" onClick={hideSidebar}>
+					<span className="fas fa-times"></span>
+				</button>
 			</div>
+			<GlobalNavigation routes={NavigationRoutes} />
 
-			<PlaylistsNavigation />
+			{isAuth && <PlaylistsNavigation />}
 		</nav>
 	)
 }

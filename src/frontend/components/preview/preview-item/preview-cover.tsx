@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { PreviewItemContext } from './preview-item'
+import { PreviewItemContext } from './state/context'
 import { PreviewItemObject } from 'components'
 import LazyImage from '../../../components/image/lazy-image/lazy-image'
 import ImagePlaceholder from '../../../components/image/image-placeholder/image-placeholder'

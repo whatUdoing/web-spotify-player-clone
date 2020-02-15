@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import TracksList from '../tracks-list/tracks-list'
 import { TrackObjectFull, TrackObjectSimplified } from 'services'
-import LoaderGuardian from '../../../../components/loader-guardian/loader-guardia'
+import LoaderGuardian from '../../../../components/loader-guardian/loader-guardian'
 import { useGuardianLazyLoading } from '../../../../lib/hooks/use-guardian-lazy-loading'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'

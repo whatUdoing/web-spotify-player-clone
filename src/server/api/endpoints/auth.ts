@@ -1,4 +1,4 @@
-import { Router } from 'express'
+import { Router, response } from 'express'
 import { Response as ExpressResponse } from 'express-serve-static-core'
 import querystring from 'querystring'
 import Container from 'typedi'
@@ -58,7 +58,6 @@ export const initAuthEndpoints: ({
 			})
 			.redirect('/')
 	})
-
 	router.get('/callback', async (req, resp) => {
 		if (req.query.code) {
 			const { clientId, clientSecret, redirectUri } = config
@@ -121,12 +120,12 @@ export const initAuthEndpoints: ({
 		)
 
 		if (!tokenObject) {
-			return resp.status(404).json({
+			return resp.status(401).json({
 				auth: {
 					isAuth: false
 				},
 				error: {
-					message: 'Wrong access code'
+					message: 'Unauthorized'
 				}
 			})
 		}

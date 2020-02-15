@@ -27,6 +27,7 @@ const UserReducer = (
 ) => {
 	switch (action.type) {
 		case SET_USER_PROFILE:
+			console.log('SET_USER_PROFILE', action.payload.user)
 			return action.payload.user
 
 		default:

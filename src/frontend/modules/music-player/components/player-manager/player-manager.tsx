@@ -8,11 +8,13 @@ type Props = {
 
 	tracks: Array<TrackObjectSimplified | TrackObjectFull>
 	currentTrackNumber: number
+	currentVolumeLevel: number
 
 	playNext: () => void
 	playPrev: () => void
 	pause: () => void
 	resume: () => void
+	setVolume: (value: number) => void
 
 	children: JSX.Element
 }
@@ -25,7 +27,9 @@ const PlayerManager = ({
 	playNext,
 	playPrev,
 	tracks,
-	currentTrackNumber
+	currentTrackNumber,
+	currentVolumeLevel,
+	setVolume
 }: Props) => {
 	const [track, setTrack] = useState<MediaElementAudioSourceNode>()
 	const [, setAudio] = useState<HTMLAudioElement>()
@@ -49,6 +53,7 @@ const PlayerManager = ({
 
 		const track = context.createMediaElementSource(audio)
 		const gainNode = context.createGain()
+		gainNode.gain.value = currentVolumeLevel
 
 		track.connect(gainNode).connect(context.destination)
 		track.mediaElement.play()
@@ -65,15 +70,15 @@ const PlayerManager = ({
 	}, [currentTrack])
 
 	useEffect(() => {
+		if (gainNode) {
+			gainNode.gain.value = currentVolumeLevel
+		}
+	}, [currentVolumeLevel])
+
+	useEffect(() => {
 		setHasNext(currentTrackNumber < tracks.length - 1)
 		setHasPrev(currentTrackNumber > 0)
 	}, [tracks.length, currentTrackNumber])
-
-	const handleVolumeChange = (value: number) => {
-		if (gainNode) {
-			gainNode.gain.value = value
-		}
-	}
 
 	return (
 		<PlayerContext.Provider
@@ -92,13 +97,13 @@ const PlayerManager = ({
 					resume()
 				},
 
+				setVolume,
+
 				playNext,
 				playPrev,
 
 				hasNext,
-				hasPrev,
-
-				handleVolumeChange
+				hasPrev
 			}}
 		>
 			{children}

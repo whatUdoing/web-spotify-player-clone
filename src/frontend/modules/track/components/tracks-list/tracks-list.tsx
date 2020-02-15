@@ -8,13 +8,21 @@ type Props = {
 }
 
 const TracksList = ({ tracks, handleTrackClick }: Props) => {
+	if (!tracks.length) {
+		return null
+	}
+
 	return (
 		<>
-			<ul className="tracks-list">
+			<ul data-testid="tracks-list" className="tracks-list">
 				{tracks.map(
 					(track: TrackObjectFull | TrackObjectSimplified) => {
 						return (
-							<li className="tracks-list__item" key={track.id}>
+							<li
+								className="tracks-list__item"
+								data-testid={`track-${track.id}`}
+								key={track.id}
+							>
 								<div className="row">
 									<div className="col-xs">
 										<span className="color_light-1">
@@ -22,19 +30,20 @@ const TracksList = ({ tracks, handleTrackClick }: Props) => {
 										</span>
 									</div>
 
-									<div className="col-xs-4 align_right">
+									<div className="align_right">
 										<span className="color_light-2 size_s">
 											{converMsToMin(track.duration_ms)}
 										</span>
 									</div>
 
 									<button
+										data-testid="play-track"
 										onClick={() => {
 											handleTrackClick(track)
 										}}
-										className="btn btn_bg"
+										className="btn btn_bg btn_round-icon tracks-list__hover-action tracks-list__hover-action_left"
 									>
-										Play
+										<span className="fas fa-play"></span>
 									</button>
 								</div>
 

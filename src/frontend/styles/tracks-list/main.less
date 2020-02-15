@@ -1,12 +1,16 @@
 .tracks-list {
 	&__item {
-		padding: @globalSpacing * 0.5 @globalSpacing * 0.5 @globalSpacing * 0.2
+		padding: @globalSpacing * 0.7 @globalSpacing * 0.7 @globalSpacing * 0.2
 			@globalSpacing * 2;
 		position: relative;
 		cursor: pointer;
 
 		&:hover {
 			background-color: var(--theme6);
+
+			.tracks-list__hover-action {
+				display: block;
+			}
 		}
 
 		&::before {
@@ -16,10 +20,22 @@
 			.color_light-2();
 
 			position: absolute;
+			top: @globalSpacing * 0.9;
 			left: 0.5 * @globalSpacing;
 
 			content: '\f001';
 			display: block;
 		}
+	}
+
+	&__hover-action {
+		display: none;
+		position: absolute;
+		left: @globalSpacing * 0.5;
+		top: 0;
+		bottom: 0;
+		width: 34px;
+		height: 34px;
+		margin: auto;
 	}
 }

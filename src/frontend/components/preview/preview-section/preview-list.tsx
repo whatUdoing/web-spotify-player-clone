@@ -9,7 +9,12 @@ const PreviewList = () => {
 	return (
 		<>
 			{context.items.map((item: PreviewItemObject) => {
-				return <PreviewItem key={item.id} item={item} />
+				return (
+					<PreviewItem key={item.id} item={item}>
+						<PreviewItem.Cover />
+						<PreviewItem.Content />
+					</PreviewItem>
+				)
 			})}
 		</>
 	)

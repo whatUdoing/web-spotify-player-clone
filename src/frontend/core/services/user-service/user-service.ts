@@ -108,6 +108,10 @@ export default class UserService implements IUserService {
 			)
 
 			if (isResponseSuccess(response)) {
+				if (response.data?.error) {
+					return [null, response.data.error]
+				}
+
 				return [response.data, null]
 			}
 		} catch (err) {

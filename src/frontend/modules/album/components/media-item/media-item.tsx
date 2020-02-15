@@ -28,10 +28,6 @@ const MediaItem = ({ item }: Props) => {
 					<span className="color_light-2">{item.author}</span>
 				</div>
 
-				<div className="media-item__action">
-					<button className="btn btn_bg">Play</button>
-				</div>
-
 				<p className="media-item__description">
 					<span className="color_light-2">{item.description}</span>
 				</p>

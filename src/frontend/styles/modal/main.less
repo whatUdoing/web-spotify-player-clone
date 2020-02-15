@@ -1,0 +1,21 @@
+.modal {
+	position: relative;
+
+	&__btn-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__content {
+		padding: 2 * @globalSpacing;
+		border-radius: @globalBorderRadius;
+		background-color: var(--theme8);
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+}

@@ -37,13 +37,13 @@ const PlaylistFullView = () => {
 
 	return (
 		<div className="row">
-			<div className="col-xs-12 col-sm-4">
+			<div className="col-xs-12">
 				<div className="pr-1">
 					{coverItem && <CoverPreview item={coverItem} />}
 				</div>
 			</div>
 
-			<div className="col-xs col-sm-8">
+			<div className="col-xs-12 col-sm">
 				{tracks && (
 					<Tracks
 						tracks={tracks}

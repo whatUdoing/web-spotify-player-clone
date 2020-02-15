@@ -1,9 +1,9 @@
 import React from 'react'
-import MainNav from '../navigation/navigation'
+import MainNav from '../navigation/hoc-navigation'
 
 const Sidebar = () => {
 	return (
-		<div className="ui__sidebar">
+		<div className="sidebar">
 			<MainNav />
 		</div>
 	)

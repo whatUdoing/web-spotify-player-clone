@@ -1,7 +1,7 @@
 .ui {
 	display: grid;
 
-	grid-template-columns: 300px 1fr;
+	grid-template-columns: @uiSidebarWidth 1fr;
 	grid-template-rows:
 		@uiHeaderHeight calc(100vh - (@uiFooterHeight + @uiHeaderHeight))
 		@uiFooterHeight;
@@ -12,6 +12,8 @@
 
 	&__aside {
 		.custom-scrollbar();
+
+		background-color: var(--theme8);
 
 		overflow: auto;
 		grid-area: aside;
@@ -36,6 +38,8 @@
 		grid-area: footer;
 		display: flex;
 		align-items: center;
+
+		background-color: var(--theme6);
 	}
 
 	&__header {

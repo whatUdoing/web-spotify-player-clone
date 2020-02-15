@@ -1,18 +1,33 @@
 import React from 'react'
 
 type Props = {
+	isSidebarVisible: boolean
 	header?: React.ReactNode | string
 	main?: React.ReactNode | string
 	aside?: React.ReactNode | string
 	footer?: React.ReactNode | string
 	children?: React.ReactNode | string
 }
-const MainLayout = ({ header, main, aside, footer }: Props) => {
+const MainLayout = ({
+	header,
+	main,
+	aside,
+	footer,
+	isSidebarVisible
+}: Props) => {
 	return (
 		<div className="ui">
 			{header && <header className="ui__header">{header}</header>}
 
-			{aside && <aside className="ui__aside">{aside}</aside>}
+			{aside && (
+				<aside
+					className={`ui__aside ${
+						isSidebarVisible ? 'ui__aside_open' : ''
+					}`}
+				>
+					{aside}
+				</aside>
+			)}
 
 			{main && (
 				<main className="ui__main">
