@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react'
 import { Container, Row, Col } from '../../../../components/flexobx-grid'
-import Tracks from '../../../track/components/tracks/tracks'
+import Tracks from '../../../track/components/tracks/hoc-tracks'
 import CoverPreview from '../media-item/media-item'
 import {
 	PlaylistObjectFull,
@@ -30,7 +30,6 @@ const AlbumFullView = () => {
 	const [tracks, setTracks] = useState<Array<TrackObjectSimplified>>([])
 
 	useEffect(() => {
-		// console.log('context.album', context.album)
 		if (context.album) {
 			setCoverItem(getCoverImage(context.album))
 			setTracks(context.album.tracks.items.filter(item => item))

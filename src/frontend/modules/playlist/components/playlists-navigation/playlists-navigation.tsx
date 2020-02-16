@@ -4,7 +4,7 @@ import NavigationList from '../../../../components/navigation/navigation-list/na
 import { getResourceUri } from '../../../../lib/helpers/resource-uri/resource-uri'
 import LoaderGuiardian from '../../../../components/loader-guardian/loader-guardian'
 import { useGuardianLazyLoading } from '../../../../lib/hooks/use-guardian-lazy-loading'
-import CreatePlaylistBtn from '../create-playlist/hoc-create-btn'
+import CreatePlaylistBtn from '../create-playlist/hoc-create-playlist'
 
 type Props = {
 	playlists: Array<PlaylistObjectSimplified>
@@ -57,7 +57,7 @@ const PlaylistsNavigation = ({
 				items={playlistsNavigationItems}
 				override={globalOverrides}
 			/>
-			<LoaderGuiardian ref={$guardian} />
+			{!allLoaded && <LoaderGuiardian ref={$guardian} />}
 		</div>
 	)
 }

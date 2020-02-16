@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { css } from '@emotion/core'
-import CreatePlaylistModal from './create-playlist-modal'
+import CreatePlaylistModal from './subcomponents/create-playlist-modal'
 import { ComponentEventObject } from 'components'
 
 type Props = {
 	createPlaylist: (playlistName: string) => void
-	cssClasses: {
+	cssClasses?: {
 		button: string
 	}
 }
@@ -34,16 +33,8 @@ const CreatePlaylistBtn = ({
 				}}
 				className={cssClasses.button}
 			>
-				<i className="fas fa-plus"></i>
-
-				<span
-					css={css`
-						//todo change to variables
-						margin-left: 0.5em;
-					`}
-				>
-					Create playlist
-				</span>
+				<span className="fas fa-plus mr-1"></span>
+				Create playlist
 			</button>
 
 			<CreatePlaylistModal

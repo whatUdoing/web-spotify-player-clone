@@ -7,6 +7,10 @@ export const useGuardianLazyLoading = (
 	forceCheck?: number
 ) => {
 	useEffect(() => {
+		if (allLoaded) {
+			return
+		}
+
 		const observer = new IntersectionObserver(
 			(entries: Array<IntersectionObserverEntry>) => {
 				entries.forEach((entry: IntersectionObserverEntry) => {

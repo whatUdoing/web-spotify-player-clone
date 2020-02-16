@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react'
 import { Container, Row, Col } from '../../../../components/flexobx-grid'
-import Tracks from '../../../track/components/tracks/tracks'
+import Tracks from '../../../track/components/tracks/hoc-tracks'
 import CoverPreview from '../../../album/components/media-item/media-item'
 import { PlaylistObjectFull, TrackObjectFull } from 'services'
 import { getImage } from '../../../../lib/helpers/images/images'
