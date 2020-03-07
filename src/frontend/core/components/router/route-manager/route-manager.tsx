@@ -24,7 +24,6 @@ const RouteManager = ({ routes }: Props) => {
 			const [auth, error] = await UserService.isAuthenticated(cancelToken)
 
 			if (auth) {
-				console.log('set auth', auth)
 				disptach(setUserAuth(auth))
 			}
 		})

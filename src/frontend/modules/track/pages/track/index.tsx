@@ -9,7 +9,6 @@ const Track = () => {
 	const { trackId } = useParams()
 	const [isLoading, setLoading] = useState<boolean>(true)
 	const [track, setTrack] = useState<TrackObjectFull | null>()
-	console.log('render Track', track)
 
 	if (!trackId) return null
 

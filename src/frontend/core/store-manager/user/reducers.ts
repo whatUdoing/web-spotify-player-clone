@@ -2,8 +2,7 @@ import {
 	userActionTypes,
 	SET_USER_PROFILE,
 	SET_USER_AUTH,
-	SET_USER_LOADING,
-	SET_CURR_USER_PLAYLISTS
+	SET_USER_LOADING
 } from './actions-types'
 import { combineReducers } from 'redux'
 import { UserStateShape } from 'redux-store'
@@ -27,7 +26,6 @@ const UserReducer = (
 ) => {
 	switch (action.type) {
 		case SET_USER_PROFILE:
-			console.log('SET_USER_PROFILE', action.payload.user)
 			return action.payload.user
 
 		default:

@@ -29,13 +29,6 @@ const playlistsReducers = (
 ) => {
 	switch (action.type) {
 		case ADD_PLAYLISTS:
-			console.log(
-				'add playlists',
-				[...playlists.items, ...action.payload.playlistsPagging.items]
-					.length
-			)
-
-			console.log(action.payload.playlistsPagging)
 			return {
 				items: [
 					...playlists.items,

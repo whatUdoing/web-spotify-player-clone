@@ -17,7 +17,6 @@ const CreatePlaylistModal = ({
 	const handleInputChange = (
 		evt: SyntheticEvent<HTMLInputElement, Event>
 	) => {
-		console.log('input change')
 		setPlaylistName((evt.target as HTMLInputElement).value)
 	}
 

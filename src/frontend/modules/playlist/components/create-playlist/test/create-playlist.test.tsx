@@ -47,5 +47,10 @@ describe('[ create-playlist ]', () => {
 		expect(queryByTestId('create-playlist-form')).toBeNull()
 	})
 
-	test('if "create" button with properly filled from triggers action to create playlist', () => {})
+	test('if "create" button with properly filled from triggers action to create playlist', () => {
+		const createPLaylistAction = jest.fn()
+		const { getByText, queryByTestId } = render(
+			setup(<CreatePlaylist createPlaylist={createPLaylistAction} />)
+		)
+	})
 })

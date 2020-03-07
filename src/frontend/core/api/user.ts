@@ -21,10 +21,7 @@ export default class UserApiClient implements IUserApiClient {
 	}
 
 	getUserProfile() {
-		// todo move prefix to config file
 		return this.httpClient.get(`${apiConfig.apiPrefix}/me`).then(resp => {
-			console.log(resp)
-
 			return resp
 		})
 	}

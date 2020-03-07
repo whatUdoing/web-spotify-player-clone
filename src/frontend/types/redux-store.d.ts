@@ -39,9 +39,6 @@ declare module 'redux-store' {
 		auth: AuthObject
 		profile: User | null
 		isLoading: boolean
-		// currentUserPlaylists: PagingPlaylistObject<
-		// 	PlaylistObjectSimplified
-		// > | null
 	}
 
 	/**

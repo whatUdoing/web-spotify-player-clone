@@ -24,7 +24,6 @@ export const getTrack: Middleware = ({ dispatch }) => next => async (
 		}
 
 		if (track) {
-			// console.log('dispatch add track', addTrack(track))
 			dispatch(addTrack(track))
 		}
 	}

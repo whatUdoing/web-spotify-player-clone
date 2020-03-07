@@ -23,14 +23,12 @@ const Album = () => {
 
 	const loadTracks = async () => {
 		if (album) {
-			console.log('abum', album)
 			setLoadingTracks(true)
 			const [response, error] = await AlbumsService.getAlbumTracks(album)
 
 			if (response) {
 				setLoadingTracks(false)
-				// console.log('album tracks', album.tracks)
-				// console.log('resp', response)
+
 				const newTracks = [...album.tracks.items, ...response.items]
 
 				setAlbum({

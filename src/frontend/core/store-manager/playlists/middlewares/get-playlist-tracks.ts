@@ -19,8 +19,7 @@ export const getMorePlaylistTracks: Middleware = ({
 		const currTrackObjct = <PagingTrackObject<PlaylistTrackObject>>(
 			playlist.tracks
 		)
-		// console.log('get more tracks', action.payload.playlistId)
-		// console.log(currTrackObjct)
+
 		if (currTrackObjct.allLoaded) {
 			return
 		}
@@ -41,8 +40,6 @@ export const getMorePlaylistTracks: Middleware = ({
 		}
 
 		if (trackObject) {
-			// console.log('playlistId', playlistId)
-			// console.log('track ob', trackObject)
 			dispatch(addTracks(playlistId, trackObject))
 		}
 	}
